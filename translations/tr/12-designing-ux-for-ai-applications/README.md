@@ -1,130 +1,134 @@
 <!--
 CO_OP_TRANSLATOR_METADATA:
 {
-  "original_hash": "ec385b41ee50579025d50cc03bfb3a25",
-  "translation_date": "2025-05-19T21:55:02+00:00",
+  "original_hash": "747668e4c53d067369f06e9ec2e6313e",
+  "translation_date": "2025-08-26T16:54:41+00:00",
   "source_file": "12-designing-ux-for-ai-applications/README.md",
   "language_code": "tr"
 }
 -->
 # AI Uygulamaları için UX Tasarımı
 
-[![AI Uygulamaları için UX Tasarımı](../../../translated_images/12-lesson-banner.f98188f63dee5f2a9016055c93c766061b9cb95b320bf29d4d2d67ada792572e.tr.png)](https://aka.ms/gen-ai-lesson12-gh?WT.mc_id=academic-105485-koreyst)
+[![AI Uygulamaları için UX Tasarımı](../../../translated_images/12-lesson-banner.c53c3c7c802e8f563953ce388f6a987ca493472c724d924b060be470951c53c8.tr.png)](https://aka.ms/gen-ai-lesson12-gh?WT.mc_id=academic-105485-koreyst)
 
-> _(Bu dersin videosunu izlemek için yukarıdaki resme tıklayın)_
+> _(Dersi izlemek için yukarıdaki görsele tıklayın)_
 
-Kullanıcı deneyimi, uygulama geliştirmenin çok önemli bir yönüdür. Kullanıcıların, görevlerini verimli bir şekilde yerine getirmek için uygulamanızı kullanabilmesi gerekir. Verimli olmak bir şeydir, ancak uygulamaları herkesin kullanabileceği şekilde tasarlamanız da gerekir, yani onları _erişilebilir_ hale getirmek. Bu bölüm, insanların kullanabileceği ve kullanmak isteyeceği bir uygulama tasarlamanıza yardımcı olmayı umarak bu alana odaklanacaktır.
+Kullanıcı deneyimi, uygulama geliştirmenin çok önemli bir yönüdür. Kullanıcıların, uygulamanızı verimli bir şekilde kullanarak görevlerini yerine getirebilmesi gerekir. Verimli olmak önemli ama aynı zamanda uygulamaları herkesin kullanabileceği şekilde tasarlamanız gerekir, yani _erişilebilir_ olmalıdır. Bu bölümde bu konuya odaklanacağız, böylece insanların kullanabileceği ve kullanmak isteyeceği bir uygulama tasarlamanız hedefleniyor.
 
 ## Giriş
 
-Kullanıcı deneyimi, bir kullanıcının belirli bir ürün veya hizmetle, ister bir sistem, araç veya tasarım olsun, nasıl etkileşimde bulunduğunu ve kullandığını ifade eder. AI uygulamaları geliştirirken, geliştiriciler sadece kullanıcı deneyiminin etkili olmasını sağlamakla kalmaz, aynı zamanda etik olmasına da odaklanırlar. Bu derste, kullanıcı ihtiyaçlarını ele alan Yapay Zeka (AI) uygulamalarının nasıl oluşturulacağını ele alıyoruz.
+Kullanıcı deneyimi, bir kullanıcının belirli bir ürün veya hizmetle (sistem, araç ya da tasarım) nasıl etkileşime girdiği ve kullandığıdır. AI uygulamaları geliştirirken, geliştiriciler sadece kullanıcı deneyiminin etkili olmasına değil, aynı zamanda etik olmasına da odaklanır. Bu derste, kullanıcı ihtiyaçlarını karşılayan Yapay Zeka (AI) uygulamalarının nasıl geliştirileceğini ele alıyoruz.
 
-Ders aşağıdaki alanları kapsayacaktır:
+Ders şu başlıkları kapsayacak:
 
 - Kullanıcı Deneyimine Giriş ve Kullanıcı İhtiyaçlarını Anlama
 - Güven ve Şeffaflık için AI Uygulamaları Tasarlama
-- İşbirliği ve Geri Bildirim için AI Uygulamaları Tasarlama
+- İş Birliği ve Geri Bildirim için AI Uygulamaları Tasarlama
 
 ## Öğrenme Hedefleri
 
-Bu dersi aldıktan sonra:
+Bu dersi tamamladıktan sonra şunları yapabileceksiniz:
 
-- Kullanıcı ihtiyaçlarını karşılayan AI uygulamalarının nasıl oluşturulacağını anlayabileceksiniz.
-- Güven ve işbirliğini teşvik eden AI uygulamaları tasarlayabileceksiniz.
+- Kullanıcı ihtiyaçlarını karşılayan AI uygulamalarının nasıl geliştirileceğini anlamak.
+- Güven ve iş birliğini teşvik eden AI uygulamaları tasarlamak.
 
 ### Ön Koşul
 
-Biraz zaman ayırarak [kullanıcı deneyimi ve tasarım düşüncesi](https://learn.microsoft.com/training/modules/ux-design?WT.mc_id=academic-105485-koreyst) hakkında daha fazla okuyun.
+Biraz zaman ayırıp [kullanıcı deneyimi ve tasarım odaklı düşünme](https://learn.microsoft.com/training/modules/ux-design?WT.mc_id=academic-105485-koreyst) hakkında daha fazla okuyun.
 
 ## Kullanıcı Deneyimine Giriş ve Kullanıcı İhtiyaçlarını Anlama
 
-Hayali eğitim girişimimizde, iki ana kullanıcımız var: öğretmenler ve öğrenciler. Bu iki kullanıcının her birinin benzersiz ihtiyaçları vardır. Kullanıcı merkezli tasarım, ürünlerin, hedeflendiği kişiler için uygun ve faydalı olmasını sağlamak amacıyla kullanıcıyı önceliklendirir.
+Kurgusal eğitim girişimimizde iki ana kullanıcımız var: öğretmenler ve öğrenciler. Her iki kullanıcının da kendine özgü ihtiyaçları bulunuyor. Kullanıcı odaklı bir tasarım, ürünü hedef kitlesi için anlamlı ve faydalı kılarak kullanıcıyı önceliklendirir.
 
-Uygulama, iyi bir kullanıcı deneyimi sağlamak için **kullanışlı, güvenilir, erişilebilir ve hoş** olmalıdır.
+Uygulama, iyi bir kullanıcı deneyimi sunmak için **faydalı, güvenilir, erişilebilir ve keyifli** olmalıdır.
 
 ### Kullanılabilirlik
 
-Kullanışlı olmak, uygulamanın amacına uygun işlevselliğe sahip olması anlamına gelir; örneğin, not verme sürecini otomatikleştirmek veya tekrar için flash kartlar oluşturmak gibi. Not verme sürecini otomatikleştiren bir uygulama, öğrencilerin çalışmalarına önceden tanımlanmış kriterlere göre doğru ve verimli bir şekilde puan verebilmelidir. Benzer şekilde, tekrar flash kartları oluşturan bir uygulama, verileri temel alarak ilgili ve çeşitli sorular oluşturabilmelidir.
+Faydalı olmak, uygulamanın amaçlanan işlevi yerine getirmesi anlamına gelir; örneğin notlandırma sürecini otomatikleştirmek veya tekrar için flash kartlar oluşturmak gibi. Notlandırma sürecini otomatikleştiren bir uygulama, önceden belirlenmiş kriterlere göre öğrencilerin çalışmalarına doğru ve verimli bir şekilde puan verebilmelidir. Benzer şekilde, tekrar flash kartları oluşturan bir uygulama, elindeki verilere göre ilgili ve çeşitli sorular üretebilmelidir.
 
 ### Güvenilirlik
 
-Güvenilir olmak, uygulamanın görevini tutarlı bir şekilde ve hatasız yerine getirebilmesi anlamına gelir. Ancak, tıpkı insanlar gibi AI da mükemmel değildir ve hatalara meyilli olabilir. Uygulamalar, insan müdahalesi veya düzeltme gerektiren hatalar veya beklenmedik durumlarla karşılaşabilir. Hataları nasıl ele alırsınız? Bu dersin son bölümünde, AI sistemleri ve uygulamalarının işbirliği ve geri bildirim için nasıl tasarlandığını ele alacağız.
+Güvenilir olmak, uygulamanın görevini tutarlı ve hatasız bir şekilde yerine getirebilmesi demektir. Ancak, AI da insanlar gibi mükemmel değildir ve hata yapabilir. Uygulamalar, insan müdahalesi veya düzeltme gerektiren hatalar ya da beklenmedik durumlarla karşılaşabilir. Hataları nasıl yönetirsiniz? Bu dersin son bölümünde, AI sistemlerinin ve uygulamalarının iş birliği ve geri bildirim için nasıl tasarlandığını ele alacağız.
 
 ### Erişilebilirlik
 
-Erişilebilir olmak, kullanıcı deneyimini, engelli olanlar da dahil olmak üzere çeşitli yeteneklere sahip kullanıcılara genişletmek anlamına gelir, böylece kimse dışlanmaz. Erişilebilirlik yönergeleri ve ilkelerini takip ederek, AI çözümleri daha kapsayıcı, kullanılabilir ve tüm kullanıcılar için faydalı hale gelir.
+Erişilebilir olmak, kullanıcı deneyimini farklı yeteneklere sahip tüm kullanıcılara, engelli bireyler de dahil olmak üzere, ulaştırmak demektir. Böylece kimse dışlanmaz. Erişilebilirlik ilkelerine ve yönergelerine uyarak, AI çözümleri daha kapsayıcı, kullanılabilir ve herkes için faydalı hale gelir.
 
-### Hoş
+### Keyifli
 
-Hoş olmak, uygulamanın kullanımı keyifli olması anlamına gelir. Çekici bir kullanıcı deneyimi, kullanıcının uygulamaya geri dönmesini teşvik ederek olumlu bir etki yaratabilir ve işletme gelirini artırabilir.
+Keyifli olmak, uygulamanın kullanımı zevkli olması anlamına gelir. Çekici bir kullanıcı deneyimi, kullanıcı üzerinde olumlu bir etki yaratır, uygulamaya tekrar gelmesini teşvik eder ve iş gelirini artırır.
 
-![AI'da UX düşüncelerini gösteren bir resim](../../../translated_images/uxinai.26a003eb0524d011d3e36d15f6837df5be66ee0d965ee0df6d004edd5097a87d.tr.png)
+![AI'da UX ile ilgili hususları gösteren görsel](../../../translated_images/uxinai.d5b4ed690f5cefff0c53ffcc01b480cdc1828402e1fdbc980490013a3c50935a.tr.png)
 
-Her zorluk AI ile çözülemez. AI, manuel görevleri otomatikleştirmek veya kullanıcı deneyimlerini kişiselleştirmek gibi kullanıcı deneyiminizi artırmak için devreye girer.
+Her zorluk AI ile çözülemez. AI, kullanıcı deneyiminizi geliştirmek için devreye girer; ister manuel işleri otomatikleştirmek, ister kullanıcı deneyimini kişiselleştirmek olsun.
 
 ## Güven ve Şeffaflık için AI Uygulamaları Tasarlama
 
-Güven inşa etmek, AI uygulamaları tasarlarken kritik öneme sahiptir. Güven, kullanıcının uygulamanın işi yapacağına, sonuçları tutarlı bir şekilde sunacağına ve sonuçların kullanıcının ihtiyaçlarına uygun olacağına dair güven duymasını sağlar. Bu alandaki bir risk, güvensizlik ve aşırı güvendir. Güvensizlik, bir kullanıcının AI sistemine az ya da hiç güvenmemesi durumunda ortaya çıkar, bu da kullanıcının uygulamanızı reddetmesine yol açar. Aşırı güven, bir kullanıcının AI sisteminin yeteneklerini abartması durumunda ortaya çıkar ve kullanıcıların AI sistemine aşırı güvenmesine yol açar. Örneğin, otomatik not verme sistemi durumunda aşırı güven, öğretmenin bazı kağıtları not verme sisteminin iyi çalıştığından emin olmak için gözden geçirmemesine yol açabilir. Bu, öğrenciler için adaletsiz veya yanlış notlara ya da geri bildirim ve iyileştirme fırsatlarının kaçırılmasına neden olabilir.
+AI uygulamaları tasarlarken güven inşa etmek çok önemlidir. Güven, kullanıcının uygulamanın işi yapacağına, tutarlı sonuçlar vereceğine ve bu sonuçların ihtiyacı olan şeyler olduğuna inanmasını sağlar. Bu alandaki risklerden biri güvensizlik, diğeri ise aşırı güvendir. Güvensizlik, kullanıcının AI sistemine az ya da hiç güvenmemesiyle ortaya çıkar ve bu da kullanıcının uygulamanızı reddetmesine yol açar. Aşırı güven ise, kullanıcının AI sisteminin yeteneklerini abartması ve sisteme gereğinden fazla güvenmesiyle oluşur. Örneğin, otomatik notlandırma sisteminde aşırı güven, öğretmenin bazı kağıtları kontrol etmeyip sistemin doğru çalıştığını varsaymasına yol açabilir. Bu da öğrenciler için adaletsiz veya hatalı notlara ya da geri bildirim ve gelişim fırsatlarının kaçırılmasına neden olabilir.
 
-Güvenin tasarımın merkezine yerleştirildiğinden emin olmanın iki yolu açıklanabilirlik ve kontroldür.
+Güveni tasarımın merkezine koymanın iki yolu açıklanabilirlik ve kontroldür.
 
 ### Açıklanabilirlik
 
-AI, gelecekteki nesillere bilgi aktarma gibi kararlar alırken yardımcı olduğunda, öğretmenlerin ve ebeveynlerin AI kararlarının nasıl alındığını anlamaları kritiktir. Bu, açıklanabilirlik - AI uygulamalarının nasıl karar aldığını anlama - anlamına gelir. Açıklanabilirlik için tasarım yapmak, bir AI uygulamasının neler yapabileceği örneklerinin detaylarını eklemeyi içerir. Örneğin, "AI öğretmeni ile başlayın" yerine sistem: "Notlarınızı daha kolay tekrar için özetleyin" ifadesini kullanabilir.
+AI, geleceğin nesillerine bilgi aktarmak gibi kararları desteklediğinde, öğretmenlerin ve ebeveynlerin AI kararlarının nasıl alındığını anlaması çok önemlidir. Buna açıklanabilirlik denir - AI uygulamalarının kararları nasıl verdiğini anlamak. Açıklanabilirlik için tasarım yapmak, AI'nın çıktıya nasıl ulaştığını gösteren detaylar eklemeyi içerir. Kullanıcılar, çıktının bir AI tarafından üretildiğinin ve insan olmadığının farkında olmalıdır. Örneğin, "Şimdi eğitmeninle sohbet etmeye başla" demek yerine, "İhtiyaçlarına uyum sağlayan ve kendi hızında öğrenmene yardımcı olan AI eğitmenini kullan" diyebilirsiniz.
 
-![AI uygulamalarında açıklanabilirliği açıkça gösteren bir uygulama açılış sayfası](../../../translated_images/explanability-in-ai.19a61ee8eec9aec2d55d420c49cc3bb167db208c05bddb8d4e1e9e10ea8746b8.tr.png)
+![AI uygulamalarında açıklanabilirliğin net gösterildiği bir uygulama açılış sayfası](../../../translated_images/explanability-in-ai.134426a96b498fbfdc80c75ae0090aedc0fc97424ae0734fccf7fb00a59a20d9.tr.png)
 
-Başka bir örnek, AI'nın kullanıcı ve kişisel verileri nasıl kullandığıdır. Örneğin, öğrenci kişiliğine sahip bir kullanıcı, kişiliğine bağlı olarak sınırlamalara sahip olabilir. AI, sorulara cevapları açıklayamayabilir, ancak kullanıcının bir sorunu nasıl çözebileceğini düşünmesine rehberlik edebilir.
+Bir diğer örnek, AI'nın kullanıcı ve kişisel verileri nasıl kullandığıdır. Örneğin, öğrenci personasına sahip bir kullanıcının, bu personası nedeniyle bazı kısıtlamaları olabilir. AI, soruların cevaplarını doğrudan veremeyebilir ama kullanıcının problemi nasıl çözebileceği konusunda yol gösterebilir.
 
-![Kişiliğe dayalı sorulara yanıt veren AI](../../../translated_images/solving-questions.9158f66fb9fd71ed57fd00978358d14dbccc72bd2b1e4db5140fcb1579aef295.tr.png)
+![AI'nın personaya göre soruları yanıtlaması](../../../translated_images/solving-questions.b7dea1604de0cbd2e9c5fa00b1a68a0ed77178a035b94b9213196b9d125d0be8.tr.png)
 
-Açıklanabilirliğin son önemli kısmı, açıklamaların basitleştirilmesidir. Öğrenciler ve öğretmenler AI uzmanı olmayabilir, bu nedenle uygulamanın neler yapabileceği veya yapamayacağına dair açıklamalar basitleştirilmeli ve kolayca anlaşılabilir olmalıdır.
+Açıklanabilirliğin bir diğer önemli yönü de açıklamaların sadeleştirilmesidir. Öğrenciler ve öğretmenler AI uzmanı olmayabilir, bu nedenle uygulamanın neleri yapıp neleri yapamayacağına dair açıklamalar basit ve anlaşılır olmalıdır.
 
-![AI yetenekleri hakkında basitleştirilmiş açıklamalar](../../../translated_images/simplified-explanations.4a23e7b2260406a771a2cd853970a0661388a63f1900737935c0a788daf16dc8.tr.png)
+![AI yetenekleriyle ilgili sadeleştirilmiş açıklamalar](../../../translated_images/simplified-explanations.4679508a406c3621fa22bad4673e717fbff02f8b8d58afcab8cb6f1aa893a82f.tr.png)
 
 ### Kontrol
 
-Üretici AI, AI ve kullanıcı arasında bir işbirliği yaratır; örneğin, bir kullanıcı farklı sonuçlar için istemleri değiştirebilir. Ek olarak, bir çıktı üretildiğinde, kullanıcılar sonuçları değiştirerek bir kontrol hissi elde edebilmelidir. Örneğin, Bing kullanırken, isteminizi format, ton ve uzunluğa göre özelleştirebilirsiniz. Ayrıca, çıktınıza değişiklikler ekleyebilir ve çıktıyı aşağıda gösterildiği gibi değiştirebilirsiniz:
+Üretken AI, AI ile kullanıcı arasında bir iş birliği oluşturur; örneğin, kullanıcı farklı sonuçlar için istemleri değiştirebilir. Ayrıca, bir çıktı üretildikten sonra, kullanıcılar sonuçları değiştirebilmeli ve böylece kontrol hissi kazanmalıdır. Örneğin, Bing kullanırken, isteminizi biçim, ton ve uzunluğa göre özelleştirebilirsiniz. Ayrıca, çıktınıza değişiklikler ekleyebilir ve çıktıyı aşağıda gösterildiği gibi düzenleyebilirsiniz:
 
-![İstemi ve çıktıyı değiştirme seçenekleriyle Bing arama sonuçları](../../../translated_images/bing1.6024fe7d103ff4b54c58b873654403a1e56f81010da05a1f0a210c5ac7a1b8b5.tr.png)
+![İstem ve çıktıyı değiştirme seçenekleriyle Bing arama sonuçları](../../../translated_images/bing1.293ae8527dbe2789b675c8591c9fb3cb1aa2ada75c2877f9aa9edc059f7a8b1c.tr.png)
 
-Bing'de, bir kullanıcının uygulama üzerinde kontrol sahibi olmasını sağlayan bir diğer özellik, AI'nın kullandığı verilere katılma ve katılmama yeteneğidir. Bir okul uygulaması için, bir öğrenci kendi notlarını ve öğretmenlerin kaynaklarını tekrar materyali olarak kullanmak isteyebilir.
+Bing'de kullanıcının uygulama üzerinde kontrol sahibi olmasını sağlayan bir diğer özellik ise, AI'nın kullandığı verilere dahil olma veya olmama seçeneğidir. Bir okul uygulamasında, bir öğrenci hem kendi notlarını hem de öğretmenin kaynaklarını tekrar materyali olarak kullanmak isteyebilir.
 
-![İstemi ve çıktıyı değiştirme seçenekleriyle Bing arama sonuçları](../../../translated_images/bing2.a01fd420e9d52912126965a59c1766e5865f4dd9aaa45408d525e717d0ef3cce.tr.png)
+![İstem ve çıktıyı değiştirme seçenekleriyle Bing arama sonuçları](../../../translated_images/bing2.309f4845528a88c28c1c9739fb61d91fd993dc35ebe6fc92c66791fb04fceb4d.tr.png)
 
-> AI uygulamaları tasarlarken, kullanıcıların aşırı güven duymasını ve yetenekleri hakkında gerçekçi olmayan beklentiler oluşturmasını önlemek için niyetlilik önemlidir. Bunu yapmanın bir yolu, istemler ve sonuçlar arasında sürtünme yaratmaktır. Kullanıcıya bunun bir AI olduğunu ve bir insan olmadığını hatırlatmak
+> AI uygulamaları tasarlarken, kullanıcıların AI'nın yetenekleri konusunda aşırı güvene kapılıp gerçekçi olmayan beklentiler oluşturmamasını sağlamak için kasıtlı olmak önemlidir. Bunu yapmanın bir yolu, istemler ile sonuçlar arasında bir miktar sürtünme oluşturmaktır. Kullanıcıya bunun bir AI olduğunu, bir insan olmadığını hatırlatmak gerekir.
 
-## İşbirliği ve Geri Bildirim için AI Uygulamaları Tasarlama
+## İş Birliği ve Geri Bildirim için AI Uygulamaları Tasarlama
 
-Daha önce belirtildiği gibi, üretici AI, kullanıcı ve AI arasında bir işbirliği yaratır. Çoğu etkileşim, bir kullanıcının bir istem girmesi ve AI'nın bir çıktı üretmesiyle gerçekleşir. Peki ya çıktı yanlışsa? Uygulama hataları nasıl ele alır? AI, kullanıcıyı suçlar mı yoksa hatayı açıklamak için zaman ayırır mı?
+Daha önce de belirtildiği gibi, üretken AI kullanıcı ile AI arasında bir iş birliği oluşturur. Çoğu etkileşim, kullanıcının bir istem girmesi ve AI'nın bir çıktı üretmesiyle gerçekleşir. Peki ya çıktı yanlışsa? Uygulama hataları nasıl yönetiyor? AI, kullanıcıyı mı suçluyor yoksa hatayı açıklamak için zaman mı ayırıyor?
 
-AI uygulamaları, geri bildirim almak ve vermek için inşa edilmelidir. Bu sadece AI sisteminin gelişmesine yardımcı olmakla kalmaz, aynı zamanda kullanıcılarla güven oluşturur. Tasarımda bir geri bildirim döngüsü dahil edilmelidir, örneğin basit bir beğenme veya beğenmeme butonu gibi.
+AI uygulamaları, hem geri bildirim alacak hem de verecek şekilde tasarlanmalıdır. Bu, sadece AI sisteminin gelişmesine yardımcı olmakla kalmaz, aynı zamanda kullanıcılarla güven inşa eder. Tasarımda bir geri bildirim döngüsü bulunmalıdır; örneğin, çıktıya basit bir beğenme veya beğenmeme simgesi eklenebilir.
 
-Bunu ele almanın bir başka yolu, sistemin yeteneklerini ve sınırlamalarını açıkça iletmektir. Bir kullanıcı, AI'nın yeteneklerini aşan bir şey talep ettiğinde, bunun nasıl ele alınacağı da gösterilmelidir.
+Bunu yönetmenin bir diğer yolu da sistemin yeteneklerini ve sınırlamalarını açıkça iletmektir. Kullanıcı, AI'nın yeteneklerinin ötesinde bir şey talep ettiğinde, bunun da yönetilmesi gerekir; aşağıda gösterildiği gibi.
 
-![Geri bildirim verme ve hataları ele alma](../../../translated_images/feedback-loops.2abf91e576a435333eb1b37c823a69497337abc5b50ff80c4b9ddbd52bfdbf84.tr.png)
+![Geri bildirim verme ve hataları yönetme](../../../translated_images/feedback-loops.7955c134429a94663443ad74d59044f8dc4ce354577f5b79b4bd2533f2cafc6f.tr.png)
 
-Sistem hataları, kullanıcının AI'nın kapsamı dışındaki bilgilerle yardıma ihtiyaç duyabileceği veya uygulamanın bir kullanıcının oluşturabileceği soru/konu sayısı üzerinde bir sınırı olabileceği uygulamalarda yaygındır. Örneğin, Tarih ve Matematik gibi sınırlı konularla eğitilmiş bir AI uygulaması, Coğrafya ile ilgili soruları ele alamayabilir. Bunu hafifletmek için, AI sistemi şu şekilde bir yanıt verebilir: "Üzgünüm, ürünümüz aşağıdaki konularda verilerle eğitilmiştir....., sorduğunuz soruya yanıt veremem."
+Sistem hataları, kullanıcının AI'nın kapsamı dışında bilgiye ihtiyaç duyması ya da uygulamanın bir kullanıcının kaç soru/konu için özet oluşturabileceğine dair bir sınırı olması gibi durumlarda yaygındır. Örneğin, sadece belirli konularla (Tarih ve Matematik gibi) ilgili verilerle eğitilmiş bir AI uygulaması, Coğrafya ile ilgili soruları yanıtlayamayabilir. Bunu önlemek için, AI sistemi şöyle bir yanıt verebilir: "Üzgünüm, ürünümüz şu konulardaki verilerle eğitilmiştir....., sorduğunuz soruya yanıt veremiyorum."
 
-AI uygulamaları mükemmel değildir, bu nedenle hata yapmaları muhtemeldir. Uygulamalarınızı tasarlarken, kullanıcı geri bildirimleri ve hata yönetimi için basit ve kolayca açıklanabilir bir şekilde yer bırakmalısınız.
+AI uygulamaları mükemmel değildir, bu nedenle hata yapmaları kaçınılmazdır. Uygulamalarınızı tasarlarken, kullanıcıdan geri bildirim almaya ve hataları basit ve kolayca açıklanabilir bir şekilde yönetmeye olanak tanıyan bir yapı oluşturmalısınız.
 
-## Ödev
+## Görev
 
-Bugüne kadar oluşturduğunuz herhangi bir AI uygulamasını alın, uygulamanızda aşağıdaki adımları uygulamayı düşünün:
+Şimdiye kadar geliştirdiğiniz herhangi bir AI uygulamasını ele alın ve aşağıdaki adımları uygulamayı düşünün:
 
-- **Hoş:** Uygulamanızı daha hoş hale getirmek için nasıl bir yaklaşım izleyebilirsiniz? Her yerde açıklamalar ekliyor musunuz? Kullanıcıyı keşfetmeye teşvik ediyor musunuz? Hata mesajlarınızı nasıl ifade ediyorsunuz?
+- **Keyifli:** Uygulamanızı daha keyifli hale nasıl getirebilirsiniz? Her yerde açıklama ekliyor musunuz? Kullanıcıyı keşfetmeye teşvik ediyor musunuz? Hata mesajlarınızı nasıl ifade ediyorsunuz?
 
-- **Kullanılabilirlik:** Bir web uygulaması oluşturun. Uygulamanızın hem fare hem de klavye ile gezilebilir olduğundan emin olun.
+- **Kullanılabilirlik:** Bir web uygulaması geliştiriyorsanız, uygulamanızın hem fare hem de klavye ile gezilebilir olduğundan emin olun.
 
-- **Güven ve şeffaflık:** AI'ya ve çıktısına tamamen güvenmeyin, sürece bir insan ekleyerek çıktıyı doğrulamanın yollarını düşünün. Ayrıca, güven ve şeffaflığı sağlamak için diğer yolları düşünün ve uygulayın.
+- **Güven ve şeffaflık:** AI'ya ve çıktısına tamamen güvenmeyin, çıktıyı doğrulamak için sürece bir insanı nasıl dahil edebileceğinizi düşünün. Ayrıca, güven ve şeffaflığı sağlamak için başka yolları da düşünün ve uygulayın.
 
-- **Kontrol:** Kullanıcının uygulamaya sağladığı veriler üzerinde kontrol sahibi olmasını sağlayın. AI uygulamasında veri toplama işlemlerine katılma ve katılmama yollarını uygulayın.
+- **Kontrol:** Kullanıcının uygulamaya sağladığı veriler üzerinde kontrol sahibi olmasını sağlayın. Kullanıcının AI uygulamasında veri toplamaya katılmasını veya katılmamasını sağlayacak bir yol uygulayın.
+
+
 
 ## Öğrenmeye Devam Edin!
 
-Bu dersi tamamladıktan sonra, [Üretici AI Öğrenme koleksiyonumuzu](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) inceleyerek Üretici AI bilginizi artırmaya devam edin!
+Bu dersi tamamladıktan sonra, [Üretken AI Öğrenme koleksiyonumuza](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) göz atarak Üretken AI bilginizi geliştirmeye devam edebilirsiniz!
 
-13. Derse geçin, burada [AI uygulamalarını güvence altına almayı](../13-securing-ai-applications/README.md?WT.mc_id=academic-105485-koreyst) ele alacağız!
+13. Derse geçin, burada [AI uygulamalarını güvenli hale getirmeyi](../13-securing-ai-applications/README.md?WT.mc_id=academic-105485-koreyst) inceleyeceğiz!
 
-**Feragatname**: 
-Bu belge, AI çeviri hizmeti [Co-op Translator](https://github.com/Azure/co-op-translator) kullanılarak çevrilmiştir. Doğruluk için çaba sarf etsek de, otomatik çevirilerin hata veya yanlışlık içerebileceğini lütfen unutmayın. Orijinal belge, kendi dilinde yetkili kaynak olarak kabul edilmelidir. Kritik bilgiler için profesyonel insan çevirisi önerilir. Bu çevirinin kullanımından kaynaklanan yanlış anlamalar veya yanlış yorumlamalardan sorumlu değiliz.
+---
+
+**Feragatname**:  
+Bu belge, AI çeviri hizmeti [Co-op Translator](https://github.com/Azure/co-op-translator) kullanılarak çevrilmiştir. Doğruluk için çaba göstersek de, otomatik çevirilerde hata veya yanlışlıklar bulunabileceğini lütfen unutmayın. Belgenin orijinal diliyle hazırlanmış hali esas alınmalıdır. Kritik bilgiler için profesyonel insan çevirisi önerilir. Bu çevirinin kullanımından doğabilecek yanlış anlama veya yanlış yorumlamalardan sorumlu değiliz.
