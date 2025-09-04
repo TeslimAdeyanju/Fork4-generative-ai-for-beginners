@@ -1,114 +1,134 @@
 <!--
 CO_OP_TRANSLATOR_METADATA:
 {
-  "original_hash": "ec385b41ee50579025d50cc03bfb3a25",
-  "translation_date": "2025-05-19T21:41:56+00:00",
+  "original_hash": "747668e4c53d067369f06e9ec2e6313e",
+  "translation_date": "2025-08-26T13:49:56+00:00",
   "source_file": "12-designing-ux-for-ai-applications/README.md",
   "language_code": "de"
 }
 -->
-# Gestaltung von UX für KI-Anwendungen
+# UX-Design für KI-Anwendungen
 
-> _(Klicken Sie auf das Bild oben, um das Video zu dieser Lektion anzusehen)_
+[![UX-Design für KI-Anwendungen](../../../translated_images/12-lesson-banner.c53c3c7c802e8f563953ce388f6a987ca493472c724d924b060be470951c53c8.de.png)](https://aka.ms/gen-ai-lesson12-gh?WT.mc_id=academic-105485-koreyst)
 
-Benutzererfahrung ist ein sehr wichtiger Aspekt beim Erstellen von Apps. Benutzer müssen Ihre App effizient nutzen können, um Aufgaben zu erledigen. Effizienz ist eine Sache, aber Sie müssen Apps auch so gestalten, dass sie von allen genutzt werden können, um sie _zugänglich_ zu machen. Dieses Kapitel konzentriert sich auf diesen Bereich, damit Sie hoffentlich eine App entwerfen, die Menschen nutzen können und wollen.
+> _(Klicke auf das Bild oben, um das Video zu dieser Lektion anzusehen)_
+
+Die Nutzererfahrung ist ein sehr wichtiger Aspekt beim Entwickeln von Apps. Nutzer müssen deine App effizient nutzen können, um Aufgaben zu erledigen. Effizienz ist das eine, aber du solltest Apps auch so gestalten, dass sie von allen genutzt werden können – sie also _zugänglich_ machen. In diesem Kapitel liegt der Fokus darauf, damit du am Ende eine App entwirfst, die Menschen nutzen können und wollen.
 
 ## Einführung
 
-Benutzererfahrung beschreibt, wie ein Benutzer mit einem bestimmten Produkt oder Dienst interagiert und es nutzt, sei es ein System, Werkzeug oder Design. Bei der Entwicklung von KI-Anwendungen konzentrieren sich Entwickler nicht nur darauf, die Benutzererfahrung effektiv zu gestalten, sondern auch ethisch. In dieser Lektion behandeln wir, wie man Künstliche Intelligenz (KI) Anwendungen entwickelt, die den Bedürfnissen der Benutzer gerecht werden.
+User Experience beschreibt, wie ein Nutzer mit einem bestimmten Produkt oder Service interagiert und es verwendet – sei es ein System, ein Tool oder ein Design. Bei der Entwicklung von KI-Anwendungen achten Entwickler nicht nur darauf, dass die Nutzererfahrung effektiv ist, sondern auch ethisch. In dieser Lektion geht es darum, wie man KI-Anwendungen entwickelt, die die Bedürfnisse der Nutzer erfüllen.
 
-Die Lektion umfasst folgende Bereiche:
+Folgende Themen werden behandelt:
 
-- Einführung in die Benutzererfahrung und Verständnis der Benutzerbedürfnisse
-- Gestaltung von KI-Anwendungen für Vertrauen und Transparenz
-- Gestaltung von KI-Anwendungen für Zusammenarbeit und Feedback
+- Einführung in User Experience und das Verständnis von Nutzerbedürfnissen
+- KI-Anwendungen für Vertrauen und Transparenz gestalten
+- KI-Anwendungen für Zusammenarbeit und Feedback gestalten
 
 ## Lernziele
 
-Nach dieser Lektion können Sie:
+Nach dieser Lektion kannst du:
 
-- Verstehen, wie man KI-Anwendungen entwickelt, die den Benutzerbedürfnissen entsprechen.
-- KI-Anwendungen entwerfen, die Vertrauen und Zusammenarbeit fördern.
+- Verstehen, wie man KI-Anwendungen entwickelt, die den Bedürfnissen der Nutzer entsprechen.
+- KI-Anwendungen gestalten, die Vertrauen und Zusammenarbeit fördern.
 
 ### Voraussetzung
 
-Nehmen Sie sich etwas Zeit und lesen Sie mehr über [Benutzererfahrung und Design Thinking.](https://learn.microsoft.com/training/modules/ux-design?WT.mc_id=academic-105485-koreyst)
+Nimm dir etwas Zeit und informiere dich über [User Experience und Design Thinking.](https://learn.microsoft.com/training/modules/ux-design?WT.mc_id=academic-105485-koreyst)
 
-## Einführung in die Benutzererfahrung und Verständnis der Benutzerbedürfnisse
+## Einführung in User Experience und das Verständnis von Nutzerbedürfnissen
 
-In unserem fiktiven Bildungs-Startup haben wir zwei Hauptnutzer: Lehrer und Schüler. Jeder der beiden Nutzer hat einzigartige Bedürfnisse. Ein benutzerzentriertes Design priorisiert den Benutzer und stellt sicher, dass die Produkte für die beabsichtigten Nutzer relevant und nützlich sind.
+In unserem fiktiven Bildungs-Startup gibt es zwei Hauptnutzer: Lehrkräfte und Schüler. Beide haben unterschiedliche Bedürfnisse. Ein nutzerzentriertes Design stellt den Nutzer in den Mittelpunkt und sorgt dafür, dass die Produkte relevant und nützlich für die Zielgruppe sind.
 
-Die Anwendung sollte **nützlich, zuverlässig, zugänglich und angenehm** sein, um eine gute Benutzererfahrung zu bieten.
+Die Anwendung sollte **nützlich, zuverlässig, zugänglich und angenehm** sein, um eine gute Nutzererfahrung zu bieten.
 
-### Benutzerfreundlichkeit
+### Nutzbarkeit
 
-Nützlich zu sein bedeutet, dass die Anwendung Funktionen hat, die ihrem beabsichtigten Zweck entsprechen, wie z.B. die Automatisierung des Bewertungsprozesses oder das Erstellen von Karteikarten zur Wiederholung. Eine Anwendung, die den Bewertungsprozess automatisiert, sollte in der Lage sein, Schülerarbeiten anhand vordefinierter Kriterien genau und effizient zu bewerten. Ebenso sollte eine Anwendung, die Wiederholungskarteikarten erstellt, relevante und vielfältige Fragen basierend auf ihren Daten generieren können.
+Nützlich bedeutet, dass die Anwendung Funktionen bietet, die ihrem Zweck entsprechen, zum Beispiel die automatische Bewertung von Aufgaben oder das Erstellen von Lernkarten zur Wiederholung. Eine App, die den Bewertungsprozess automatisiert, sollte in der Lage sein, die Arbeiten der Schüler nach festgelegten Kriterien genau und effizient zu bewerten. Ebenso sollte eine App, die Lernkarten erstellt, relevante und vielfältige Fragen aus ihren Daten generieren können.
 
 ### Zuverlässigkeit
 
-Zuverlässig zu sein bedeutet, dass die Anwendung ihre Aufgabe konsistent und fehlerfrei ausführen kann. Allerdings ist KI, genau wie Menschen, nicht perfekt und kann anfällig für Fehler sein. Die Anwendungen können auf Fehler oder unerwartete Situationen stoßen, die menschliches Eingreifen oder Korrekturen erfordern. Wie gehen Sie mit Fehlern um? Im letzten Abschnitt dieser Lektion werden wir behandeln, wie KI-Systeme und -Anwendungen für Zusammenarbeit und Feedback gestaltet werden.
+Zuverlässig bedeutet, dass die Anwendung ihre Aufgaben beständig und fehlerfrei ausführt. Aber KI ist – wie Menschen – nicht perfekt und kann Fehler machen. Anwendungen können auf Fehler oder unerwartete Situationen stoßen, die menschliches Eingreifen oder Korrekturen erfordern. Wie geht man mit Fehlern um? Im letzten Abschnitt dieser Lektion behandeln wir, wie KI-Systeme und Anwendungen für Zusammenarbeit und Feedback gestaltet werden.
 
 ### Zugänglichkeit
 
-Zugänglich zu sein bedeutet, die Benutzererfahrung auf Nutzer mit unterschiedlichen Fähigkeiten, einschließlich Behinderungen, auszudehnen, um sicherzustellen, dass niemand ausgeschlossen wird. Durch die Einhaltung von Richtlinien und Prinzipien zur Barrierefreiheit werden KI-Lösungen inklusiver, nutzbarer und nützlicher für alle Nutzer.
+Zugänglich bedeutet, die Nutzererfahrung auch für Menschen mit unterschiedlichen Fähigkeiten zu ermöglichen, einschließlich Menschen mit Behinderungen, damit niemand ausgeschlossen wird. Wenn man sich an Richtlinien und Prinzipien zur Barrierefreiheit hält, werden KI-Lösungen inklusiver, nutzbarer und für alle Anwender vorteilhafter.
 
 ### Angenehm
 
-Angenehm zu sein bedeutet, dass die Anwendung Freude bereitet. Eine ansprechende Benutzererfahrung kann einen positiven Einfluss auf den Benutzer haben, ihn ermutigen, zur Anwendung zurückzukehren, und den Geschäftserfolg steigern.
+Angenehm bedeutet, dass die Anwendung Spaß macht und gerne genutzt wird. Eine ansprechende Nutzererfahrung kann sich positiv auf die Nutzer auswirken, sie dazu motivieren, die Anwendung erneut zu nutzen und so den Geschäftserfolg steigern.
 
-Nicht jede Herausforderung kann mit KI gelöst werden. KI ergänzt Ihre Benutzererfahrung, sei es durch die Automatisierung manueller Aufgaben oder die Personalisierung von Benutzererlebnissen.
+![Bild, das UX-Aspekte in KI illustriert](../../../translated_images/uxinai.d5b4ed690f5cefff0c53ffcc01b480cdc1828402e1fdbc980490013a3c50935a.de.png)
 
-## Gestaltung von KI-Anwendungen für Vertrauen und Transparenz
+Nicht jede Herausforderung lässt sich mit KI lösen. KI kann die Nutzererfahrung verbessern, zum Beispiel durch die Automatisierung manueller Aufgaben oder die Personalisierung von Nutzererlebnissen.
 
-Vertrauen aufzubauen ist entscheidend bei der Gestaltung von KI-Anwendungen. Vertrauen stellt sicher, dass ein Benutzer darauf vertraut, dass die Anwendung die Arbeit erledigt, konsistent Ergebnisse liefert und die Ergebnisse das sind, was der Benutzer benötigt. Ein Risiko in diesem Bereich ist Misstrauen und Übervertrauen. Misstrauen tritt auf, wenn ein Benutzer wenig oder kein Vertrauen in ein KI-System hat, was dazu führt, dass der Benutzer Ihre Anwendung ablehnt. Übervertrauen tritt auf, wenn ein Benutzer die Fähigkeit eines KI-Systems überschätzt, was dazu führt, dass die Benutzer dem KI-System zu sehr vertrauen. Ein Beispiel dafür ist ein automatisiertes Bewertungssystem, das bei Übervertrauen dazu führen könnte, dass der Lehrer einige der Arbeiten nicht überprüft, um sicherzustellen, dass das Bewertungssystem gut funktioniert. Dies könnte zu unfairen oder ungenauen Noten für die Schüler oder verpassten Gelegenheiten für Feedback und Verbesserung führen.
+## KI-Anwendungen für Vertrauen und Transparenz gestalten
 
-Zwei Möglichkeiten, um sicherzustellen, dass Vertrauen im Mittelpunkt des Designs steht, sind Erklärbarkeit und Kontrolle.
+Vertrauen ist entscheidend beim Design von KI-Anwendungen. Vertrauen sorgt dafür, dass Nutzer sicher sind, dass die Anwendung die Arbeit erledigt, zuverlässig Ergebnisse liefert und die Resultate ihren Bedürfnissen entsprechen. Ein Risiko in diesem Bereich ist Misstrauen oder übermäßiges Vertrauen. Misstrauen entsteht, wenn ein Nutzer wenig oder kein Vertrauen in ein KI-System hat – das führt dazu, dass die Anwendung abgelehnt wird. Übermäßiges Vertrauen entsteht, wenn ein Nutzer die Fähigkeiten eines KI-Systems überschätzt und sich zu sehr darauf verlässt. Ein Beispiel: Ein automatisiertes Bewertungssystem könnte bei übermäßigem Vertrauen dazu führen, dass Lehrkräfte die Arbeiten nicht mehr selbst prüfen, um sicherzustellen, dass das System korrekt arbeitet. Das kann zu unfairen oder ungenauen Noten für die Schüler führen oder Chancen für Feedback und Verbesserungen verpassen.
+
+Zwei Möglichkeiten, Vertrauen ins Zentrum des Designs zu stellen, sind Erklärbarkeit und Kontrolle.
 
 ### Erklärbarkeit
 
-Wenn KI bei Entscheidungen hilft, wie z.B. Wissen an zukünftige Generationen zu vermitteln, ist es entscheidend, dass Lehrer und Eltern verstehen, wie KI-Entscheidungen getroffen werden. Dies ist Erklärbarkeit - das Verständnis, wie KI-Anwendungen Entscheidungen treffen. Die Gestaltung für Erklärbarkeit beinhaltet das Hinzufügen von Details zu Beispielen, was eine KI-Anwendung tun kann. Zum Beispiel, anstatt "Starten Sie mit dem KI-Lehrer", könnte das System verwenden: "Fassen Sie Ihre Notizen für eine einfachere Wiederholung mit KI zusammen."
+Wenn KI Entscheidungen unterstützt, zum Beispiel beim Vermitteln von Wissen an die nächste Generation, ist es wichtig, dass Lehrkräfte und Eltern verstehen, wie KI-Entscheidungen getroffen werden. Das ist Erklärbarkeit – zu verstehen, wie KI-Anwendungen Entscheidungen treffen. Beim Design für Erklärbarkeit sollte man Details hinzufügen, die zeigen, wie die KI zum Ergebnis gekommen ist. Die Nutzer müssen wissen, dass das Ergebnis von einer KI und nicht von einem Menschen stammt. Zum Beispiel: Statt "Beginne jetzt mit deinem Tutor zu chatten" könnte man sagen "Nutze den KI-Tutor, der sich an deine Bedürfnisse anpasst und dir hilft, in deinem Tempo zu lernen."
 
-Ein weiteres Beispiel ist, wie KI Benutzer- und persönliche Daten verwendet. Zum Beispiel kann ein Benutzer mit der Persona "Schüler" Einschränkungen basierend auf seiner Persona haben. Die KI kann möglicherweise keine Antworten auf Fragen geben, aber sie kann den Benutzer dazu anleiten, darüber nachzudenken, wie er ein Problem lösen kann.
+![Eine App-Landingpage mit klarer Darstellung von Erklärbarkeit in KI-Anwendungen](../../../translated_images/explanability-in-ai.134426a96b498fbfdc80c75ae0090aedc0fc97424ae0734fccf7fb00a59a20d9.de.png)
 
-Ein letzter wichtiger Teil der Erklärbarkeit ist die Vereinfachung der Erklärungen. Schüler und Lehrer sind möglicherweise keine KI-Experten, daher sollten die Erklärungen darüber, was die Anwendung kann oder nicht kann, vereinfacht und leicht verständlich sein.
+Ein weiteres Beispiel ist, wie KI Nutzer- und persönliche Daten verwendet. Ein Nutzer mit der Persona "Schüler" hat vielleicht Einschränkungen, die sich aus seiner Rolle ergeben. Die KI darf zum Beispiel keine Antworten verraten, kann aber helfen, den Nutzer beim Nachdenken und Lösen von Aufgaben zu unterstützen.
+
+![KI antwortet auf Fragen basierend auf der Persona](../../../translated_images/solving-questions.b7dea1604de0cbd2e9c5fa00b1a68a0ed77178a035b94b9213196b9d125d0be8.de.png)
+
+Ein letzter wichtiger Aspekt der Erklärbarkeit ist die Vereinfachung von Erklärungen. Schüler und Lehrkräfte sind oft keine KI-Experten, daher sollten die Erklärungen zu den Möglichkeiten und Grenzen der Anwendung einfach und verständlich sein.
+
+![Vereinfachte Erklärungen zu KI-Fähigkeiten](../../../translated_images/simplified-explanations.4679508a406c3621fa22bad4673e717fbff02f8b8d58afcab8cb6f1aa893a82f.de.png)
 
 ### Kontrolle
 
-Generative KI schafft eine Zusammenarbeit zwischen KI und dem Benutzer, bei der ein Benutzer beispielsweise Eingabeaufforderungen für unterschiedliche Ergebnisse ändern kann. Darüber hinaus sollten Benutzer, sobald ein Ergebnis generiert wurde, die Möglichkeit haben, die Ergebnisse zu ändern und ihnen ein Gefühl der Kontrolle zu geben. Zum Beispiel können Sie bei der Verwendung von Bing Ihre Eingabeaufforderung basierend auf Format, Ton und Länge anpassen. Darüber hinaus können Sie Änderungen an Ihrem Ergebnis vornehmen und das Ergebnis wie unten gezeigt ändern:
+Generative KI schafft eine Zusammenarbeit zwischen KI und Nutzer, bei der der Nutzer zum Beispiel Prompts anpassen kann, um unterschiedliche Ergebnisse zu erhalten. Außerdem sollten Nutzer die Möglichkeit haben, die generierten Ergebnisse zu verändern, um ein Gefühl von Kontrolle zu bekommen. Bei Bing kann man zum Beispiel den Prompt nach Format, Ton und Länge anpassen. Zusätzlich kann man das Ergebnis verändern, wie unten gezeigt:
 
-Ein weiteres Merkmal von Bing, das einem Benutzer die Kontrolle über die Anwendung ermöglicht, ist die Möglichkeit, sich in die von der KI verwendeten Daten ein- und auszutragen. Für eine Schul-Anwendung möchte ein Schüler möglicherweise seine Notizen sowie die Ressourcen der Lehrer als Wiederholungsmaterial verwenden.
+![Bing-Suchergebnisse mit Optionen zur Anpassung des Prompts und Ergebnisses](../../../translated_images/bing1.293ae8527dbe2789b675c8591c9fb3cb1aa2ada75c2877f9aa9edc059f7a8b1c.de.png)
 
-> Bei der Gestaltung von KI-Anwendungen ist Absicht entscheidend, um sicherzustellen, dass Benutzer nicht übertrieben vertrauen und unrealistische Erwartungen an die Fähigkeiten haben. Eine Möglichkeit, dies zu tun, besteht darin, Reibung zwischen den Eingabeaufforderungen und den Ergebnissen zu erzeugen. Erinnern Sie den Benutzer daran, dass dies KI ist und kein Mitmensch
+Eine weitere Funktion bei Bing, die dem Nutzer Kontrolle über die Anwendung gibt, ist die Möglichkeit, der Nutzung der Daten durch die KI zuzustimmen oder sie abzulehnen. In einer Schul-App könnte ein Schüler zum Beispiel seine eigenen Notizen und die Materialien der Lehrkraft als Lernmaterial verwenden wollen.
 
-## Gestaltung von KI-Anwendungen für Zusammenarbeit und Feedback
+![Bing-Suchergebnisse mit Optionen zur Anpassung des Prompts und Ergebnisses](../../../translated_images/bing2.309f4845528a88c28c1c9739fb61d91fd993dc35ebe6fc92c66791fb04fceb4d.de.png)
 
-Wie bereits erwähnt, schafft generative KI eine Zusammenarbeit zwischen dem Benutzer und der KI. Die meisten Interaktionen bestehen darin, dass ein Benutzer eine Eingabeaufforderung eingibt und die KI ein Ergebnis generiert. Was, wenn das Ergebnis falsch ist? Wie geht die Anwendung mit Fehlern um, wenn sie auftreten? Gibt die KI dem Benutzer die Schuld oder nimmt sie sich die Zeit, den Fehler zu erklären?
+> Beim Design von KI-Anwendungen ist es wichtig, bewusst darauf zu achten, dass Nutzer der KI nicht zu sehr vertrauen und unrealistische Erwartungen an ihre Fähigkeiten entwickeln. Eine Möglichkeit ist, bewusst Reibung zwischen Prompt und Ergebnis zu schaffen und den Nutzer daran zu erinnern, dass es sich um KI und nicht um einen Menschen handelt.
 
-KI-Anwendungen sollten so gebaut werden, dass sie Feedback erhalten und geben. Dies hilft nicht nur dem KI-System, sich zu verbessern, sondern baut auch Vertrauen bei den Benutzern auf. Eine Feedback-Schleife sollte im Design enthalten sein, ein Beispiel könnte ein einfaches Daumen hoch oder runter auf dem Ergebnis sein.
+## KI-Anwendungen für Zusammenarbeit und Feedback gestalten
 
-Eine weitere Möglichkeit, damit umzugehen, besteht darin, die Fähigkeiten und Grenzen des Systems klar zu kommunizieren. Wenn ein Benutzer einen Fehler macht und etwas anfordert, das über die Fähigkeiten der KI hinausgeht, sollte es auch eine Möglichkeit geben, damit umzugehen, wie unten gezeigt.
+Wie bereits erwähnt, schafft generative KI eine Zusammenarbeit zwischen Nutzer und KI. Meistens gibt der Nutzer einen Prompt ein und die KI generiert ein Ergebnis. Was passiert, wenn das Ergebnis falsch ist? Wie geht die Anwendung mit Fehlern um? Gibt die KI dem Nutzer die Schuld oder erklärt sie den Fehler?
 
-Systemfehler sind häufig bei Anwendungen, bei denen der Benutzer möglicherweise Hilfe bei Informationen benötigt, die außerhalb des Rahmens der KI liegen, oder die Anwendung hat möglicherweise ein Limit, wie viele Fragen/Fächer ein Benutzer Zusammenfassungen generieren kann. Zum Beispiel kann eine KI-Anwendung, die mit Daten zu begrenzten Fächern wie Geschichte und Mathematik trainiert wurde, möglicherweise keine Fragen zur Geografie bearbeiten. Um dies abzumildern, kann das KI-System eine Antwort wie: "Entschuldigung, unser Produkt wurde mit Daten in den folgenden Fächern trainiert....., ich kann auf die von Ihnen gestellte Frage nicht antworten."
+KI-Anwendungen sollten so gestaltet sein, dass sie Feedback empfangen und geben können. Das hilft nicht nur dem KI-System, sich zu verbessern, sondern stärkt auch das Vertrauen der Nutzer. Eine Feedback-Schleife sollte im Design enthalten sein, zum Beispiel ein einfaches Daumen hoch oder runter beim Ergebnis.
 
-KI-Anwendungen sind nicht perfekt, daher machen sie zwangsläufig Fehler. Beim Entwerfen Ihrer Anwendungen sollten Sie sicherstellen, dass Sie Raum für Feedback von Benutzern und Fehlerbehebung auf eine einfache und leicht verständliche Weise schaffen.
+Eine weitere Möglichkeit ist, die Fähigkeiten und Grenzen des Systems klar zu kommunizieren. Wenn ein Nutzer einen Fehler macht und etwas verlangt, das die KI nicht leisten kann, sollte es eine Möglichkeit geben, damit umzugehen, wie unten gezeigt.
+
+![Feedback geben und Fehler behandeln](../../../translated_images/feedback-loops.7955c134429a94663443ad74d59044f8dc4ce354577f5b79b4bd2533f2cafc6f.de.png)
+
+Systemfehler sind bei Anwendungen häufig, wenn der Nutzer Informationen außerhalb des KI-Bereichs benötigt oder die Anwendung eine Begrenzung hat, wie viele Fragen/Fächer ein Nutzer zusammenfassen kann. Ein Beispiel: Eine KI-Anwendung, die nur mit Daten zu bestimmten Fächern wie Geschichte und Mathematik trainiert wurde, kann keine Fragen zu Geografie beantworten. Um dem entgegenzuwirken, kann das KI-System zum Beispiel antworten: "Entschuldigung, unser Produkt wurde mit Daten zu folgenden Fächern trainiert..., ich kann die gestellte Frage leider nicht beantworten."
+
+KI-Anwendungen sind nicht perfekt und machen Fehler. Beim Design deiner Anwendungen solltest du darauf achten, dass Nutzer einfach Feedback geben können und Fehler verständlich behandelt werden.
 
 ## Aufgabe
 
-Nehmen Sie sich eine beliebige KI-App, die Sie bisher erstellt haben, und überlegen Sie, wie Sie die folgenden Schritte in Ihrer App implementieren können:
+Nimm eine beliebige KI-App, die du bisher entwickelt hast, und überlege, wie du die folgenden Punkte umsetzen kannst:
 
-- **Angenehm:** Überlegen Sie, wie Sie Ihre App angenehmer gestalten können. Fügen Sie überall Erklärungen hinzu? Ermutigen Sie den Benutzer zur Erkundung? Wie formulieren Sie Ihre Fehlermeldungen?
+- **Angenehm:** Überlege, wie du deine App angenehmer gestalten kannst. Erklärst du alles verständlich? Ermutigst du die Nutzer, die App zu erkunden? Wie formulierst du Fehlermeldungen?
 
-- **Benutzerfreundlichkeit:** Erstellen Sie eine Web-App. Stellen Sie sicher, dass Ihre App sowohl mit Maus als auch mit Tastatur navigierbar ist.
+- **Nutzbarkeit:** Baue eine Web-App. Stelle sicher, dass deine App sowohl mit Maus als auch mit Tastatur bedienbar ist.
 
-- **Vertrauen und Transparenz:** Vertrauen Sie der KI und ihren Ergebnissen nicht vollständig, überlegen Sie, wie Sie einen Menschen in den Prozess einbinden könnten, um die Ergebnisse zu überprüfen. Erwägen und implementieren Sie auch andere Möglichkeiten, um Vertrauen und Transparenz zu erreichen.
+- **Vertrauen und Transparenz:** Vertraue nicht blind der KI und ihren Ergebnissen. Überlege, wie du einen Menschen in den Prozess einbinden kannst, um die Ergebnisse zu überprüfen. Denke auch über andere Möglichkeiten nach, Vertrauen und Transparenz zu schaffen und setze sie um.
 
-- **Kontrolle:** Geben Sie dem Benutzer die Kontrolle über die Daten, die er der Anwendung zur Verfügung stellt. Implementieren Sie eine Möglichkeit, wie ein Benutzer sich in die Datenerfassung in der KI-Anwendung ein- und austragen kann.
+- **Kontrolle:** Gib dem Nutzer die Kontrolle über die Daten, die er der Anwendung zur Verfügung stellt. Implementiere eine Möglichkeit, wie Nutzer der Datenerfassung in der KI-Anwendung zustimmen oder widersprechen können.
 
-## Setzen Sie Ihr Lernen fort!
 
-Nachdem Sie diese Lektion abgeschlossen haben, schauen Sie sich unsere [Generative AI Learning Sammlung](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) an, um Ihr Wissen über generative KI weiter auszubauen!
 
-Schauen Sie sich Lektion 13 an, in der wir uns mit der [Sicherung von KI-Anwendungen](../13-securing-ai-applications/README.md?WT.mc_id=academic-105485-koreyst) befassen werden!
+## Lerne weiter!
+
+Nach dieser Lektion kannst du mit unserer [Generative AI Learning collection](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) dein Wissen zu generativer KI weiter vertiefen!
+
+Gehe weiter zu Lektion 13, in der wir uns anschauen, wie man [KI-Anwendungen absichert](../13-securing-ai-applications/README.md?WT.mc_id=academic-105485-koreyst)!
+
+---
 
 **Haftungsausschluss**:  
-Dieses Dokument wurde mit dem KI-Übersetzungsdienst [Co-op Translator](https://github.com/Azure/co-op-translator) übersetzt. Obwohl wir uns um Genauigkeit bemühen, beachten Sie bitte, dass automatisierte Übersetzungen Fehler oder Ungenauigkeiten enthalten können. Das Originaldokument in seiner ursprünglichen Sprache sollte als maßgebliche Quelle betrachtet werden. Für kritische Informationen wird eine professionelle menschliche Übersetzung empfohlen. Wir haften nicht für Missverständnisse oder Fehlinterpretationen, die sich aus der Nutzung dieser Übersetzung ergeben.
+Dieses Dokument wurde mit dem KI-Übersetzungsdienst [Co-op Translator](https://github.com/Azure/co-op-translator) übersetzt. Obwohl wir uns um Genauigkeit bemühen, beachten Sie bitte, dass automatisierte Übersetzungen Fehler oder Ungenauigkeiten enthalten können. Das Originaldokument in seiner Ausgangssprache sollte als maßgebliche Quelle betrachtet werden. Für kritische Informationen wird eine professionelle menschliche Übersetzung empfohlen. Wir übernehmen keine Haftung für Missverständnisse oder Fehlinterpretationen, die sich aus der Nutzung dieser Übersetzung ergeben.

@@ -1,72 +1,86 @@
 <!--
 CO_OP_TRANSLATOR_METADATA:
 {
-  "original_hash": "9f4785899ee92500f524b4acb26e3bb3",
-  "translation_date": "2025-05-19T12:38:42+00:00",
+  "original_hash": "f1413b349a65b4e9eda3f48807656a6d",
+  "translation_date": "2025-08-26T19:39:18+00:00",
   "source_file": "00-course-setup/README.md",
   "language_code": "hr"
 }
 -->
 # Početak rada s ovim tečajem
 
-Vrlo smo uzbuđeni što započinjete ovaj tečaj i jedva čekamo vidjeti što ćete inspirirano izgraditi s Generativnom umjetnom inteligencijom!
+Jako nam je drago što započinjete ovaj tečaj i veselimo se vidjeti što ćete izgraditi uz pomoć Generativne AI!
 
-Kako bismo osigurali vaš uspjeh, ova stranica opisuje korake za postavljanje, tehničke zahtjeve i gdje potražiti pomoć ako je potrebna.
+Kako bismo vam olakšali uspjeh, na ovoj stranici su opisani koraci za postavljanje, tehnički zahtjevi i gdje možete potražiti pomoć ako zatreba.
 
 ## Koraci za postavljanje
 
-Da biste započeli s ovim tečajem, trebate dovršiti sljedeće korake.
+Da biste započeli s ovim tečajem, potrebno je napraviti sljedeće korake.
 
 ### 1. Forkajte ovaj repozitorij
 
-[Forkajte cijeli ovaj repozitorij](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) na svoj GitHub račun kako biste mogli mijenjati bilo koji kod i dovršiti izazove. Također možete [označiti (🌟) ovaj repozitorij](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst) kako biste ga lakše pronašli zajedno s povezanim repozitorijima.
+[Forkajte cijeli repozitorij](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) na svoj GitHub račun kako biste mogli mijenjati kod i rješavati izazove. Također možete [zvjezdicom (🌟) označiti repozitorij](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst) kako biste ga lakše pronašli, kao i povezane repozitorije.
 
-### 2. Kreirajte Codespace
+### 2. Kreirajte codespace
 
-Kako biste izbjegli probleme s ovisnostima prilikom pokretanja koda, preporučujemo pokretanje ovog tečaja u [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
+Da biste izbjegli probleme s ovisnostima prilikom pokretanja koda, preporučujemo da ovaj tečaj radite u [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
 
-Ovo možete kreirati odabirom opcije `Code` na svojoj forkanoj verziji ovog repozitorija i odabirom opcije **Codespaces**.
+U svom forku: **Code -> Codespaces -> New on main**
 
-![Dijalog koji prikazuje gumbe za kreiranje codespace-a](../../../00-course-setup/images/who-will-pay.webp)
+![Dijalog s gumbima za kreiranje codespace-a](../../../00-course-setup/images/who-will-pay.webp)
 
-### 3. Pohrana vaših API ključeva
+#### 2.1 Dodajte tajnu (secret)
 
-Čuvanje vaših API ključeva sigurnim i zaštićenim je važno prilikom izrade bilo koje vrste aplikacije. Preporučujemo da ne pohranjujete API ključeve izravno u vašem kodu. Objavljivanje tih detalja u javnom repozitoriju moglo bi rezultirati sigurnosnim problemima i neželjenim troškovima ako ih zlonamjerni korisnik iskoristi.
-Evo korak-po-korak vodiča o tome kako kreirati datoteku `.env` za Python i dodati `GITHUB_TOKEN`:
+1. ⚙️ Ikona zupčanika -> Command Pallete-> Codespaces : Manage user secret -> Add a new secret.
+2. Nazovite OPENAI_API_KEY, zalijepite svoj ključ, Spremite.
 
-1. **Navigirajte do direktorija vašeg projekta**: Otvorite terminal ili naredbeni redak i navigirajte do korijenskog direktorija vašeg projekta gdje želite kreirati datoteku `.env`.
+### 3.  Što dalje?
 
-   ```bash
-   cd path/to/your/project
-   ```
+| Želim…               | Idi na…                                                                |
+|----------------------|------------------------------------------------------------------------|
+| Započeti lekciju 1   | [`01-introduction-to-genai`](../01-introduction-to-genai/README.md)    |
+| Raditi offline       | [`setup-local.md`](02-setup-local.md)                                  |
+| Postaviti LLM Provider | [`providers.md`](providers.md)                                       |
+| Upoznati druge polaznike | [Pridruži se našem Discordu](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst) |
 
-2. **Kreirajte datoteku `.env`**: Koristite svoj omiljeni tekstualni urednik za kreiranje nove datoteke nazvane `.env`. Ako koristite naredbeni redak, možete koristiti `touch` (on Unix-based systems) or `echo` (na Windowsu):
+## Rješavanje problema
 
-   Unix-based sustavi:
+
+| Simptom                                   | Rješenje                                                        |
+|-------------------------------------------|-----------------------------------------------------------------|
+| Container build stoji > 10 min            | **Codespaces ➜ “Rebuild Container”**                            |
+| `python: command not found`               | Terminal nije povezan; kliknite **+** ➜ *bash*                  |
+| `401 Unauthorized` od OpenAI              | Pogrešan / istekao `OPENAI_API_KEY`                             |
+| VS Code prikazuje “Dev container mounting…” | Osvježite karticu preglednika—Codespaces ponekad izgubi vezu   |
+| Nedostaje kernel za Notebook              | Notebook izbornik ➜ **Kernel ▸ Select Kernel ▸ Python 3**       |
+
+   Unix sustavi:
+
    ```bash
    touch .env
    ```
 
    Windows:
+
    ```cmd
    echo . > .env
    ```
 
-3. **Uredite datoteku `.env`**: Otvorite datoteku `.env` u tekstualnom uredniku (npr. VS Code, Notepad++ ili bilo kojem drugom uredniku). Dodajte sljedeći redak u datoteku, zamjenjujući `your_github_token_here` s vašim stvarnim GitHub tokenom:
+3. **Uredite `.env` datoteku**: Otvorite `.env` datoteku u uređivaču teksta (npr. VS Code, Notepad++ ili bilo kojem drugom editoru). Dodajte sljedeći redak u datoteku, zamijenite `your_github_token_here` sa svojim GitHub tokenom:
 
    ```env
    GITHUB_TOKEN=your_github_token_here
    ```
 
-4. **Spremite datoteku**: Spremite promjene i zatvorite tekstualni urednik.
+4. **Spremite datoteku**: Spremite promjene i zatvorite uređivač teksta.
 
-5. **Instalirajte paket `python-dotenv`**: If you haven't already, you'll need to install the `python-dotenv` za učitavanje varijabli okruženja iz datoteke `.env` u vašu Python aplikaciju. Možete ga instalirati pomoću `pip`:
+5. **Instalirajte `python-dotenv`**: Ako već niste, trebate instalirati paket `python-dotenv` kako biste učitali varijable okruženja iz `.env` datoteke u svoju Python aplikaciju. Instalirajte ga pomoću `pip`:
 
    ```bash
    pip install python-dotenv
    ```
 
-6. **Učitajte varijable okruženja u vašem Python skriptu**: U vašem Python skriptu koristite paket `python-dotenv` za učitavanje varijabli okruženja iz datoteke `.env`:
+6. **Učitajte varijable okruženja u svom Python skriptu**: U Python skripti koristite paket `python-dotenv` za učitavanje varijabli okruženja iz `.env` datoteke:
 
    ```python
    from dotenv import load_dotenv
@@ -81,11 +95,11 @@ Evo korak-po-korak vodiča o tome kako kreirati datoteku `.env` za Python i doda
    print(github_token)
    ```
 
-To je to! Uspješno ste kreirali datoteku `.env`, dodali svoj GitHub token i učitali ga u svoju Python aplikaciju.
+To je to! Uspješno ste kreirali `.env` datoteku, dodali svoj GitHub token i učitali ga u svoju Python aplikaciju.
 
-## Kako pokrenuti lokalno na vašem računalu
+## Kako pokrenuti lokalno na svom računalu
 
-Da biste pokrenuli kod lokalno na vašem računalu, trebali biste imati neku verziju [Pythona instaliranu](https://www.python.org/downloads/?WT.mc_id=academic-105485-koreyst).
+Da biste pokrenuli kod lokalno na svom računalu, trebate imati instaliranu neku verziju [Pythona](https://www.python.org/downloads/?WT.mc_id=academic-105485-koreyst).
 
 Zatim, da biste koristili repozitorij, trebate ga klonirati:
 
@@ -94,70 +108,69 @@ git clone https://github.com/microsoft/generative-ai-for-beginners
 cd generative-ai-for-beginners
 ```
 
-Kada sve imate provjereno, možete početi!
+Kada ste sve preuzeli, možete početi!
 
 ## Opcionalni koraci
 
-### Instaliranje Miniconda
+### Instalacija Miniconda
 
-[Miniconda](https://conda.io/en/latest/miniconda.html?WT.mc_id=academic-105485-koreyst) je lagani instalacijski program za instaliranje [Conda](https://docs.conda.io/en/latest?WT.mc_id=academic-105485-koreyst), Pythona, kao i nekoliko paketa.
-Conda je sama po sebi upravitelj paketa, što olakšava postavljanje i prebacivanje između različitih Python [**virtualnih okruženja**](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) i paketa. Također je korisna za instaliranje paketa koji nisu dostupni putem `pip`.
+[Miniconda](https://conda.io/en/latest/miniconda.html?WT.mc_id=academic-105485-koreyst) je lagani instalacijski program za instalaciju [Conda](https://docs.conda.io/en/latest?WT.mc_id=academic-105485-koreyst), Pythona i nekoliko paketa.
+Conda je upravitelj paketa koji olakšava postavljanje i prebacivanje između različitih Python [**virtualnih okruženja**](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) i paketa. Također je koristan za instalaciju paketa koji nisu dostupni putem `pip`.
 
-You can follow the [MiniConda installation guide](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst) to set it up.
+Slijedite [MiniConda vodič za instalaciju](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst) za postavljanje.
 
-With Miniconda installed, you need to clone the [repository](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) (if you haven't already)
+Nakon što ste instalirali Miniconda, trebate klonirati [repozitorij](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) (ako već niste).
 
-Next, you need to create a virtual environment. To do this with Conda, go ahead and create a new environment file (_environment.yml_). If you are following along using Codespaces, create this within the `.devcontainer` directory, thus `.devcontainer/environment.yml`.
+Zatim trebate kreirati virtualno okruženje. Da biste to napravili s Conda, kreirajte novu datoteku okruženja (_environment.yml_). Ako radite u Codespaces, kreirajte je unutar `.devcontainer` direktorija, dakle `.devcontainer/environment.yml`.
 
-Ispunite svoju datoteku okruženja s isječkom ispod:
+Popunite datoteku okruženja sljedećim isječkom:
 
 ```yml
 name: <environment-name>
 channels:
- - defaults
- - microsoft
+  - defaults
+  - microsoft
 dependencies:
-- python=<python-version>
-- openai
-- python-dotenv
-- pip
-- pip:
-    - azure-ai-ml
-
+  - python=<python-version>
+  - openai
+  - python-dotenv
+  - pip
+  - pip:
+      - azure-ai-ml
 ```
 
-Ako naiđete na greške koristeći conda, možete ručno instalirati Microsoft AI Libraries koristeći sljedeću naredbu u terminalu.
+Ako naiđete na greške s conda, Microsoft AI Libraries možete ručno instalirati sljedećom naredbom u terminalu.
 
 ```
 conda install -c microsoft azure-ai-ml
 ```
 
-Datoteka okruženja specificira potrebne ovisnosti. `<environment-name>` refers to the name you would like to use for your Conda environment, and `<python-version>` is the version of Python you would like to use, for example, `3` je najnovija glavna verzija Pythona.
+Datoteka okruženja navodi potrebne ovisnosti. `<environment-name>` je naziv koji želite koristiti za svoje Conda okruženje, a `<python-version>` je verzija Pythona koju želite koristiti, npr. `3` je najnovija glavna verzija Pythona.
 
-Kada to napravite, možete kreirati svoje Conda okruženje pokretanjem naredbi ispod u vašem naredbenom retku/terminalu
+Kada ste to napravili, možete kreirati svoje Conda okruženje pokretanjem sljedećih naredbi u naredbenom retku/terminalu
 
 ```bash
 conda env create --name ai4beg --file .devcontainer/environment.yml # .devcontainer sub path applies to only Codespace setups
 conda activate ai4beg
 ```
 
-Pogledajte [Conda vodič za okruženja](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst) ako naiđete na bilo kakve probleme.
+Ako naiđete na probleme, pogledajte [Conda vodič za okruženja](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst).
 
-### Korištenje Visual Studio Code-a s ekstenzijom za Python
+### Korištenje Visual Studio Code s ekstenzijom za Python
 
-Preporučujemo korištenje uređivača [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) s instaliranom [ekstenzijom za Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) za ovaj tečaj. Međutim, ovo je više preporuka nego zahtjev.
+Preporučujemo korištenje [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) uređivača s instaliranom [ekstenzijom za Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) za ovaj tečaj. Ovo je preporuka, nije obavezno.
 
-> **Napomena**: Otvaranjem repozitorija tečaja u VS Code-u, imate opciju postaviti projekt unutar kontejnera. Ovo je zbog [posebnog `.devcontainer`](https://code.visualstudio.com/docs/devcontainers/containers?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) direktorija pronađenog unutar repozitorija tečaja. Više o tome kasnije.
+> **Note**: Otvaranjem repozitorija tečaja u VS Code-u, imate mogućnost postaviti projekt unutar kontejnera. To je omogućeno zbog [posebnog `.devcontainer`](https://code.visualstudio.com/docs/devcontainers/containers?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) direktorija u repozitoriju tečaja. Više o tome kasnije.
 
-> **Napomena**: Kada klonirate i otvorite direktorij u VS Code-u, automatski će vam predložiti instalaciju ekstenzije za Python.
+> **Note**: Kada klonirate i otvorite direktorij u VS Code-u, automatski će vam predložiti instalaciju ekstenzije za Python.
 
-> **Napomena**: Ako vam VS Code predloži da ponovno otvorite repozitorij u kontejneru, odbijte ovaj zahtjev kako biste koristili lokalno instaliranu verziju Pythona.
+> **Note**: Ako vam VS Code predloži da ponovno otvorite repozitorij u kontejneru, odbijte taj zahtjev kako biste koristili lokalno instaliranu verziju Pythona.
 
-### Korištenje Jupyter-a u pregledniku
+### Korištenje Jupytera u pregledniku
 
-Također možete raditi na projektu koristeći [Jupyter okruženje](https://jupyter.org?WT.mc_id=academic-105485-koreyst) direktno u vašem pregledniku. Klasični Jupyter i [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) pružaju ugodno razvojno okruženje s funkcijama kao što su automatsko dovršavanje, isticanje koda itd.
+Projekt možete raditi i u [Jupyter okruženju](https://jupyter.org?WT.mc_id=academic-105485-koreyst) izravno u pregledniku. Klasični Jupyter i [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) nude ugodno razvojno okruženje s funkcijama poput automatskog dovršavanja, isticanja koda itd.
 
-Za pokretanje Jupyter-a lokalno, otvorite terminal/naredbeni redak, navigirajte do direktorija tečaja i izvršite:
+Za pokretanje Jupytera lokalno, otvorite terminal/naredbeni redak, idite u direktorij tečaja i pokrenite:
 
 ```bash
 jupyter notebook
@@ -169,57 +182,59 @@ ili
 jupyterhub
 ```
 
-Ovo će pokrenuti Jupyter instancu i URL za pristup bit će prikazan unutar prozora naredbenog retka.
+Ovo će pokrenuti Jupyter instance, a URL za pristup bit će prikazan u prozoru naredbenog retka.
 
-Kada pristupite URL-u, trebali biste vidjeti pregled tečaja i moći navigirati do bilo koje `*.ipynb` file. For example, `08-building-search-applications/python/oai-solution.ipynb`.
+Kada otvorite URL, trebali biste vidjeti strukturu tečaja i moći se kretati do bilo koje `*.ipynb` datoteke. Na primjer, `08-building-search-applications/python/oai-solution.ipynb`.
 
-### Running in a container
+### Pokretanje u kontejneru
 
-An alternative to setting everything up on your computer or Codespace is to use a [container](https://en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst). The special `.devcontainer` folder within the course repository makes it possible for VS Code to set up the project within a container. Outside of Codespaces, this will require the installation of Docker, and quite frankly, it involves a bit of work, so we recommend this only to those with experience working with containers.
+Alternativa postavljanju svega na računalu ili Codespaceu je korištenje [kontejnera](../../../00-course-setup/<https:/en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst>). Posebna `.devcontainer` mapa u repozitoriju tečaja omogućuje VS Code-u da postavi projekt unutar kontejnera. Izvan Codespaces-a, ovo zahtijeva instalaciju Dockera, i iskreno, uključuje malo više posla, pa ovo preporučujemo samo onima s iskustvom rada s kontejnerima.
 
-One of the best ways to keep your API keys secure when using GitHub Codespaces is by using Codespace Secrets. Please follow the [Codespaces secrets management](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst) guide to learn more about this.
+Jedan od najboljih načina za zaštitu svojih API ključeva pri korištenju GitHub Codespaces je korištenje Codespace Secrets. Slijedite [vodič za upravljanje Codespaces secrets](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst) za više informacija.
 
-## Lessons and Technical Requirements
 
-The course has 6 concept lessons and 6 coding lessons.
+## Lekcije i tehnički zahtjevi
 
-For the coding lessons, we are using the Azure OpenAI Service. You will need access to the Azure OpenAI service and an API key to run this code. You can apply to get access by [completing this application](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
+Tečaj sadrži 6 konceptualnih lekcija i 6 lekcija kodiranja.
 
-While you wait for your application to be processed, each coding lesson also includes a `README.md` datoteke gdje možete pregledati kod i izlaze.
+Za lekcije kodiranja koristimo Azure OpenAI Service. Trebat će vam pristup Azure OpenAI servisu i API ključ za pokretanje koda. Pristup možete zatražiti [ispunjavanjem ove prijave](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
 
-## Korištenje Azure OpenAI servisa po prvi put
+Dok čekate obradu prijave, svaka lekcija kodiranja sadrži i `README.md` datoteku u kojoj možete vidjeti kod i rezultate.
 
-Ako je ovo vaš prvi put da radite s Azure OpenAI servisom, slijedite ovaj vodič o tome kako [kreirati i implementirati Azure OpenAI servisni resurs.](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst)
+## Prvo korištenje Azure OpenAI Service-a
 
-## Korištenje OpenAI API-ja po prvi put
+Ako prvi put radite s Azure OpenAI servisom, slijedite ovaj vodič kako biste [kreirali i implementirali Azure OpenAI Service resurs.](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst)
 
-Ako je ovo vaš prvi put da radite s OpenAI API-jem, slijedite vodič o tome kako [kreirati i koristiti sučelje.](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst)
+## Prvo korištenje OpenAI API-ja
 
-## Upoznajte druge učenike
+Ako prvi put radite s OpenAI API-jem, slijedite vodič kako biste [kreirali i koristili sučelje.](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst)
 
-Kreirali smo kanale na našem službenom [AI Community Discord serveru](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst) za upoznavanje drugih učenika. Ovo je sjajan način za umrežavanje s drugim poduzetnicima, graditeljima, studentima i svima koji žele napredovati u Generativnoj umjetnoj inteligenciji.
+## Upoznajte druge polaznike
 
-[![Pridružite se discord kanalu](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
+Na našem službenom [AI Community Discord serveru](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst) kreirali smo kanale za upoznavanje drugih polaznika. Ovo je odličan način za umrežavanje s drugim poduzetnicima, graditeljima, studentima i svima koji žele napredovati u Generativnoj AI.
 
-Tim projekta također će biti na ovom Discord serveru kako bi pomogao svim učenicima.
+[![Pridruži se discord kanalu](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
 
-## Doprinesite
+Tim projekta također će biti na ovom Discord serveru kako bi pomogao polaznicima.
 
-Ovaj tečaj je inicijativa otvorenog koda. Ako vidite područja za poboljšanje ili probleme, molimo vas da kreirate [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) ili prijavite [GitHub problem](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
+## Doprinos
 
-Tim projekta će pratiti sve doprinose. Doprinos otvorenom kodu je nevjerojatan način za izgradnju vaše karijere u Generativnoj umjetnoj inteligenciji.
+Ovaj tečaj je open-source inicijativa. Ako primijetite mogućnosti za poboljšanje ili probleme, slobodno napravite [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) ili prijavite [GitHub issue](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
 
-Većina doprinosa zahtijeva da se složite s Ugovorom o licenciranju suradnika (CLA) kojim izjavljujete da imate pravo i stvarno nam dajete prava za korištenje vašeg doprinosa. Za detalje, posjetite [CLA, web stranicu Ugovora o licenciranju suradnika](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
+Tim projekta prati sve doprinose. Doprinos open source-u je odličan način za izgradnju karijere u Generativnoj AI.
 
-Važno: prilikom prevođenja teksta u ovom repozitoriju, molimo osigurajte da ne koristite strojno prevođenje. Provjerit ćemo prijevode putem zajednice, stoga molimo da se prijavite za prevođenje samo na jezicima u kojima ste vješti.
+Većina doprinosa zahtijeva da se složite s Contributor License Agreement (CLA) kojim potvrđujete da imate pravo i zapravo dajete prava za korištenje vašeg doprinosa. Više informacija na [CLA, Contributor License Agreement web stranici](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
 
-Kada pošaljete pull request, CLA-bot će automatski odrediti trebate li osigurati CLA i prikladno ukrasiti PR (npr. oznaka, komentar). Jednostavno slijedite upute koje vam bot daje. Ovo trebate napraviti samo jednom za sve repozitorije koji koriste naš CLA.
+Važno: prilikom prevođenja teksta u ovom repozitoriju, molimo vas da ne koristite strojno prevođenje. Prijevod će provjeriti zajednica, pa se prijavite za prijevod samo za jezike koje dobro poznajete.
 
-Ovaj projekt je usvojio [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Za više informacija pročitajte FAQ o Kodeksu ponašanja ili kontaktirajte [Email opencode](opencode@microsoft.com) s bilo kakvim dodatnim pitanjima ili komentarima.
+Kada pošaljete pull request, CLA-bot će automatski provjeriti trebate li potpisati CLA i označiti PR (npr. oznaka, komentar). Slijedite upute koje bot daje. Ovo trebate napraviti samo jednom za sve repozitorije koji koriste naš CLA.
 
-## Započnimo
+Ovaj projekt koristi [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Za više informacija pročitajte FAQ o Kodeksu ponašanja ili kontaktirajte [Email opencode](opencode@microsoft.com) za dodatna pitanja ili komentare.
 
-Sada kada ste završili potrebne korake za završetak ovog tečaja, krenimo s [uvodom u Generativnu AI i LLM-ove](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
+## Krenimo!
+Sada kada ste završili potrebne korake za ovaj tečaj, krenimo s [uvodom u Generativnu umjetnu inteligenciju i velike jezične modele (LLM)](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
+
+---
 
 **Odricanje od odgovornosti**:  
-Ovaj dokument je preveden koristeći AI uslugu prevođenja [Co-op Translator](https://github.com/Azure/co-op-translator). Iako težimo ka točnosti, imajte na umu da automatizirani prijevodi mogu sadržavati pogreške ili netočnosti. Izvorni dokument na izvornom jeziku treba smatrati mjerodavnim izvorom. Za kritične informacije preporučuje se profesionalni prijevod od strane čovjeka. Ne preuzimamo odgovornost za nesporazume ili pogrešna tumačenja koja proizlaze iz korištenja ovog prijevoda.
+Ovaj dokument je preveden pomoću AI usluge za prevođenje [Co-op Translator](https://github.com/Azure/co-op-translator). Iako nastojimo osigurati točnost, imajte na umu da automatski prijevodi mogu sadržavati pogreške ili netočnosti. Izvorni dokument na izvornom jeziku treba smatrati mjerodavnim izvorom. Za ključne informacije preporučuje se profesionalni ljudski prijevod. Ne snosimo odgovornost za bilo kakva nesporazume ili pogrešna tumačenja koja proizlaze iz korištenja ovog prijevoda.

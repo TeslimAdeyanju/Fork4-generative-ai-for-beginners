@@ -1,130 +1,134 @@
 <!--
 CO_OP_TRANSLATOR_METADATA:
 {
-  "original_hash": "ec385b41ee50579025d50cc03bfb3a25",
-  "translation_date": "2025-05-19T21:53:57+00:00",
+  "original_hash": "747668e4c53d067369f06e9ec2e6313e",
+  "translation_date": "2025-08-26T16:37:29+00:00",
   "source_file": "12-designing-ux-for-ai-applications/README.md",
   "language_code": "it"
 }
 -->
-# Progettare l'esperienza utente per applicazioni AI
+# Progettare l’UX per Applicazioni AI
 
-[![Progettare l'esperienza utente per applicazioni AI](../../../translated_images/12-lesson-banner.f98188f63dee5f2a9016055c93c766061b9cb95b320bf29d4d2d67ada792572e.it.png)](https://aka.ms/gen-ai-lesson12-gh?WT.mc_id=academic-105485-koreyst)
+[![Progettare l’UX per Applicazioni AI](../../../translated_images/12-lesson-banner.c53c3c7c802e8f563953ce388f6a987ca493472c724d924b060be470951c53c8.it.png)](https://aka.ms/gen-ai-lesson12-gh?WT.mc_id=academic-105485-koreyst)
 
-> _(Clicca sull'immagine sopra per vedere il video di questa lezione)_
+> _(Clicca sull’immagine qui sopra per vedere il video della lezione)_
 
-L'esperienza utente è un aspetto molto importante nella creazione di app. Gli utenti devono essere in grado di utilizzare la tua app in modo efficiente per svolgere compiti. Essere efficienti è una cosa, ma è anche necessario progettare app che possano essere utilizzate da tutti, rendendole _accessibili_. Questo capitolo si concentrerà su quest'area affinché tu possa progettare un'app che le persone possano e vogliano usare.
+L’esperienza utente è un aspetto fondamentale nella creazione di app. Gli utenti devono poter utilizzare la tua app in modo efficiente per svolgere le attività. Essere efficienti è importante, ma bisogna anche progettare le app affinché siano utilizzabili da tutti, rendendole _accessibili_. Questo capitolo si concentra su questo tema, così potrai progettare un’app che le persone possono e vogliono usare.
 
 ## Introduzione
 
-L'esperienza utente riguarda il modo in cui un utente interagisce e utilizza un prodotto o servizio specifico, che si tratti di un sistema, strumento o design. Quando si sviluppano applicazioni AI, gli sviluppatori non solo si concentrano sull'assicurare che l'esperienza utente sia efficace, ma anche etica. In questa lezione, affrontiamo come costruire applicazioni di Intelligenza Artificiale (AI) che rispondano alle esigenze degli utenti.
+L’esperienza utente riguarda il modo in cui una persona interagisce e utilizza un prodotto o servizio, che sia un sistema, uno strumento o un design. Quando si sviluppano applicazioni AI, gli sviluppatori non si concentrano solo sull’efficacia dell’esperienza utente, ma anche sull’etica. In questa lezione vediamo come costruire applicazioni di Intelligenza Artificiale (AI) che rispondano alle esigenze degli utenti.
 
-La lezione coprirà i seguenti aspetti:
+La lezione copre i seguenti argomenti:
 
-- Introduzione all'esperienza utente e comprensione delle esigenze degli utenti
-- Progettare applicazioni AI per fiducia e trasparenza
-- Progettare applicazioni AI per collaborazione e feedback
+- Introduzione all’Esperienza Utente e comprensione delle esigenze degli utenti
+- Progettare applicazioni AI per la fiducia e la trasparenza
+- Progettare applicazioni AI per la collaborazione e il feedback
 
 ## Obiettivi di apprendimento
 
-Dopo aver seguito questa lezione, sarai in grado di:
+Dopo questa lezione, sarai in grado di:
 
-- Comprendere come costruire applicazioni AI che soddisfino le esigenze degli utenti.
-- Progettare applicazioni AI che promuovano fiducia e collaborazione.
+- Comprendere come costruire applicazioni AI che rispondano alle esigenze degli utenti.
+- Progettare applicazioni AI che favoriscano fiducia e collaborazione.
 
 ### Prerequisiti
 
-Prenditi un po' di tempo per leggere di più su [esperienza utente e design thinking.](https://learn.microsoft.com/training/modules/ux-design?WT.mc_id=academic-105485-koreyst)
+Dedica un po’ di tempo a leggere di più su [user experience e design thinking.](https://learn.microsoft.com/training/modules/ux-design?WT.mc_id=academic-105485-koreyst)
 
-## Introduzione all'esperienza utente e comprensione delle esigenze degli utenti
+## Introduzione all’Esperienza Utente e comprensione delle esigenze degli utenti
 
-Nella nostra startup educativa fittizia, abbiamo due utenti principali, insegnanti e studenti. Ognuno dei due utenti ha esigenze uniche. Un design centrato sull'utente dà priorità all'utente, assicurando che i prodotti siano rilevanti e vantaggiosi per coloro a cui sono destinati.
+Nella nostra startup educativa fittizia, abbiamo due utenti principali: insegnanti e studenti. Ognuno di loro ha esigenze specifiche. Un design centrato sull’utente mette al primo posto l’utente, assicurando che i prodotti siano pertinenti e utili per chi li utilizza.
 
-L'applicazione dovrebbe essere **utile, affidabile, accessibile e piacevole** per fornire una buona esperienza utente.
+L’applicazione dovrebbe essere **utile, affidabile, accessibile e piacevole** per offrire una buona esperienza utente.
 
 ### Usabilità
 
-Essere utile significa che l'applicazione ha funzionalità che corrispondono al suo scopo, come automatizzare il processo di valutazione o generare flashcard per la revisione. Un'applicazione che automatizza il processo di valutazione dovrebbe essere in grado di assegnare punteggi in modo accurato ed efficiente al lavoro degli studenti in base a criteri predefiniti. Allo stesso modo, un'applicazione che genera flashcard per la revisione dovrebbe essere in grado di creare domande pertinenti e diversificate basate sui suoi dati.
+Essere utile significa che l’applicazione ha funzionalità che corrispondono allo scopo previsto, come automatizzare la correzione dei compiti o generare flashcard per il ripasso. Un’app che automatizza la correzione dovrebbe assegnare i punteggi in modo accurato ed efficiente, seguendo criteri predefiniti. Allo stesso modo, un’app che genera flashcard per il ripasso dovrebbe creare domande pertinenti e varie in base ai dati disponibili.
 
 ### Affidabilità
 
-Essere affidabile significa che l'applicazione può svolgere il suo compito in modo coerente e senza errori. Tuttavia, l'AI, come gli esseri umani, non è perfetta e può essere soggetta a errori. Le applicazioni possono incontrare errori o situazioni inaspettate che richiedono l'intervento o la correzione umana. Come gestisci gli errori? Nell'ultima sezione di questa lezione, affronteremo come i sistemi e le applicazioni AI sono progettati per collaborazione e feedback.
+Essere affidabile significa che l’applicazione svolge il suo compito in modo costante e senza errori. Tuttavia, l’AI, come gli esseri umani, non è perfetta e può commettere errori. Le applicazioni possono incontrare errori o situazioni impreviste che richiedono l’intervento umano o una correzione. Come gestire gli errori? Nell’ultima parte di questa lezione vedremo come progettare sistemi AI e applicazioni per la collaborazione e il feedback.
 
 ### Accessibilità
 
-Essere accessibile significa estendere l'esperienza utente a utenti con varie abilità, inclusi quelli con disabilità, assicurando che nessuno venga escluso. Seguendo le linee guida e i principi di accessibilità, le soluzioni AI diventano più inclusive, utilizzabili e vantaggiose per tutti gli utenti.
+Essere accessibile significa estendere l’esperienza utente a persone con diverse abilità, incluse quelle con disabilità, assicurando che nessuno venga escluso. Seguendo le linee guida e i principi di accessibilità, le soluzioni AI diventano più inclusive, utilizzabili e vantaggiose per tutti.
 
-### Piacevole
+### Piacevolezza
 
-Essere piacevole significa che l'applicazione è piacevole da usare. Un'esperienza utente attraente può avere un impatto positivo sull'utente, incoraggiandolo a tornare all'applicazione e aumentando i ricavi aziendali.
+Essere piacevole significa che l’applicazione è gradevole da usare. Un’esperienza utente coinvolgente può avere un impatto positivo sull’utente, invogliandolo a tornare sull’app e aumentando i ricavi.
 
-![immagine che illustra considerazioni sull'esperienza utente nell'AI](../../../translated_images/uxinai.26a003eb0524d011d3e36d15f6837df5be66ee0d965ee0df6d004edd5097a87d.it.png)
+![immagine che illustra le considerazioni UX nell’AI](../../../translated_images/uxinai.d5b4ed690f5cefff0c53ffcc01b480cdc1828402e1fdbc980490013a3c50935a.it.png)
 
-Non tutte le sfide possono essere risolte con l'AI. L'AI entra in gioco per migliorare la tua esperienza utente, sia automatizzando compiti manuali, sia personalizzando le esperienze degli utenti.
+Non tutte le sfide si risolvono con l’AI. L’AI serve ad arricchire l’esperienza utente, ad esempio automatizzando compiti manuali o personalizzando le esperienze.
 
-## Progettare applicazioni AI per fiducia e trasparenza
+## Progettare applicazioni AI per la fiducia e la trasparenza
 
-Costruire fiducia è fondamentale quando si progettano applicazioni AI. La fiducia garantisce che un utente sia sicuro che l'applicazione porterà a termine il lavoro, fornirà risultati in modo coerente e che i risultati siano ciò di cui l'utente ha bisogno. Un rischio in quest'area è la sfiducia e l'eccessiva fiducia. La sfiducia si verifica quando un utente ha poca o nessuna fiducia in un sistema AI, portando l'utente a rifiutare la tua applicazione. L'eccessiva fiducia si verifica quando un utente sovrastima la capacità di un sistema AI, portando gli utenti a fidarsi troppo del sistema AI. Ad esempio, un sistema di valutazione automatizzato nel caso di eccessiva fiducia potrebbe portare l'insegnante a non controllare alcuni dei documenti per assicurarsi che il sistema di valutazione funzioni bene. Questo potrebbe risultare in voti ingiusti o inaccurati per gli studenti, o opportunità mancate di feedback e miglioramento.
+Costruire fiducia è fondamentale quando si progettano applicazioni AI. La fiducia fa sì che l’utente sia sicuro che l’app svolgerà il lavoro, fornirà risultati costanti e che questi risultati siano quelli di cui ha bisogno. In questo ambito, il rischio è la sfiducia o l’eccessiva fiducia. La sfiducia si verifica quando l’utente ha poca o nessuna fiducia nel sistema AI, portandolo a rifiutare l’applicazione. L’eccessiva fiducia si verifica quando l’utente sopravvaluta le capacità dell’AI, affidandosi troppo al sistema. Ad esempio, un sistema di correzione automatica, se usato con troppa fiducia, potrebbe portare l’insegnante a non controllare alcuni compiti, rischiando valutazioni ingiuste o errori, oppure perdendo occasioni di feedback e miglioramento.
 
-Due modi per assicurarsi che la fiducia sia al centro del design sono la spiegabilità e il controllo.
+Due modi per mettere la fiducia al centro del design sono la spiegabilità e il controllo.
 
 ### Spiegabilità
 
-Quando l'AI aiuta a informare decisioni come impartire conoscenza alle generazioni future, è fondamentale che insegnanti e genitori comprendano come vengono prese le decisioni AI. Questa è la spiegabilità: comprendere come le applicazioni AI prendono decisioni. Progettare per la spiegabilità include l'aggiunta di dettagli di esempi di ciò che un'applicazione AI può fare. Ad esempio, invece di "Inizia con l'insegnante AI", il sistema può usare: "Riassumi i tuoi appunti per una revisione più facile usando l'AI."
+Quando l’AI aiuta a prendere decisioni, come trasmettere conoscenze alle nuove generazioni, è fondamentale che insegnanti e genitori capiscano come vengono prese le decisioni dall’AI. Questo è il concetto di spiegabilità: comprendere come le applicazioni AI prendono decisioni. Progettare per la spiegabilità significa aggiungere dettagli che evidenziano come l’AI ha prodotto un certo risultato. Il pubblico deve sapere che il risultato è generato dall’AI e non da una persona. Ad esempio, invece di dire "Inizia a chattare con il tuo tutor ora", si può dire "Usa il tutor AI che si adatta alle tue esigenze e ti aiuta a imparare al tuo ritmo."
 
-![una pagina di atterraggio di un'app con chiara illustrazione della spiegabilità nelle applicazioni AI](../../../translated_images/explanability-in-ai.19a61ee8eec9aec2d55d420c49cc3bb167db208c05bddb8d4e1e9e10ea8746b8.it.png)
+![una landing page di app con chiara spiegazione della spiegabilità nelle applicazioni AI](../../../translated_images/explanability-in-ai.134426a96b498fbfdc80c75ae0090aedc0fc97424ae0734fccf7fb00a59a20d9.it.png)
 
-Un altro esempio è come l'AI utilizza dati utente e personali. Ad esempio, un utente con la persona studente può avere limitazioni basate sulla sua persona. L'AI potrebbe non essere in grado di rivelare risposte alle domande ma può aiutare a guidare l'utente a pensare a come possono risolvere un problema.
+Un altro esempio riguarda l’uso dei dati personali da parte dell’AI. Ad esempio, uno studente potrebbe avere delle limitazioni in base al suo profilo. L’AI potrebbe non poter fornire direttamente le risposte, ma può guidare l’utente a ragionare su come risolvere un problema.
 
-![AI che risponde a domande basate sulla persona](../../../translated_images/solving-questions.9158f66fb9fd71ed57fd00978358d14dbccc72bd2b1e4db5140fcb1579aef295.it.png)
+![AI che risponde alle domande in base al profilo utente](../../../translated_images/solving-questions.b7dea1604de0cbd2e9c5fa00b1a68a0ed77178a035b94b9213196b9d125d0be8.it.png)
 
-Un'ultima parte chiave della spiegabilità è la semplificazione delle spiegazioni. Studenti e insegnanti potrebbero non essere esperti di AI, quindi le spiegazioni di ciò che l'applicazione può o non può fare dovrebbero essere semplificate e facili da comprendere.
+Un ultimo aspetto importante della spiegabilità è la semplificazione delle spiegazioni. Studenti e insegnanti potrebbero non essere esperti di AI, quindi le spiegazioni su cosa l’app può o non può fare devono essere semplici e comprensibili.
 
-![spiegazioni semplificate sulle capacità dell'AI](../../../translated_images/simplified-explanations.4a23e7b2260406a771a2cd853970a0661388a63f1900737935c0a788daf16dc8.it.png)
+![spiegazioni semplificate sulle capacità dell’AI](../../../translated_images/simplified-explanations.4679508a406c3621fa22bad4673e717fbff02f8b8d58afcab8cb6f1aa893a82f.it.png)
 
 ### Controllo
 
-L'AI generativa crea una collaborazione tra l'AI e l'utente, dove ad esempio un utente può modificare i prompt per risultati diversi. Inoltre, una volta generato un output, gli utenti dovrebbero essere in grado di modificare i risultati dando loro un senso di controllo. Ad esempio, quando si utilizza Bing, puoi adattare il tuo prompt in base al formato, tono e lunghezza. Inoltre, puoi apportare modifiche al tuo output e modificarlo come mostrato di seguito:
+L’AI generativa crea una collaborazione tra AI e utente, dove ad esempio l’utente può modificare i prompt per ottenere risultati diversi. Inoltre, una volta generato un risultato, l’utente dovrebbe poterlo modificare, sentendosi così più coinvolto. Ad esempio, usando Bing, puoi personalizzare il prompt in base al formato, al tono e alla lunghezza. Puoi anche modificare il risultato come mostrato qui sotto:
 
-![Risultati di ricerca Bing con opzioni per modificare il prompt e l'output](../../../translated_images/bing1.6024fe7d103ff4b54c58b873654403a1e56f81010da05a1f0a210c5ac7a1b8b5.it.png)
+![Risultati di ricerca Bing con opzioni per modificare il prompt e il risultato](../../../translated_images/bing1.293ae8527dbe2789b675c8591c9fb3cb1aa2ada75c2877f9aa9edc059f7a8b1c.it.png)
 
-Un'altra funzionalità in Bing che consente a un utente di avere controllo sull'applicazione è la possibilità di optare per l'uso o meno dei dati che l'AI utilizza. Per un'applicazione scolastica, uno studente potrebbe voler utilizzare i propri appunti così come le risorse degli insegnanti come materiale di revisione.
+Un’altra funzione di Bing che permette all’utente di avere controllo sull’applicazione è la possibilità di scegliere se condividere o meno i dati con l’AI. In un’app scolastica, uno studente potrebbe voler usare i propri appunti e le risorse dell’insegnante come materiale di ripasso.
 
-![Risultati di ricerca Bing con opzioni per modificare il prompt e l'output](../../../translated_images/bing2.a01fd420e9d52912126965a59c1766e5865f4dd9aaa45408d525e717d0ef3cce.it.png)
+![Risultati di ricerca Bing con opzioni per modificare il prompt e il risultato](../../../translated_images/bing2.309f4845528a88c28c1c9739fb61d91fd993dc35ebe6fc92c66791fb04fceb4d.it.png)
 
-> Quando si progettano applicazioni AI, l'intenzionalità è fondamentale per garantire che gli utenti non abbiano eccessiva fiducia impostando aspettative irrealistiche delle sue capacità. Un modo per farlo è creare attrito tra i prompt e i risultati. Ricordando all'utente che questa è AI e non un essere umano
+> Quando si progettano applicazioni AI, è importante essere intenzionali per evitare che gli utenti si fidino troppo e abbiano aspettative irrealistiche sulle capacità dell’AI. Un modo per farlo è creare un po’ di “attrito” tra i prompt e i risultati, ricordando all’utente che si tratta di AI e non di una persona.
 
-## Progettare applicazioni AI per collaborazione e feedback
+## Progettare applicazioni AI per la collaborazione e il feedback
 
-Come accennato in precedenza, l'AI generativa crea una collaborazione tra l'utente e l'AI. La maggior parte degli impegni sono con un utente che inserisce un prompt e l'AI che genera un output. E se l'output fosse errato? Come gestisce l'applicazione gli errori se si verificano? L'AI incolpa l'utente o si prende il tempo di spiegare l'errore?
+Come accennato prima, l’AI generativa crea una collaborazione tra utente e AI. Nella maggior parte dei casi, l’utente inserisce un prompt e l’AI genera un risultato. Ma cosa succede se il risultato è sbagliato? Come gestisce l’applicazione gli errori? L’AI dà la colpa all’utente o si prende il tempo di spiegare l’errore?
 
-Le applicazioni AI dovrebbero essere costruite per ricevere e fornire feedback. Questo non solo aiuta il sistema AI a migliorare, ma costruisce anche fiducia con gli utenti. Un ciclo di feedback dovrebbe essere incluso nel design, un esempio può essere un semplice pollice su o giù sull'output.
+Le applicazioni AI dovrebbero essere progettate per ricevere e fornire feedback. Questo aiuta non solo il sistema AI a migliorare, ma anche a costruire fiducia con gli utenti. Nel design dovrebbe essere previsto un ciclo di feedback, ad esempio con un semplice pollice su o giù sul risultato.
 
-Un altro modo per gestire questo è comunicare chiaramente le capacità e le limitazioni del sistema. Quando un utente commette un errore richiedendo qualcosa al di là delle capacità dell'AI, dovrebbe anche esserci un modo per gestirlo, come mostrato di seguito.
+Un altro modo per gestire questa situazione è comunicare chiaramente le capacità e i limiti del sistema. Se l’utente commette un errore chiedendo qualcosa che va oltre le capacità dell’AI, ci dovrebbe essere un modo per gestirlo, come mostrato qui sotto.
 
-![Fornire feedback e gestire errori](../../../translated_images/feedback-loops.2abf91e576a435333eb1b37c823a69497337abc5b50ff80c4b9ddbd52bfdbf84.it.png)
+![Fornire feedback e gestire gli errori](../../../translated_images/feedback-loops.7955c134429a94663443ad74d59044f8dc4ce354577f5b79b4bd2533f2cafc6f.it.png)
 
-Gli errori di sistema sono comuni con le applicazioni dove l'utente potrebbe aver bisogno di assistenza con informazioni al di fuori dell'ambito dell'AI o l'applicazione potrebbe avere un limite su quante domande/soggetti un utente può generare riassunti. Ad esempio, un'applicazione AI addestrata con dati su soggetti limitati, ad esempio, Storia e Matematica, potrebbe non essere in grado di gestire domande su Geografia. Per mitigare questo, il sistema AI può fornire una risposta del tipo: "Mi dispiace, il nostro prodotto è stato addestrato con dati nei seguenti soggetti....., non posso essere in grado di rispondere alla domanda che hai posto."
+Gli errori di sistema sono comuni nelle applicazioni, ad esempio quando l’utente ha bisogno di informazioni che l’AI non può fornire, oppure l’app ha un limite sul numero di domande o argomenti per cui può generare riassunti. Ad esempio, un’app AI addestrata solo su Storia e Matematica potrebbe non essere in grado di rispondere a domande di Geografia. Per gestire questa situazione, il sistema AI può rispondere: "Spiacente, il nostro prodotto è stato addestrato con dati sui seguenti argomenti..., non posso rispondere alla domanda che hai posto."
 
-Le applicazioni AI non sono perfette, quindi, sono destinate a commettere errori. Quando progetti le tue applicazioni, dovresti assicurarti di creare spazio per feedback dagli utenti e gestione degli errori in modo semplice e facilmente spiegabile.
+Le applicazioni AI non sono perfette, quindi possono commettere errori. Quando progetti le tue applicazioni, assicurati di prevedere la possibilità di ricevere feedback dagli utenti e di gestire gli errori in modo semplice e comprensibile.
 
 ## Compito
 
-Prendi qualsiasi app AI che hai costruito finora, considera di implementare i seguenti passaggi nella tua app:
+Prendi una delle app AI che hai già creato e prova a implementare i seguenti passaggi:
 
-- **Piacevole:** Considera come puoi rendere la tua app più piacevole. Stai aggiungendo spiegazioni ovunque? Stai incoraggiando l'utente a esplorare? Come stai formulando i tuoi messaggi di errore?
+- **Piacevolezza:** Pensa a come rendere la tua app più piacevole. Stai aggiungendo spiegazioni ovunque? Invogli l’utente a esplorare? Come scrivi i messaggi di errore?
 
-- **Usabilità:** Costruire un'app web. Assicurati che la tua app sia navigabile sia con il mouse che con la tastiera.
+- **Usabilità:** Se stai creando una web app, assicurati che sia navigabile sia con il mouse che con la tastiera.
 
-- **Fiducia e trasparenza:** Non fidarti completamente dell'AI e del suo output, considera come aggiungere un umano al processo per verificare l'output. Considera e implementa anche altri modi per ottenere fiducia e trasparenza.
+- **Fiducia e trasparenza:** Non fidarti ciecamente dell’AI e dei suoi risultati, pensa a come potresti coinvolgere una persona per verificare i risultati. Considera e implementa altri modi per ottenere fiducia e trasparenza.
 
-- **Controllo:** Dai all'utente il controllo dei dati che fornisce all'applicazione. Implementa un modo in cui un utente può optare per l'uso o meno dei dati nell'applicazione AI.
+- **Controllo:** Dai all’utente il controllo sui dati che fornisce all’applicazione. Implementa un modo per permettere all’utente di scegliere se partecipare o meno alla raccolta dati nell’app AI.
 
-## Continua il tuo apprendimento!
 
-Dopo aver completato questa lezione, dai un'occhiata alla nostra [collezione di apprendimento sull'AI generativa](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) per continuare a migliorare la tua conoscenza dell'AI generativa!
+
+## Continua a imparare!
+
+Dopo aver completato questa lezione, dai un’occhiata alla nostra [raccolta di risorse su Generative AI](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst) per continuare a migliorare le tue competenze!
 
 Vai alla Lezione 13, dove vedremo come [proteggere le applicazioni AI](../13-securing-ai-applications/README.md?WT.mc_id=academic-105485-koreyst)!
 
+---
+
 **Disclaimer**:  
-Questo documento è stato tradotto utilizzando il servizio di traduzione AI [Co-op Translator](https://github.com/Azure/co-op-translator). Sebbene ci impegniamo per l'accuratezza, si prega di essere consapevoli che le traduzioni automatiche possono contenere errori o inesattezze. Il documento originale nella sua lingua nativa dovrebbe essere considerato la fonte autorevole. Per informazioni critiche, si raccomanda una traduzione professionale umana. Non siamo responsabili per eventuali incomprensioni o interpretazioni errate derivanti dall'uso di questa traduzione.
+Questo documento è stato tradotto utilizzando il servizio di traduzione AI [Co-op Translator](https://github.com/Azure/co-op-translator). Pur impegnandoci per garantire l’accuratezza, si prega di notare che le traduzioni automatiche possono contenere errori o imprecisioni. Il documento originale nella sua lingua nativa deve essere considerato la fonte autorevole. Per informazioni critiche, si raccomanda una traduzione professionale umana. Non siamo responsabili per eventuali fraintendimenti o interpretazioni errate derivanti dall’uso di questa traduzione.

@@ -1,71 +1,86 @@
 <!--
 CO_OP_TRANSLATOR_METADATA:
 {
-  "original_hash": "9f4785899ee92500f524b4acb26e3bb3",
-  "translation_date": "2025-05-19T12:32:22+00:00",
+  "original_hash": "f1413b349a65b4e9eda3f48807656a6d",
+  "translation_date": "2025-08-26T18:15:39+00:00",
   "source_file": "00-course-setup/README.md",
   "language_code": "id"
 }
 -->
 # Memulai Kursus Ini
 
-Kami sangat bersemangat untuk Anda memulai kursus ini dan melihat apa yang bisa Anda bangun dengan AI Generatif!
+Kami sangat antusias Anda mulai mengikuti kursus ini dan melihat apa yang akan Anda bangun dengan Generative AI!
 
-Untuk memastikan kesuksesan Anda, halaman ini menjelaskan langkah-langkah pengaturan, persyaratan teknis, dan di mana mendapatkan bantuan jika diperlukan.
+Agar Anda sukses, halaman ini menjelaskan langkah-langkah persiapan, kebutuhan teknis, dan di mana Anda bisa mendapatkan bantuan jika diperlukan.
 
-## Langkah-langkah Pengaturan
+## Langkah-langkah Persiapan
 
 Untuk mulai mengikuti kursus ini, Anda perlu menyelesaikan langkah-langkah berikut.
 
-### 1. Fork Repositori Ini
+### 1. Fork Repo Ini
 
-[Fork seluruh repositori ini](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) ke akun GitHub Anda sendiri agar bisa mengubah kode dan menyelesaikan tantangan. Anda juga bisa [memberi bintang (🌟) pada repositori ini](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst) untuk menemukan repositori ini dan yang terkait lebih mudah.
+[Fork seluruh repo ini](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) ke akun GitHub Anda sendiri agar bisa mengubah kode dan menyelesaikan tantangan. Anda juga bisa [memberi bintang (🌟) pada repo ini](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars?WT.mc_id=academic-105485-koreyst) agar lebih mudah menemukannya beserta repo terkait lainnya.
 
-### 2. Buat sebuah codespace
+### 2. Buat Codespace
 
-Untuk menghindari masalah ketergantungan saat menjalankan kode, kami merekomendasikan menjalankan kursus ini di [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
+Untuk menghindari masalah dependensi saat menjalankan kode, kami menyarankan Anda menjalankan kursus ini di [GitHub Codespaces](https://github.com/features/codespaces?WT.mc_id=academic-105485-koreyst).
 
-Ini bisa dibuat dengan memilih opsi `Code` pada versi fork repositori Anda dan memilih opsi **Codespaces**.
+Pada fork Anda: **Code -> Codespaces -> New on main**
 
-![Dialog menunjukkan tombol untuk membuat codespace](../../../00-course-setup/images/who-will-pay.webp)
+![Dialog menampilkan tombol untuk membuat codespace](../../../00-course-setup/images/who-will-pay.webp)
 
-### 3. Menyimpan Kunci API Anda
+#### 2.1 Tambahkan Secret
 
-Menjaga kunci API Anda tetap aman dan terlindungi adalah penting saat membangun aplikasi apa pun. Kami merekomendasikan untuk tidak menyimpan kunci API secara langsung di dalam kode Anda. Mengkomit detail tersebut ke repositori publik dapat mengakibatkan masalah keamanan dan bahkan biaya yang tidak diinginkan jika digunakan oleh pihak yang tidak bertanggung jawab. Berikut panduan langkah demi langkah tentang cara membuat file `.env` untuk Python dan menambahkan `GITHUB_TOKEN`:
+1. ⚙️ Ikon gear -> Command Pallete-> Codespaces : Manage user secret -> Add a new secret.
+2. Beri nama OPENAI_API_KEY, tempelkan kunci Anda, lalu Simpan.
 
-1. **Navigasi ke Direktori Proyek Anda**: Buka terminal atau command prompt Anda dan navigasi ke direktori root proyek Anda di mana Anda ingin membuat file `.env`.
+### 3.  Selanjutnya Apa?
 
-   ```bash
-   cd path/to/your/project
-   ```
+| Saya ingin…         | Pergi ke…                                                                |
+|---------------------|--------------------------------------------------------------------------|
+| Mulai Pelajaran 1   | [`01-introduction-to-genai`](../01-introduction-to-genai/README.md)     |
+| Bekerja offline     | [`setup-local.md`](02-setup-local.md)                                   |
+| Atur LLM Provider   | [`providers.md`](providers.md)                                          |
+| Bertemu peserta lain| [Gabung ke Discord kami](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)   |
 
-2. **Buat File `.env`**: Gunakan editor teks pilihan Anda untuk membuat file baru bernama `.env`. Jika Anda menggunakan command line, Anda bisa menggunakan `touch` (on Unix-based systems) or `echo` (pada Windows):
+## Pemecahan Masalah
+
+
+| Gejala                                    | Solusi                                                          |
+|-------------------------------------------|-----------------------------------------------------------------|
+| Build container macet > 10 menit          | **Codespaces ➜ “Rebuild Container”**                            |
+| `python: command not found`               | Terminal belum terhubung; klik **+** ➜ *bash*                   |
+| `401 Unauthorized` dari OpenAI            | `OPENAI_API_KEY` salah / kadaluarsa                             |
+| VS Code menampilkan “Dev container mounting…” | Refresh tab browser—Codespaces kadang kehilangan koneksi    |
+| Kernel notebook hilang                    | Menu Notebook ➜ **Kernel ▸ Select Kernel ▸ Python 3**           |
 
    Sistem berbasis Unix:
+
    ```bash
    touch .env
    ```
 
    Windows:
+
    ```cmd
    echo . > .env
    ```
 
-3. **Edit File `.env`**: Buka file `.env` di editor teks (misalnya, VS Code, Notepad++, atau editor lainnya). Tambahkan baris berikut ke file, mengganti `your_github_token_here` dengan token GitHub Anda yang sebenarnya:
+3. **Edit File `.env`**: Buka file `.env` di text editor (misal VS Code, Notepad++, atau editor lain). Tambahkan baris berikut ke file, ganti `your_github_token_here` dengan token GitHub Anda yang sebenarnya:
 
    ```env
    GITHUB_TOKEN=your_github_token_here
    ```
 
-4. **Simpan File**: Simpan perubahan dan tutup editor teks.
+4. **Simpan File**: Simpan perubahan dan tutup text editor.
 
-5. **Instal paket `python-dotenv`**: If you haven't already, you'll need to install the `python-dotenv` untuk memuat variabel lingkungan dari file `.env` ke dalam aplikasi Python Anda. Anda dapat menginstalnya menggunakan `pip`:
+5. **Install `python-dotenv`**: Jika belum, Anda perlu menginstal paket `python-dotenv` untuk memuat variabel lingkungan dari file `.env` ke aplikasi Python Anda. Anda bisa menginstalnya dengan `pip`:
 
    ```bash
    pip install python-dotenv
    ```
 
-6. **Memuat Variabel Lingkungan dalam Skrip Python Anda**: Dalam skrip Python Anda, gunakan paket `python-dotenv` untuk memuat variabel lingkungan dari file `.env`:
+6. **Muat Variabel Lingkungan di Script Python Anda**: Pada script Python Anda, gunakan paket `python-dotenv` untuk memuat variabel lingkungan dari file `.env`:
 
    ```python
    from dotenv import load_dotenv
@@ -80,83 +95,82 @@ Menjaga kunci API Anda tetap aman dan terlindungi adalah penting saat membangun 
    print(github_token)
    ```
 
-Itu dia! Anda telah berhasil membuat file `.env`, menambahkan token GitHub Anda, dan memuatnya ke dalam aplikasi Python Anda.
+Selesai! Anda telah berhasil membuat file `.env`, menambahkan token GitHub Anda, dan memuatnya ke aplikasi Python Anda.
 
 ## Cara Menjalankan Secara Lokal di Komputer Anda
 
-Untuk menjalankan kode secara lokal di komputer Anda, Anda perlu memiliki beberapa versi [Python terinstal](https://www.python.org/downloads/?WT.mc_id=academic-105485-koreyst).
+Untuk menjalankan kode secara lokal di komputer Anda, Anda perlu memiliki [Python terinstal](https://www.python.org/downloads/?WT.mc_id=academic-105485-koreyst).
 
-Untuk kemudian menggunakan repositori, Anda perlu mengkloningnya:
+Setelah itu, untuk menggunakan repository ini, Anda perlu mengkloningnya:
 
 ```shell
 git clone https://github.com/microsoft/generative-ai-for-beginners
 cd generative-ai-for-beginners
 ```
 
-Setelah Anda memeriksa semuanya, Anda bisa mulai!
+Setelah semuanya siap, Anda bisa langsung mulai!
 
-## Langkah Opsional 
+## Langkah Opsional
 
-### Menginstal Miniconda 
+### Menginstal Miniconda
 
 [Miniconda](https://conda.io/en/latest/miniconda.html?WT.mc_id=academic-105485-koreyst) adalah installer ringan untuk menginstal [Conda](https://docs.conda.io/en/latest?WT.mc_id=academic-105485-koreyst), Python, serta beberapa paket.
-Conda sendiri adalah pengelola paket, yang memudahkan untuk mengatur dan beralih antara berbagai [**lingkungan virtual**](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) Python dan paket. Ini juga berguna untuk menginstal paket yang tidak tersedia melalui `pip`.
+Conda sendiri adalah package manager yang memudahkan Anda mengatur dan berpindah antar [**virtual environment**](https://docs.python.org/3/tutorial/venv.html?WT.mc_id=academic-105485-koreyst) Python dan paket-paketnya. Conda juga sangat berguna untuk menginstal paket yang tidak tersedia melalui `pip`.
 
-You can follow the [MiniConda installation guide](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst) to set it up.
+Anda bisa mengikuti [panduan instalasi MiniConda](https://docs.anaconda.com/free/miniconda/#quick-command-line-install?WT.mc_id=academic-105485-koreyst) untuk mengaturnya.
 
-With Miniconda installed, you need to clone the [repository](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) (if you haven't already)
+Setelah Miniconda terinstal, Anda perlu mengkloning [repository](https://github.com/microsoft/generative-ai-for-beginners/fork?WT.mc_id=academic-105485-koreyst) ini (jika belum).
 
-Next, you need to create a virtual environment. To do this with Conda, go ahead and create a new environment file (_environment.yml_). If you are following along using Codespaces, create this within the `.devcontainer` directory, thus `.devcontainer/environment.yml`.
+Selanjutnya, Anda perlu membuat virtual environment. Untuk melakukannya dengan Conda, silakan buat file environment baru (_environment.yml_). Jika Anda mengikuti dengan Codespaces, buat file ini di dalam direktori `.devcontainer`, jadi `.devcontainer/environment.yml`.
 
-Silakan isi file lingkungan Anda dengan cuplikan di bawah ini:
+Isi file environment Anda dengan potongan kode di bawah ini:
 
 ```yml
 name: <environment-name>
 channels:
- - defaults
- - microsoft
+  - defaults
+  - microsoft
 dependencies:
-- python=<python-version>
-- openai
-- python-dotenv
-- pip
-- pip:
-    - azure-ai-ml
-
+  - python=<python-version>
+  - openai
+  - python-dotenv
+  - pip
+  - pip:
+      - azure-ai-ml
 ```
 
-Jika Anda mengalami kesalahan menggunakan conda, Anda dapat menginstal secara manual Microsoft AI Libraries menggunakan perintah berikut di terminal.
+Jika Anda mengalami error saat menggunakan conda, Anda bisa menginstal Microsoft AI Libraries secara manual dengan perintah berikut di terminal.
 
 ```
 conda install -c microsoft azure-ai-ml
 ```
 
-File lingkungan menentukan ketergantungan yang kita butuhkan. `<environment-name>` refers to the name you would like to use for your Conda environment, and `<python-version>` is the version of Python you would like to use, for example, `3` adalah versi utama terbaru dari Python.
+File environment menentukan dependensi yang dibutuhkan. `<environment-name>` adalah nama environment Conda yang Anda inginkan, dan `<python-version>` adalah versi Python yang ingin Anda gunakan, misalnya, `3` adalah versi mayor terbaru Python.
 
-Setelah selesai, Anda bisa melanjutkan dan membuat lingkungan Conda Anda dengan menjalankan perintah di bawah ini di command line/terminal Anda
+Setelah itu, Anda bisa membuat environment Conda dengan menjalankan perintah berikut di command line/terminal
 
 ```bash
 conda env create --name ai4beg --file .devcontainer/environment.yml # .devcontainer sub path applies to only Codespace setups
 conda activate ai4beg
 ```
 
-Lihat panduan [Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst) jika Anda mengalami masalah.
+Lihat [panduan environment Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?WT.mc_id=academic-105485-koreyst) jika Anda mengalami masalah.
 
 ### Menggunakan Visual Studio Code dengan ekstensi dukungan Python
 
-Kami merekomendasikan menggunakan editor [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) dengan [ekstensi dukungan Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) yang terinstal untuk kursus ini. Namun, ini lebih merupakan rekomendasi dan bukan persyaratan pasti
+Kami menyarankan menggunakan editor [Visual Studio Code (VS Code)](https://code.visualstudio.com/?WT.mc_id=academic-105485-koreyst) dengan [ekstensi dukungan Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) terinstal untuk kursus ini. Namun, ini hanya saran dan bukan keharusan.
 
-> **Catatan**: Dengan membuka repositori kursus di VS Code, Anda memiliki opsi untuk mengatur proyek dalam sebuah container. Ini karena [direktori `.devcontainer` khusus](https://code.visualstudio.com/docs/devcontainers/containers?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) yang ditemukan di dalam repositori kursus. Lebih lanjut tentang ini nanti.
+> **Note**: Dengan membuka repository kursus di VS Code, Anda punya opsi untuk mengatur proyek di dalam container. Ini karena adanya [direktori khusus `.devcontainer`](https://code.visualstudio.com/docs/devcontainers/containers?itemName=ms-python.python&WT.mc_id=academic-105485-koreyst) di dalam repository kursus. Penjelasan lebih lanjut akan dibahas nanti.
 
-> **Catatan**: Setelah Anda mengkloning dan membuka direktori di VS Code, secara otomatis akan menyarankan Anda menginstal ekstensi dukungan Python.
+> **Note**: Setelah Anda mengkloning dan membuka direktori di VS Code, secara otomatis akan muncul saran untuk menginstal ekstensi dukungan Python.
 
-> **Catatan**: Jika VS Code menyarankan Anda untuk membuka kembali repositori dalam container, tolak permintaan ini untuk menggunakan versi Python yang terinstal secara lokal.
+> **Note**: Jika VS Code menyarankan untuk membuka repository di dalam container, tolak permintaan ini agar Anda bisa menggunakan Python yang terinstal secara lokal.
 
 ### Menggunakan Jupyter di Browser
 
-Anda juga bisa mengerjakan proyek menggunakan [lingkungan Jupyter](https://jupyter.org?WT.mc_id=academic-105485-koreyst) langsung di dalam browser Anda. Baik Jupyter klasik maupun [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) menyediakan lingkungan pengembangan yang cukup menyenangkan dengan fitur-fitur seperti auto-completion, penyorotan kode, dll.
+Anda juga bisa mengerjakan proyek ini menggunakan [lingkungan Jupyter](https://jupyter.org?WT.mc_id=academic-105485-koreyst) langsung di browser Anda. Baik Jupyter klasik maupun [Jupyter Hub](https://jupyter.org/hub?WT.mc_id=academic-105485-koreyst) menawarkan lingkungan pengembangan yang nyaman dengan fitur seperti auto-completion, code highlighting, dan lainnya.
 
-Untuk memulai Jupyter secara lokal, buka terminal/command line, navigasi ke direktori kursus, dan jalankan:
+Untuk memulai Jupyter secara lokal, buka terminal/command line, navigasikan ke direktori kursus, lalu jalankan:
 
 ```bash
 jupyter notebook
@@ -168,57 +182,58 @@ atau
 jupyterhub
 ```
 
-Ini akan memulai instance Jupyter dan URL untuk mengaksesnya akan ditampilkan dalam jendela command line.
+Ini akan memulai instance Jupyter dan URL untuk mengaksesnya akan ditampilkan di jendela command line.
 
-Setelah Anda mengakses URL tersebut, Anda harus melihat garis besar kursus dan dapat menavigasi ke file `*.ipynb` file. For example, `08-building-search-applications/python/oai-solution.ipynb`.
+Setelah Anda mengakses URL tersebut, Anda akan melihat outline kursus dan bisa menavigasi ke file `*.ipynb` mana pun. Misalnya, `08-building-search-applications/python/oai-solution.ipynb`.
 
-### Running in a container
+### Menjalankan di dalam Container
 
-An alternative to setting everything up on your computer or Codespace is to use a [container](https://en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst). The special `.devcontainer` folder within the course repository makes it possible for VS Code to set up the project within a container. Outside of Codespaces, this will require the installation of Docker, and quite frankly, it involves a bit of work, so we recommend this only to those with experience working with containers.
+Alternatif dari mengatur semuanya di komputer atau Codespace Anda adalah menggunakan [container](../../../00-course-setup/<https:/en.wikipedia.org/wiki/Containerization_(computing)?WT.mc_id=academic-105485-koreyst>). Folder khusus `.devcontainer` di dalam repository kursus memungkinkan VS Code mengatur proyek di dalam container. Di luar Codespaces, ini memerlukan instalasi Docker, dan sejujurnya, prosesnya agak rumit, jadi kami hanya menyarankan ini untuk yang sudah berpengalaman dengan container.
 
-One of the best ways to keep your API keys secure when using GitHub Codespaces is by using Codespace Secrets. Please follow the [Codespaces secrets management](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst) guide to learn more about this.
+Salah satu cara terbaik untuk menjaga keamanan API key Anda saat menggunakan GitHub Codespaces adalah dengan menggunakan Codespace Secrets. Silakan ikuti panduan [manajemen secrets Codespaces](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces?WT.mc_id=academic-105485-koreyst) untuk mempelajari lebih lanjut.
 
-## Lessons and Technical Requirements
+## Pelajaran dan Kebutuhan Teknis
 
-The course has 6 concept lessons and 6 coding lessons.
+Kursus ini terdiri dari 6 pelajaran konsep dan 6 pelajaran coding.
 
-For the coding lessons, we are using the Azure OpenAI Service. You will need access to the Azure OpenAI service and an API key to run this code. You can apply to get access by [completing this application](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
+Untuk pelajaran coding, kami menggunakan Azure OpenAI Service. Anda perlu akses ke layanan Azure OpenAI dan API key untuk menjalankan kode ini. Anda bisa mengajukan permohonan akses dengan [mengisi aplikasi ini](https://azure.microsoft.com/products/ai-services/openai-service?WT.mc_id=academic-105485-koreyst).
 
-While you wait for your application to be processed, each coding lesson also includes a `README.md` di mana Anda dapat melihat kode dan output.
+Sambil menunggu aplikasi Anda diproses, setiap pelajaran coding juga menyertakan file `README.md` di mana Anda bisa melihat kode dan hasil outputnya.
 
-## Menggunakan Layanan Azure OpenAI untuk pertama kalinya
+## Menggunakan Azure OpenAI Service untuk Pertama Kali
 
-Jika ini adalah pertama kalinya Anda bekerja dengan layanan Azure OpenAI, silakan ikuti panduan ini tentang cara [membuat dan menerapkan sumber daya Layanan Azure OpenAI.](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst)
+Jika ini adalah pertama kalinya Anda bekerja dengan Azure OpenAI service, silakan ikuti panduan cara [membuat dan mendepoy resource Azure OpenAI Service.](https://learn.microsoft.com/azure/ai-services/openai/how-to/create-resource?pivots=web-portal&WT.mc_id=academic-105485-koreyst)
 
-## Menggunakan API OpenAI untuk pertama kalinya
+## Menggunakan OpenAI API untuk Pertama Kali
 
-Jika ini adalah pertama kalinya Anda bekerja dengan API OpenAI, silakan ikuti panduan tentang cara [membuat dan menggunakan Antarmuka.](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst)
+Jika ini adalah pertama kalinya Anda bekerja dengan OpenAI API, silakan ikuti panduan cara [membuat dan menggunakan Interface.](https://platform.openai.com/docs/quickstart?context=pythont&WT.mc_id=academic-105485-koreyst)
 
-## Bertemu dengan Pembelajar Lain
+## Bertemu Peserta Lain
 
-Kami telah membuat saluran di server [AI Community Discord resmi](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst) kami untuk bertemu dengan pembelajar lain. Ini adalah cara yang bagus untuk membangun jaringan dengan pengusaha, pembangun, pelajar, dan siapa saja yang berpikiran sama dan ingin meningkatkan keterampilan dalam AI Generatif.
+Kami telah membuat channel di [server Discord Komunitas AI resmi](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst) untuk bertemu peserta lain. Ini adalah cara yang bagus untuk membangun jaringan dengan wirausahawan, builder, pelajar, dan siapa pun yang ingin berkembang di bidang Generative AI.
 
-[![Bergabung dengan saluran discord](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
+[![Gabung channel discord](https://dcbadge.limes.pink/api/server/ByRwuEEgH4)](https://aka.ms/genai-discord?WT.mc_id=academic-105485-koreyst)
 
-Tim proyek juga akan berada di server Discord ini untuk membantu para pembelajar.
+Tim proyek juga akan hadir di server Discord ini untuk membantu para peserta.
 
 ## Berkontribusi
 
-Kursus ini adalah inisiatif sumber terbuka. Jika Anda melihat area yang perlu diperbaiki atau masalah, silakan buat [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) atau log [masalah GitHub](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
+Kursus ini adalah inisiatif open-source. Jika Anda melihat area yang bisa diperbaiki atau menemukan masalah, silakan buat [Pull Request](https://github.com/microsoft/generative-ai-for-beginners/pulls?WT.mc_id=academic-105485-koreyst) atau laporkan [GitHub issue](https://github.com/microsoft/generative-ai-for-beginners/issues?WT.mc_id=academic-105485-koreyst).
 
-Tim proyek akan melacak semua kontribusi. Berkontribusi pada sumber terbuka adalah cara yang luar biasa untuk membangun karier Anda dalam AI Generatif.
+Tim proyek akan memantau semua kontribusi. Berkontribusi ke open source adalah cara yang luar biasa untuk membangun karier Anda di bidang Generative AI.
 
-Sebagian besar kontribusi mengharuskan Anda menyetujui Perjanjian Lisensi Kontributor (CLA) yang menyatakan bahwa Anda memiliki hak dan benar-benar memberikan kami hak untuk menggunakan kontribusi Anda. Untuk detail, kunjungi [situs web CLA, Perjanjian Lisensi Kontributor](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
+Sebagian besar kontribusi mengharuskan Anda menyetujui Contributor License Agreement (CLA) yang menyatakan bahwa Anda memiliki hak dan benar-benar memberikan hak kepada kami untuk menggunakan kontribusi Anda. Untuk detailnya, kunjungi [situs web CLA, Contributor License Agreement](https://cla.microsoft.com?WT.mc_id=academic-105485-koreyst).
 
-Penting: saat menerjemahkan teks dalam repositori ini, pastikan Anda tidak menggunakan terjemahan mesin. Kami akan memverifikasi terjemahan melalui komunitas, jadi mohon hanya menjadi sukarelawan untuk terjemahan dalam bahasa di mana Anda mahir.
+Penting: saat menerjemahkan teks di repo ini, pastikan Anda tidak menggunakan terjemahan mesin. Kami akan memverifikasi terjemahan melalui komunitas, jadi mohon hanya menjadi relawan untuk bahasa yang Anda kuasai.
 
-Ketika Anda mengajukan permintaan tarik, CLA-bot akan secara otomatis menentukan apakah Anda perlu menyediakan CLA dan menghias PR dengan tepat (misalnya, label, komentar). Cukup ikuti instruksi yang diberikan oleh bot. Anda hanya perlu melakukan ini sekali di semua repositori yang menggunakan CLA kami.
+Saat Anda mengirim pull request, CLA-bot akan secara otomatis menentukan apakah Anda perlu mengisi CLA dan menandai PR sesuai (misal, label, komentar). Cukup ikuti instruksi dari bot. Anda hanya perlu melakukan ini sekali untuk semua repository yang menggunakan CLA kami.
 
-Proyek ini telah mengadopsi [Kode Etik Sumber Terbuka Microsoft](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Untuk informasi lebih lanjut baca FAQ Kode Etik atau hubungi [Email opencode](opencode@microsoft.com) dengan pertanyaan atau komentar tambahan.
+Proyek ini mengadopsi [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/?WT.mc_id=academic-105485-koreyst). Untuk informasi lebih lanjut, baca FAQ Code of Conduct atau hubungi [Email opencode](opencode@microsoft.com) jika ada pertanyaan atau komentar tambahan.
 
-## Mari Kita Mulai
+## Ayo Mulai!
+Sekarang setelah Anda menyelesaikan langkah-langkah yang diperlukan untuk menyelesaikan kursus ini, mari kita mulai dengan mendapatkan [pengantar tentang Generative AI dan LLMs](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
 
-Sekarang setelah Anda menyelesaikan langkah-langkah yang diperlukan untuk menyelesaikan kursus ini, mari kita mulai dengan mendapatkan [pengantar tentang AI Generatif dan LLMs](../01-introduction-to-genai/README.md?WT.mc_id=academic-105485-koreyst).
+---
 
-**Penafian**:  
-Dokumen ini telah diterjemahkan menggunakan layanan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Meskipun kami berupaya untuk mencapai ketepatan, harap diketahui bahwa terjemahan otomatis dapat mengandung kesalahan atau ketidakakuratan. Dokumen asli dalam bahasa aslinya harus dianggap sebagai sumber yang berwenang. Untuk informasi penting, disarankan menggunakan terjemahan manusia profesional. Kami tidak bertanggung jawab atas kesalahpahaman atau salah tafsir yang timbul dari penggunaan terjemahan ini.
+**Disclaimer**:
+Dokumen ini telah diterjemahkan menggunakan layanan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Meskipun kami berupaya untuk memberikan terjemahan yang akurat, harap diketahui bahwa terjemahan otomatis dapat mengandung kesalahan atau ketidakakuratan. Dokumen asli dalam bahasa aslinya harus dianggap sebagai sumber yang berwenang. Untuk informasi yang bersifat kritis, disarankan menggunakan jasa penerjemah profesional. Kami tidak bertanggung jawab atas kesalahpahaman atau penafsiran yang timbul dari penggunaan terjemahan ini.

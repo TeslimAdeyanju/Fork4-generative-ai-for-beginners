@@ -1,269 +1,479 @@
 <!--
 CO_OP_TRANSLATOR_METADATA:
 {
-  "original_hash": "a45c318dc6ebc2604f35b8b829f93af2",
-  "translation_date": "2025-05-19T15:11:36+00:00",
+  "original_hash": "dcbaaae026cb50fee071e690685b5843",
+  "translation_date": "2025-08-26T14:51:29+00:00",
   "source_file": "04-prompt-engineering-fundamentals/README.md",
   "language_code": "hk"
 }
 -->
 # 提示工程基礎
 
+[![Prompt Engineering Fundamentals](../../../translated_images/04-lesson-banner.a2c90deba7fedacda69f35b41636a8951ec91c2e33f5420b1254534ac85bc18e.hk.png)](https://aka.ms/gen-ai-lesson4-gh?WT.mc_id=academic-105485-koreyst)
+
 ## 簡介
-這個模組涵蓋了在生成式 AI 模型中創建有效提示的基本概念和技術。你如何向 LLM 編寫提示也很重要。精心設計的提示可以獲得更好的回應質量。但究竟什麼是提示和提示工程？我如何改進發送給 LLM 的提示輸入？這些問題我們將在本章和下一章中尋找答案。
+本單元會介紹在生成式 AI 模型中，如何撰寫有效提示的基本概念和技巧。你寫給 LLM 的提示方式都會影響結果。精心設計的提示可以獲得更高質素的回應。但究竟什麼是 _提示_ 和 _提示工程_？又如何改善發送給 LLM 的提示 _輸入_？這些都是本章及下一章會解答的問題。
 
-生成式 AI 能夠根據用戶請求創建新內容（例如文本、圖像、音頻、代碼等）。它使用大型語言模型（例如 OpenAI 的 GPT 系列）進行訓練，利用自然語言和代碼來實現。
+_生成式 AI_ 能根據用戶要求創造新內容（例如文字、圖片、音訊、程式碼等）。它是利用像 OpenAI 的 GPT（"Generative Pre-trained Transformer"）系列這類 _大型語言模型_，以自然語言和程式碼訓練而成。
 
-現在用戶可以使用熟悉的方式與這些模型互動，例如聊天，無需任何技術專業知識或訓練。這些模型是基於提示的——用戶發送文本輸入（提示）並獲得 AI 回應（完成）。然後他們可以在多輪對話中反覆與 AI 交流，精細化他們的提示，直到回應符合他們的期望。
+用戶現在可以用熟悉的聊天方式與這些模型互動，無需技術背景或特別訓練。這些模型是 _以提示為基礎_ —— 用戶輸入一段文字（提示），AI 就會回應（完成）。用戶可以多輪對話地「與 AI 對話」，不斷調整提示，直到回應符合期望。
 
-“提示”現在成為生成式 AI 應用的主要編程接口，告訴模型做什麼並影響返回回應的質量。“提示工程”是一個快速增長的研究領域，專注於提示的設計和優化，以在大規模上提供一致且高質量的回應。
+「提示」已經成為生成式 AI 應用的主要 _編程介面_，用來指示模型要做什麼，並影響回應的質素。「提示工程」是一個快速發展的領域，專注於 _設計和優化_ 提示，以大規模地獲得穩定和高質素的回應。
 
 ## 學習目標
 
-在本課中，我們將學習什麼是提示工程，為什麼它重要，以及如何為特定模型和應用目標設計更有效的提示。我們將了解提示工程的核心概念和最佳實踐，並學習一個互動式 Jupyter Notebook 的“沙盒”環境，在那裡我們可以看到這些概念應用於實際例子。
+在這一課，我們會學習什麼是提示工程、為什麼重要，以及如何為特定模型和應用目標設計更有效的提示。我們會了解提示工程的核心概念和最佳實踐，並認識一個互動式 Jupyter Notebooks「沙盒」環境，讓你可以看到這些概念如何應用在真實例子上。
 
-在本課結束時，我們將能夠：
+完成本課後，你將能夠：
 
-1. 解釋什麼是提示工程及其重要性。
+1. 解釋什麼是提示工程，以及它的重要性。
 2. 描述提示的組成部分及其用途。
-3. 學習提示工程的最佳實踐和技術。
-4. 使用 OpenAI 端點將所學技術應用於實際例子。
+3. 學習提示工程的最佳實踐和技巧。
+4. 將所學技巧應用到真實例子，並使用 OpenAI 端點。
 
-## 關鍵術語
+## 重要詞彙
 
-提示工程：設計和精細化輸入以引導 AI 模型生成所需輸出的實踐。
-分詞：將文本轉換為模型可以理解和處理的較小單位（稱為 token）的過程。
-指令調整的 LLM：通過特定指令進行微調以提高回應準確性和相關性的大型語言模型（LLM）。
+提示工程：設計和優化輸入，引導 AI 模型產生期望輸出的實踐。
+分詞（Tokenization）：將文字轉換成模型能理解和處理的較小單位（token）的過程。
+指令調校 LLM（Instruction-Tuned LLMs）：經過特定指令微調，以提升回應準確性和相關性的 LLM。
 
 ## 學習沙盒
 
-提示工程目前更多是藝術而不是科學。改善我們直覺的最佳方法是多加練習並採用結合應用領域專業知識的試錯方法。
+提示工程目前仍然偏向藝術多於科學。提升直覺的最佳方法就是 _多加練習_，並採用試錯法，結合應用領域專業知識、建議技巧和針對模型的優化。
 
-本課配套的 Jupyter Notebook 提供了一個沙盒環境，你可以在學習過程中或在結尾的代碼挑戰中嘗試所學內容。執行練習需要：
+本課配套的 Jupyter Notebook 提供了一個 _沙盒_ 環境，讓你可以邊學邊試，或在最後的程式挑戰中應用。要執行練習，你需要：
 
-1. **Azure OpenAI API 密鑰** - 部署的 LLM 的服務端點。
-2. **Python 運行時環境** - Notebook 可以在其中執行。
-3. **本地環境變量** - 現在完成 [SETUP](./../00-course-setup/SETUP.md?WT.mc_id=academic-105485-koreyst) 步驟以做好準備。
+1. **Azure OpenAI API 金鑰** —— 已部署 LLM 的服務端點。
+2. **Python 執行環境** —— 用來執行 Notebook。
+3. **本地環境變數** —— _現在就完成 [SETUP](./../00-course-setup/02-setup-local.md?WT.mc_id=academic-105485-koreyst) 步驟，準備好環境_。
 
-Notebook 附帶了入門練習——但鼓勵你添加自己的 Markdown（描述）和代碼（提示請求）部分以嘗試更多例子或想法，並建立對提示設計的直覺。
+Notebook 已經有 _入門_ 練習 —— 但鼓勵你自行加入 _Markdown_（描述）和 _Code_（提示請求）部分，試多些例子或新想法，建立你對提示設計的直覺。
 
 ## 圖解指南
 
-想在深入學習之前了解本課涵蓋的主要內容嗎？查看這份圖解指南，它可以讓你了解主要主題和每個主題的關鍵要點。課程路線圖從理解核心概念和挑戰開始，然後用相關的提示工程技術和最佳實踐來解決它們。注意，本指南中的“高級技術”部分指的是本課程下一章的內容。
+想在開始前先掌握本課的重點？可以參考這份圖解指南，了解涵蓋的主要主題和每個部分的重點。課程路線圖會帶你由理解核心概念和挑戰，到用相關的提示工程技巧和最佳實踐去解決。注意，指南中的「進階技巧」部分，會在本課程的 _下一章_ 詳細介紹。
 
-## 我們的初創公司
+![Illustrated Guide to Prompt Engineering](../../../translated_images/04-prompt-engineering-sketchnote.d5f33336957a1e4f623b826195c2146ef4cc49974b72fa373de6929b474e8b70.hk.png)
 
-現在，讓我們談談這個主題如何與我們的初創公司使命——[將 AI 創新帶入教育](https://educationblog.microsoft.com/2023/06/collaborating-to-bring-ai-innovation-to-education?WT.mc_id=academic-105485-koreyst)——相關。我們想建立 AI 驅動的個性化學習應用——所以讓我們思考不同的應用用戶如何“設計”提示：
+## 我們的初創
 
-- **管理者**可能會要求 AI 分析課程數據以識別覆蓋範圍的空白。AI 可以總結結果或用代碼將其可視化。
-- **教育者**可能會要求 AI 為目標受眾和主題生成課程計劃。AI 可以以指定格式構建個性化計劃。
-- **學生**可能會要求 AI 在困難科目上輔導他們。AI 現在可以根據他們的水平提供課程、提示和例子。
+現在，讓我們談談 _這個主題_ 如何與我們的初創使命 —— [為教育帶來 AI 創新](https://educationblog.microsoft.com/2023/06/collaborating-to-bring-ai-innovation-to-education?WT.mc_id=academic-105485-koreyst) —— 相關。我們想建立以 AI 驅動的 _個人化學習_ 應用，所以可以想像不同用戶如何「設計」提示：
 
-這只是冰山一角。查看 [教育提示](https://github.com/microsoft/prompts-for-edu/tree/main?WT.mc_id=academic-105485-koreyst) - 由教育專家策劃的開源提示庫 - 以獲得更廣泛的可能性！在沙盒中運行一些這些提示或使用 OpenAI Playground 看看會發生什麼！
+- **管理員** 可能會要求 AI _分析課程數據，找出覆蓋範圍的缺口_。AI 可以總結結果，甚至用程式碼視覺化。
+- **教師** 可能會要求 AI _為特定對象和主題生成教案_。AI 可以按指定格式建立個人化教案。
+- **學生** 可能會要求 AI _在困難科目上輔導自己_。AI 可以根據學生程度，提供課堂、提示和例子。
 
-## 什麼是提示工程？
-
-我們開始這課時定義了提示工程為設計和優化文本輸入（提示）的過程，以在給定應用目標和模型中提供一致且高質量的回應（完成）。我們可以將其視為兩步過程：
-
-- 設計給定模型和目標的初始提示
-- 迭代精細化提示以改善回應質量
-
-這必然是一個需要用戶直覺和努力的試錯過程以獲得最佳結果。那麼為什麼它重要呢？要回答這個問題，我們首先需要理解三個概念：
-
-- 分詞 = 模型如何“看到”提示
-- 基礎 LLM = 基礎模型如何“處理”提示
-- 指令調整的 LLM = 模型如何現在看到“任務”
-
-### 分詞
-
-LLM 將提示視為 token 序列，其中不同模型（或模型版本）可以以不同方式分詞相同提示。由於 LLM 是基於 token 而不是原始文本進行訓練的，提示的分詞方式直接影響生成回應的質量。
-
-要了解分詞如何工作，可以嘗試像 [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) 這樣的工具。將你的提示複製進去，看看如何轉換成 token，注意空白字符和標點符號的處理。注意這個例子展示了一個較舊的 LLM（GPT-3） - 所以用更新模型嘗試可能會產生不同結果。
-
-### 概念：基礎模型
-
-一旦提示被分詞，["基礎 LLM"](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst)（或基礎模型）的主要功能是預測序列中的 token。由於 LLM 是基於大量文本數據集進行訓練的，它們對 token 之間的統計關係有很好的理解，並可以有信心地進行預測。注意它們不理解提示或 token 中單詞的“含義”；它們只是看到可以用下一個預測“完成”的模式。它們可以繼續預測序列，直到被用戶干預或某些預設條件終止。
-
-想看看基於提示的完成如何工作？將上述提示輸入 Azure OpenAI Studio [_Chat Playground_](https://oai.azure.com/playground?WT.mc_id=academic-105485-koreyst) 並使用默認設置。系統配置為將提示視為信息請求 - 所以你應該看到滿足此上下文的完成。
-
-但如果用戶希望看到符合某些標準或任務目標的具體內容呢？這就是指令調整的 LLM 的作用。
-
-### 概念：指令調整的 LLM
-
-[指令調整的 LLM](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst)從基礎模型開始，並通過示例或輸入/輸出對（例如多輪“消息”）進行微調，可以包含明確指令 - 並且 AI 的回應嘗試遵循該指令。
-
-這使用像人類反饋的強化學習（RLHF）這樣的技術，能夠訓練模型“遵循指令”和“學習反饋”，使其生成更適合實際應用並更符合用戶目標的回應。
-
-讓我們試試 - 重訪上述提示，但現在更改系統消息以提供以下指令作為上下文：
-
-> _為二年級學生總結提供的內容。結果保持在一段，並有 3-5 個要點。_
-
-看看結果如何調整以反映所需目標和格式？教育者現在可以直接在課堂的幻燈片中使用此回應。
-
-## 為什麼我們需要提示工程？
-
-現在我們知道提示是如何被 LLM 處理的，讓我們談談為什麼我們需要提示工程。答案在於目前的 LLM 提出了一些挑戰，使得可靠和一致的完成更難以實現，而不在提示構建和優化上投入努力。例如：
-
-1. **模型回應是隨機的。** 相同的提示很可能會在不同模型或模型版本中產生不同回應。甚至在相同模型中不同時間也可能產生不同結果。提示工程技術可以幫助我們通過提供更好的防護措施來最大限度地減少這些變化。
-
-2. **模型可能會編造回應。** 模型是用大但有限的數據集進行預訓練的，這意味著它們缺乏對訓練範圍之外概念的知識。因此，它們可能會生成不準確、虛構或直接與已知事實相矛盾的完成。提示工程技術幫助用戶識別和減少這些編造，例如通過要求 AI 提供引用或推理。
-
-3. **模型能力會有所不同。** 新模型或模型世代會有更豐富的能力，但也會帶來獨特的怪癖和成本與複雜性的權衡。提示工程可以幫助我們開發最佳實踐和工作流程，以可擴展、無縫的方式抽象掉差異並適應模型特定需求。
-
-讓我們在 OpenAI 或 Azure OpenAI Playground 中看看這些：
-
-- 使用不同 LLM 部署（例如 OpenAI、Azure OpenAI、Hugging Face）使用相同提示 - 你是否看到了變化？
-- 使用相同 LLM 部署（例如 Azure OpenAI Playground）重複使用相同提示 - 這些變化有何不同？
-
-### 編造例子
-
-在本課中，我們使用術語“編造”來指代 LLM 有時會生成事實錯誤信息的現象，這是由於訓練限制或其他約束造成的。你可能也聽過在流行文章或研究論文中稱其為“幻覺”。然而，我們強烈建議使用“編造”這個術語，以免不小心將人類特徵歸因於機器驅動的結果。這也從術語角度加強了[負責任的 AI 指南](https://www.microsoft.com/ai/responsible-ai?WT.mc_id=academic-105485-koreyst)，去掉了可能在某些情境中被視為冒犯或不包容的術語。
-
-想了解編造如何工作嗎？想一個指導 AI 為不存在的主題生成內容的提示（確保它不在訓練數據集中）。例如 - 我嘗試了這個提示：
-
-> **提示：**生成 2076 年火星戰爭的課程計劃。
-
-網絡搜索顯示有關火星戰爭的虛構敘述（例如電視劇或書籍） - 但沒有 2076 年的。常識也告訴我們 2076 年是未來，不可能與真實事件相關。
-
-所以當我們用不同 LLM 提供者運行這個提示時會發生什麼？
-
-> **回應 1**：OpenAI Playground (GPT-35)
-
-> **回應 2**：Azure OpenAI Playground (GPT-35)
-
-> **回應 3**：Hugging Face Chat Playground (LLama-2)
-
-正如預期的那樣，由於隨機行為和模型能力的變化，每個模型（或模型版本）都產生略有不同的回應。例如，一個模型針對 8 年級受眾，而另一個假設是高中生。但所有三個模型都生成了可能使不知情的用戶相信事件是真實的回應
-
-提示工程技術如元提示和溫度配置可能在一定程度上減少模型編造。新的提示工程架構也無縫地將新工具和技術納入提示流程，以減少或減輕其中一些效果。
-
-## 案例研究：GitHub Copilot
-
-讓我們通過查看一個案例研究來了解提示工程在實際解決方案中的應用：[GitHub Copilot](https://github.com/features/copilot?WT.mc_id=academic-105485-koreyst)。
-
-GitHub Copilot 是你的“AI 配對程序員” - 它將文本提示轉換為代碼完成並集成到你的開發環境中（例如 Visual Studio Code），提供無縫的用戶體驗。正如以下系列博客中所記錄的，最早的版本是基於 OpenAI Codex 模型 - 工程師迅速意識到需要微調模型並開發更好的提示工程技術，以改善代碼質量。7 月，他們[推出了一個超越 Codex 的改進 AI 模型](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)以提供更快的建議。
-
-按順序閱讀文章，以跟隨他們的學習旅程。
-
-- **2023年5月** | [GitHub Copilot 正在更好地理解你的代碼](https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/?WT.mc_id=academic-105485-koreyst)
-- **2023年5月** | [GitHub內部：與 GitHub Copilot 背後的 LLM 合作](https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-copilot/?WT.mc_id=academic-105485-koreyst).
-- **2023年6月** | [如何為 GitHub Copilot 編寫更好的提示](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/?WT.mc_id=academic-105485-koreyst).
-- **2023年7月** | [GitHub Copilot 超越 Codex 的改進 AI 模型](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)
-- **2023年7月** | [開發者的提示工程和 LLM 指南](https://github.blog/2023-07-17-prompt-engineering-guide-generative-ai-llms/?WT.mc_id=academic-105485-koreyst)
-- **2023年9月** | [如何構建企業 LLM 應用：GitHub Copilot 的教訓](https://github.blog/2023-09-06-how-to-build-an-enterprise-llm-application-lessons-from-github-copilot/?WT.mc_id=academic-105485-koreyst)
-
-你還可以瀏覽他們的[工程博客](https://github.blog/category/engineering/?WT.mc_id=academic-105485-koreyst)以獲得更多像[這篇文章](https://github.blog/2023-09-27-how-i-used-github-copilot-chat-to-build-a-reactjs-gallery-prototype/?WT.mc_id=academic-105485-koreyst)展示這些模型和技術如何應用於驅動實際應用的文章。
-
-## 提示構建
-
-我們已經了解了為什麼提示工程很重要 - 現在讓我們理解提示是如何構建的，以便我們可以評估更有效提示設計的不同技術。
-
-### 基本提示
-
-讓我們從基本提示開始：發送給模型的文本輸入，沒有其他上下文。這是一個例子 - 當我們將美國國歌的前幾個詞發送給 OpenAI [Completion API](https://platform.openai.com/docs/api-reference/completions?WT.mc_id=academic-105485-koreyst) 時，它立即用接下來的幾行“完成”回應，說明了
-最後，模板的真正價值在於能夠為垂直應用領域創建和發布_提示庫_，此時提示模板已經_優化_，以反映應用程序特定的上下文或示例，從而使回應對目標用戶群體更具相關性和準確性。[Prompts For Edu](https://github.com/microsoft/prompts-for-edu?WT.mc_id=academic-105485-koreyst)庫就是這種方法的絕佳示例，它為教育領域策劃了一個提示庫，重點放在課程計劃、課程設計、學生輔導等關鍵目標上。
-
-## 支持內容
-
-如果我們將提示構建視為有一個指令（任務）和一個目標（主要內容），那麼_次要內容_就像我們提供的額外上下文，用來**以某種方式影響輸出**。它可能是調整參數、格式說明、主題分類等，可以幫助模型_調整_其回應以適應所需的用戶目標或期望。
-
-例如：給定一個課程目錄，其中包含課程名稱、描述、級別、元數據標籤、講師等的豐富元數據：
-
-- 我們可以定義一個指令來「總結2023年秋季的課程目錄」
-- 我們可以使用主要內容來提供所需輸出的幾個示例
-- 我們可以使用次要內容來確定最感興趣的5個「標籤」。
-
-現在，模型可以按照示例顯示的格式提供摘要——但如果結果有多個標籤，它可以優先考慮次要內容中確定的5個標籤。
-
----
-
-## 提示最佳實踐
-
-既然我們知道如何_構建_提示，我們就可以開始考慮如何_設計_它們以反映最佳實踐。我們可以將其分為兩部分——擁有正確的_心態_和應用正確的_技術_。
-
-### 提示工程心態
-
-提示工程是一個反覆試驗的過程，因此請記住三個廣泛的指導因素：
-
-1. **領域理解很重要。** 回應的準確性和相關性是該應用或用戶運行的_領域_的函數。運用你的直覺和領域專業知識進一步**定制技術**。例如，在系統提示中定義_領域特定的個性_，或在用戶提示中使用_領域特定的模板_。提供反映領域特定上下文的次要內容，或使用_領域特定的提示和示例_來引導模型朝著熟悉的使用模式發展。
-
-2. **模型理解很重要。** 我們知道模型本質上是隨機的。但是模型的實現可能會因使用的訓練數據集（預訓練知識）、提供的能力（例如，通過API或SDK）以及它們優化的內容類型（例如，代碼、圖像或文本）而有所不同。了解你使用的模型的優勢和局限性，並利用這些知識來_優先考慮任務_或構建_定制模板_，以優化模型的能力。
-
-3. **迭代和驗證很重要。** 模型正在快速發展，提示工程的技術也是如此。作為領域專家，你可能擁有其他上下文或標準_你的_特定應用程序，這可能不適用於更廣泛的社區。使用提示工程工具和技術來「快速啟動」提示構建，然後使用自己的直覺和領域專業知識進行迭代和驗證結果。記錄你的見解並創建一個**知識庫**（例如，提示庫），其他人可以將其用作新的基準，以便未來更快地進行迭代。
-
-## 最佳實踐
-
-現在讓我們看看[OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api?WT.mc_id=academic-105485-koreyst)和[Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering#best-practices?WT.mc_id=academic-105485-koreyst)從業者推薦的一些常見最佳實踐。
-
-| 什麼                              | 為什麼                                                                                                                                                                                                                                               |
-| :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 評估最新模型。                    | 新的模型代可能具有改進的功能和質量，但也可能帶來更高的成本。評估它們的影響，然後做出遷移決策。                                                                                                                                                |
-| 分開指令和上下文                  | 檢查你的模型/提供者是否定義了_分隔符_來更清晰地區分指令、主要和次要內容。這可以幫助模型更準確地為標記分配權重。                                                                                                                         |
-| 具體和清晰                        | 提供更多有關所需上下文、結果、長度、格式、風格等的詳細信息。這將提高回應的質量和一致性。將食譜捕捉到可重用的模板中。                                                                                                                          |
-| 描述性，使用示例                  | 模型可能對「展示和講述」的方法反應更好。從`zero-shot` approach where you give it an instruction (but no examples) then try `few-shot` as a refinement, providing a few examples of the desired output. Use analogies. |
-| Use cues to jumpstart completions | Nudge it towards a desired outcome by giving it some leading words or phrases that it can use as a starting point for the response.                                                                                                               |
-| Double Down                       | Sometimes you may need to repeat yourself to the model. Give instructions before and after your primary content, use an instruction and a cue, etc. Iterate & validate to see what works.                                                         |
-| Order Matters                     | The order in which you present information to the model may impact the output, even in the learning examples, thanks to recency bias. Try different options to see what works best.                                                               |
-| Give the model an “out”           | Give the model a _fallback_ completion response it can provide if it cannot complete the task for any reason. This can reduce chances of models generating false or fabricated responses.                                                         |
-|                                   |                                                                                                                                                                                                                                                   |
-
-As with any best practice, remember that _your mileage may vary_ based on the model, the task and the domain. Use these as a starting point, and iterate to find what works best for you. Constantly re-evaluate your prompt engineering process as new models and tools become available, with a focus on process scalability and response quality.
+這只是冰山一角。可以參考 [Prompts For Education](https://github.com/microsoft/prompts-for-edu/tree/main?WT.mc_id=academic-105485-koreyst) —— 由教育專家策劃的開源提示庫 —— 了解更多可能性！_試下在沙盒或 OpenAI Playground 執行這些提示，看看效果！_
 
 <!--
 LESSON TEMPLATE:
-This unit should provide a code challenge if applicable
+This unit should cover core concept #1.
+Reinforce the concept with examples and references.
 
-CHALLENGE:
-Link to a Jupyter Notebook with only the code comments in the instructions (code sections are empty).
-
-SOLUTION:
-Link to a copy of that Notebook with the prompts filled in and run, showing what one example could be.
+CONCEPT #1:
+Prompt Engineering.
+Define it and explain why it is needed.
 -->
 
-## Assignment
+## 什麼是提示工程？
 
-Congratulations! You made it to the end of the lesson! It's time to put some of those concepts and techniques to the test with real examples!
+我們在本課一開始已經定義了 **提示工程**，即是 _設計和優化_ 文字輸入（提示），以便針對特定應用目標和模型，獲得穩定和高質素的回應（完成）。可以將這看作兩步：
 
-For our assignment, we'll be using a Jupyter Notebook with exercises you can complete interactively. You can also extend the Notebook with your own Markdown and Code cells to explore ideas and techniques on your own.
+- 為特定模型和目標 _設計_ 初始提示
+- 反覆 _優化_ 提示，提升回應質素
 
-### To get started, fork the repo, then
+這本質上是一個需要用戶直覺和努力的試錯過程，才能達到最佳效果。那為什麼這麼重要？要回答這個問題，首先要明白三個概念：
 
-- (Recommended) Launch GitHub Codespaces
-- (Alternatively) Clone the repo to your local device and use it with Docker Desktop
-- (Alternatively) Open the Notebook with your preferred Notebook runtime environment.
+- _分詞（Tokenization）_ = 模型如何「看」提示
+- _基礎 LLM_ = 基礎模型如何「處理」提示
+- _指令調校 LLM_ = 模型如何理解「任務」
 
-### Next, configure your environment variables
+### 分詞（Tokenization）
 
-- Copy the `.env.copy` file in repo root to `.env` and fill in the `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT` and `AZURE_OPENAI_DEPLOYMENT`值開始。回到[學習沙盒部分](../../../04-prompt-engineering-fundamentals/04-prompt-engineering-fundamentals)學習如何。
+LLM 會將提示視為 _一連串的 token_，而不同模型（或同一模型的不同版本）會用不同方式將同一提示分詞。由於 LLM 是以 token（而非原始文字）訓練，所以分詞方式會直接影響生成回應的質素。
 
-### 接下來，打開Jupyter Notebook
+想了解分詞如何運作，可以試下 [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) 這類工具。將你的提示貼上去，看看如何被分割成 token，留意空白字元和標點符號的處理。注意這個例子用的是較舊的 LLM（GPT-3），用新模型可能會有不同結果。
 
-- 選擇運行時內核。如果使用選項1或2，只需選擇dev容器提供的默認Python 3.10.x內核。
+![Tokenization](../../../translated_images/04-tokenizer-example.e71f0a0f70356c5c7d80b21e8753a28c18a7f6d4aaa1c4b08e65d17625e85642.hk.png)
 
-你已準備好運行練習。請注意，這裡沒有_對錯_答案——只是通過反覆試驗探索選項，並為給定模型和應用領域建立直覺。
+### 概念：基礎模型
 
-_出於這個原因，本課程中沒有代碼解決方案部分。相反，Notebook將有標題為「我的解決方案：」的Markdown單元格，顯示一個參考示例輸出。_
+當提示被分詞後，「基礎 LLM」（[Base LLM](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) 或 Foundation model）的主要功能就是預測這個序列中的下一個 token。由於 LLM 是用大量文本數據集訓練，所以對 token 之間的統計關係有很好的掌握，可以有信心地作出預測。要注意的是，模型並不理解提示或 token 的 _意思_，它只是看到一個可以「補完」的模式，然後預測下一步。它可以一直預測下去，直到用戶終止或達到預設條件。
+
+想看看基於提示的補全如何運作？可以將上面的提示輸入到 Azure OpenAI Studio 的 [_Chat Playground_](https://oai.azure.com/playground?WT.mc_id=academic-105485-koreyst)，用預設設定。系統會將提示當作資訊請求，所以你應該會看到一個符合語境的回應。
+
+但如果用戶想要符合某些條件或任務目標的特定內容呢？這時就需要 _指令調校_ 的 LLM。
+
+![Base LLM Chat Completion](../../../translated_images/04-playground-chat-base.65b76fcfde0caa6738e41d20f1a6123f9078219e6f91a88ee5ea8014f0469bdf.hk.png)
+
+### 概念：指令調校 LLM
+
+[指令調校 LLM](https://blog.gopenai.com/an-introduction-to-base-and-instruction-tuned-large-language-models-8de102c785a6?WT.mc_id=academic-105485-koreyst) 是在基礎模型的基礎上，透過例子或輸入/輸出配對（例如多輪「訊息」）進行微調，這些配對可以包含明確指令，AI 的回應會嘗試跟隨這些指令。
+
+這會用到像「有人工回饋的強化學習（RLHF）」等技術，訓練模型 _跟隨指令_ 和 _從回饋中學習_，令回應更適合實際應用，也更貼近用戶目標。
+
+不如試下 —— 用上面的提示，但現在將 _system message_ 改為以下指令作為語境：
+
+> _將你收到的內容總結給二年級學生看。結果請用一段文字，並列出 3-5 個重點。_
+
+你會發現結果已經根據目標和格式調整了？教師可以直接將這個回應放到課堂簡報中。
+
+![Instruction Tuned LLM Chat Completion](../../../translated_images/04-playground-chat-instructions.b30bbfbdf92f2d051639c9bc23f74a0e2482f8dc7f0dafc6cc6fda81b2b00534.hk.png)
+
+## 為什麼需要提示工程？
+
+現在我們知道 LLM 如何處理提示，來談談 _為什麼_ 需要提示工程。原因在於現時的 LLM 有不少挑戰，令 _穩定和一致的回應_ 變得困難，如果不花心思設計和優化提示，很難達到理想效果。例如：
+
+1. **模型回應有隨機性。** _同一個提示_ 在不同模型或模型版本下，可能會有不同回應。甚至在 _同一模型_ 不同時間也可能有不同結果。_提示工程技巧可以幫助我們減少這些變化，提供更好的防護欄_。
+
+1. **模型會虛構內容。** 模型是用 _大量但有限_ 的數據集訓練，對訓練範圍以外的知識並不了解。因此，有時會產生不準確、虛構，甚至與已知事實矛盾的回應。_提示工程技巧可以幫助用戶識別和減少這些虛構，例如要求 AI 提供出處或推理過程_。
+
+1. **模型能力會有差異。** 新一代模型功能更強，但也有獨特的特性和在成本、複雜度上的取捨。_提示工程可以幫助我們建立最佳實踐和工作流程，抽象化差異，並以可擴展、無縫的方式適應不同模型的需求_。
+
+可以在 OpenAI 或 Azure OpenAI Playground 試下：
+
+- 用同一提示在不同 LLM 部署（例如 OpenAI、Azure OpenAI、Hugging Face）下執行 —— 你有沒有發現差異？
+- 用同一提示在 _同一_ LLM 部署（例如 Azure OpenAI playground）重複執行 —— 這些差異有什麼不同？
+
+### 虛構內容例子
+
+在本課程中，我們用 **「虛構內容」** 來指 LLM 因訓練限制或其他因素，有時會產生事實上不正確的資訊。你可能在文章或論文中見過 _「幻覺」_ 這個詞。不過，我們強烈建議用 _「虛構內容」_，避免將人類特質投射到機器行為上。這也符合 [負責任 AI 指引](https://www.microsoft.com/ai/responsible-ai?WT.mc_id=academic-105485-koreyst) 的用詞，避免在某些情境下出現冒犯或不包容的詞語。
+
+想了解虛構內容如何出現？可以設計一個提示，要求 AI 針對不存在的主題生成內容（確保訓練數據集中找不到）。例如 —— 我試過這個提示：
+> **提示：** 編寫一份有關 2076 年火星戰爭的課堂教案。
+
+# 2076 年火星戰爭課堂教案
+
+## 課堂目標
+
+- 了解 2076 年火星戰爭的起因、過程及影響
+- 分析戰爭對地球和火星社會的長遠影響
+- 培養批判性思考能力，討論科技與政治在戰爭中的角色
+
+## 課堂簡介
+
+2076 年火星戰爭是人類歷史上首次跨星球衝突。這場戰爭不僅改變了地球與火星的關係，也影響了未來太空探索的方向。學生將透過討論、角色扮演及小組活動，深入了解這場戰爭的各個層面。
+
+## 教學流程
+
+### 1. 背景介紹（15 分鐘）
+
+- 簡述火星殖民地的發展歷程
+- 地球與火星之間的政治、經濟矛盾
+- 介紹主要參戰方及領袖人物
+
+### 2. 戰爭爆發（20 分鐘）
+
+- 分析導火線及衝突升級的過程
+- 展示戰爭初期的主要事件時間線
+- 討論科技在戰爭中的作用（如 AI 軍隊、太空武器）
+
+### 3. 角色扮演活動（30 分鐘）
+
+- 學生分組扮演地球政府、火星自治組織、和平調解者等角色
+- 模擬談判及衝突解決過程
+- 分享各組的策略及結果
+
+### 4. 戰爭影響（15 分鐘）
+
+- 討論戰爭對地球和火星社會的改變
+- 分析戰後科技、文化及政治的發展
+- 探討人類未來太空探索的可能性
+
+### 5. 小組討論與總結（10 分鐘）
+
+- 學生分享對火星戰爭的看法
+- 討論如何避免類似衝突再次發生
+- 教師總結課堂重點
+
+## 作業建議
+
+- 撰寫一篇短文，描述如果你是火星居民，如何面對戰爭帶來的挑戰
+- 準備一份簡報，分析火星戰爭對人類文明的啟示
+
+## 延伸閱讀
+
+- 《火星戰爭：人類的下一步》
+- 《太空政治學：地球與火星的未來》
+- 相關科幻小說及紀錄片
+
+## 教學資源
+
+- @@INLINE_CODE_1@@
+- @@CODE_BLOCK_1@@
+
+<!-- 請根據學生年齡及程度調整教案內容。歡迎加入更多互動環節，提升學習興趣。 -->
+網上搜尋顯示有關火星戰爭的虛構作品（例如電視劇或書籍）——但沒有發生在2076年。常識亦告訴我們，2076年是未來的年份，因此不可能與真實事件有關。
+
+咁如果我哋用唔同嘅LLM供應商去跑呢個prompt，會點？
+
+> **回應 1**：OpenAI Playground（GPT-35）
+
+![回應 1](../../../translated_images/04-fabrication-oai.5818c4e0b2a2678c40e0793bf873ef4a425350dd0063a183fb8ae02cae63aa0c.hk.png)
+
+> **回應 2**：Azure OpenAI Playground（GPT-35）
+
+![回應 2](../../../translated_images/04-fabrication-aoai.b14268e9ecf25caf613b7d424c16e2a0dc5b578f8f960c0c04d4fb3a68e6cf61.hk.png)
+
+> **回應 3**：Hugging Face Chat Playground（LLama-2）
+
+![回應 3](../../../translated_images/04-fabrication-huggingchat.faf82a0a512789565e410568bce1ac911075b943dec59b1ef4080b61723b5bf4.hk.png)
+
+正如預期，每個模型（或模型版本）都會因為隨機性同模型能力差異而產生少少唔同嘅回應。例如，有啲模型針對中學生，有啲就假設用家係高中生。但三個模型都生成咗一啲回應，可以令唔知情嘅用家信以為真。
+
+一啲prompt engineering技巧，例如_metaprompting_同_temperature configuration_，可以喺某程度上減少模型虛構內容。新嘅prompt engineering架構亦會將新工具同技術無縫整合入prompt流程，減輕或減少呢啲影響。
+
+## 個案研究：GitHub Copilot
+
+我哋用一個個案研究嚟總結呢一節，睇下prompt engineering喺真實世界解決方案入面點樣應用：[GitHub Copilot](https://github.com/features/copilot?WT.mc_id=academic-105485-koreyst)。
+
+GitHub Copilot係你嘅「AI拍檔程式員」——佢會將文字prompt轉化為程式碼補全，並且整合入你嘅開發環境（例如Visual Studio Code），令用家體驗更流暢。根據以下一系列blog記錄，最早期版本係基於OpenAI Codex模型——工程師好快就發現要微調模型同開發更好嘅prompt engineering技巧，提升程式碼質素。到七月，佢哋[推出咗一個比Codex更強嘅AI模型](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)，建議速度更快。
+
+建議你按順序閱讀以下文章，了解佢哋嘅學習歷程。
+
+- **2023年5月** | [GitHub Copilot更懂你嘅程式碼](https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/?WT.mc_id=academic-105485-koreyst)
+- **2023年5月** | [GitHub內部：同GitHub Copilot背後嘅LLM合作](https://github.blog/2023-05-17-inside-github-working-with-the-llms-behind-github-copilot/?WT.mc_id=academic-105485-koreyst)
+- **2023年6月** | [點樣寫更好嘅GitHub Copilot prompts](https://github.blog/2023-06-20-how-to-write-better-prompts-for-github-copilot/?WT.mc_id=academic-105485-koreyst)
+- **2023年7月** | [.. GitHub Copilot用改良AI模型超越Codex](https://github.blog/2023-07-28-smarter-more-efficient-coding-github-copilot-goes-beyond-codex-with-improved-ai-model/?WT.mc_id=academic-105485-koreyst)
+- **2023年7月** | [開發者Prompt Engineering同LLM指南](https://github.blog/2023-07-17-prompt-engineering-guide-generative-ai-llms/?WT.mc_id=academic-105485-koreyst)
+- **2023年9月** | [點樣建立企業級LLM應用：GitHub Copilot經驗分享](https://github.blog/2023-09-06-how-to-build-an-enterprise-llm-application-lessons-from-github-copilot/?WT.mc_id=academic-105485-koreyst)
+
+你亦可以瀏覽佢哋嘅[工程部落格](https://github.blog/category/engineering/?WT.mc_id=academic-105485-koreyst)，睇更多類似[呢篇](https://github.blog/2023-09-27-how-i-used-github-copilot-chat-to-build-a-reactjs-gallery-prototype/?WT.mc_id=academic-105485-koreyst)嘅文章，展示模型同技術點樣應用喺真實世界項目。
+
+---
+
+<!--
+課堂模板：
+呢個單元要涵蓋核心概念#2。
+用例子同參考資料加強概念。
+
+概念#2：
+Prompt設計。
+用例子說明。
+-->
+
+## Prompt構建
+
+我哋已經知道prompt engineering點解咁重要——而家就嚟了解prompt係點樣_構建_，咁我哋就可以評估唔同技巧，設計更有效嘅prompt。
+
+### 基本Prompt
+
+先由最基本嘅prompt開始：即係只係一段文字輸入，冇其他背景。舉個例——如果我哋將美國國歌開頭幾個字送去OpenAI [Completion API](https://platform.openai.com/docs/api-reference/completions?WT.mc_id=academic-105485-koreyst)，佢即刻會用下一段歌詞補全，展示咗基本預測行為。
+
+| Prompt（輸入）     | Completion（輸出）                                                                                                                        |
+| :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| Oh say can you see | 你似乎係開始唱《The Star-Spangled Banner》，即係美國國歌。完整歌詞係... |
+
+### 複雜Prompt
+
+而家我哋喺基本prompt加啲背景同指示。[Chat Completion API](https://learn.microsoft.com/azure/ai-services/openai/how-to/chatgpt?WT.mc_id=academic-105485-koreyst)容許我哋用一組_message_去構建複雜prompt，包括：
+
+- 反映_user_輸入同_assistant_回應嘅輸入/輸出對。
+- system message用嚟設定assistant行為或性格嘅背景。
+
+請求格式如下，_tokenization_會有效捕捉背景同對話入面嘅相關資訊。改變system context有時對回應質素影響同user輸入一樣大。
+
+```python
+response = openai.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the world series in 2020?"},
+        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+        {"role": "user", "content": "Where was it played?"}
+    ]
+)
+```
+
+### 指令Prompt
+
+上面例子入面，用家prompt只係一個簡單文字查詢，可以理解為資訊請求。用_instruction_ prompt時，我哋可以用文字更詳細咁指定任務，俾AI更清晰指引。舉個例：
+
+| Prompt（輸入）                                                                                                                                                                                                                         | Completion（輸出）                                                                                                        | 指令類型    |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------ |
+| 寫一段關於南北戰爭嘅描述                                                                                                                                                                                                   | _回傳一段簡單文字_                                                                                              | 簡單              |
+| 寫一段關於南北戰爭嘅描述。請列出重要日期同事件，並解釋佢哋嘅意義                                                                                                                                     | _回傳一段文字，之後列出重要事件日期同解釋_                                             | 複雜             |
+| 用一段文字描述南北戰爭。列出3個重點日期同佢哋嘅意義，再列出3個重要歷史人物同佢哋嘅貢獻。請用JSON格式回覆。 | _回傳更詳細內容，格式化成JSON，可以直接複製貼上到檔案並驗證_ | 複雜。格式化。 |
+
+## 主要內容
+
+上面例子入面，prompt都仲係幾開放，容許LLM自己決定用邊部分預訓練數據。用_primary content_設計模式時，輸入文字分為兩部分：
+
+- 指令（動作）
+- 相關內容（影響動作）
+
+例如，指令係「用兩句話總結以下內容」。
+
+| Prompt（輸入）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Completion（輸出）                                                                                                                                                                                                                                                                             |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Jupiter係太陽系第五顆行星，亦係最大嘅行星。佢係氣體巨星，質量只係太陽嘅千分之一，但比太陽系其他行星加埋重兩倍半。Jupiter係夜空中肉眼可見最光亮嘅天體之一，早喺有記錄之前已經被古代文明發現。佢以羅馬神Jupiter命名。[19] 喺地球睇，Jupiter有時光到反射光可以投下影子，[20] 平均嚟講係夜空第三光亮嘅自然天體，僅次於月亮同金星。 <br/> **用兩句簡短句子總結以上內容** | Jupiter係太陽系第五顆行星，亦係最大嘅行星，係夜空中最光亮嘅天體之一。佢以羅馬神Jupiter命名，係氣體巨星，質量比其他行星加埋重兩倍半。 |
+
+主要內容段可以用唔同方法提升指令效果：
+
+- **例子**——唔一定要明確指示模型做咩，可以俾佢一啲例子，等佢自己推斷模式。
+- **提示**——喺指令後面加個「提示」，引導模型產生更相關回應。
+- **模板**——即係可重複使用嘅prompt「食譜」，有變數位，可以根據實際用途填入資料。
+
+一齊睇下實際應用。
+
+### 用例子
+
+呢個方法係用主要內容「餵」模型一啲期望輸出嘅例子，等佢自己推斷出想要嘅模式。根據例子數量，可以有zero-shot、one-shot、few-shot等prompting。
+
+prompt而家有三個部分：
+
+- 任務描述
+- 幾個期望輸出嘅例子
+- 新例子開頭（變成隱含任務描述）
+
+| 學習類型 | Prompt（輸入）                                                                                                                                        | Completion（輸出）         |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------- |
+| Zero-shot     | "The Sun is Shining". Translate to Spanish                                                                                                            | "El Sol está brillando".    |
+| One-shot      | "The Sun is Shining" => ""El Sol está brillando". <br> "It's a Cold and Windy Day" =>                                                                 | "Es un día frío y ventoso". |
+| Few-shot      | The player ran the bases => Baseball <br/> The player hit an ace => Tennis <br/> The player hit a six => Cricket <br/> The player made a slam-dunk => | Basketball                  |
+|               |                                                                                                                                                       |                             |
+
+留意zero-shot要明確指示（「Translate to Spanish」），但one-shot已經可以俾模型自己推斷。few-shot例子展示咗加多啲例子可以令模型推斷更準確，唔使加多指示。
+
+### Prompt提示
+
+另一個用主要內容嘅技巧係俾_prompt cues_而唔係例子。即係我哋用一段反映期望回應格式嘅片段「起個頭」，模型就會「接住個提示」繼續寫落去。
+
+| 提示數量 | Prompt（輸入）                                                                                                                                                                                                                                                                                                                                                                                                                                               | Completion（輸出）                                                                                                                                                                                                                                                                                       |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0              | Jupiter係太陽系第五顆行星，亦係最大嘅行星。佢係氣體巨星，質量只係太陽嘅千分之一，但比太陽系其他行星加埋重兩倍半。Jupiter係夜空中肉眼可見最光亮嘅天體之一，早喺有記錄之前已經被古代文明發現。
+
+**總結重點**                                       | 木星係太陽系入面最大嘅行星，亦係由太陽數起第五粒。佢屬於氣體巨星，質量係太陽嘅千分之一，但比其他所有行星加埋都重。古代文明好早就已經發現木星，夜晚用肉眼都好容易見到佢。 |
+| 1              | 木星係太陽系由太陽數起第五粒行星，亦係最大嘅一粒。佢屬於氣體巨星，質量係太陽嘅千分之一，但比太陽系其他所有行星加埋重兩倍半。木星係夜空中最光嘅天體之一，用肉眼都睇到，古代文明早喺有記錄之前已經識得佢。 <br/>**總結重點** <br/> 我哋學到木星 | 係太陽系由太陽數起第五粒行星，亦係最大嘅一粒。佢屬於氣體巨星，質量係太陽嘅千分之一，但比其他所有行星加埋重兩倍半。用肉眼好易見到，古代已經識得佢。                        |
+| 2              | 木星係太陽系由太陽數起第五粒行星，亦係最大嘅一粒。佢屬於氣體巨星，質量係太陽嘅千分之一，但比太陽系其他所有行星加埋重兩倍半。木星係夜空中最光嘅天體之一，用肉眼都睇到，古代文明早喺有記錄之前已經識得佢。 <br/>**總結重點** <br/> 學到嘅三大重點:         | 1. 木星係太陽系由太陽數起第五粒行星，亦係最大嘅一粒。 <br/> 2. 佢屬於氣體巨星，質量係太陽嘅千分之一...<br/> 3. 木星由古代開始已經用肉眼睇到 ...                                                                       |
+|                |                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                           |
+
+### 提示模板
+
+提示模板係一種_預先定義好嘅提示配方_，可以儲存同重用，幫助大規模提供更一致嘅用戶體驗。最簡單嘅形式就係一堆提示例子，好似[OpenAI 呢個例子](https://platform.openai.com/examples?WT.mc_id=academic-105485-koreyst)，同時提供互動提示組件（用戶同系統訊息）同 API 請求格式，方便重用。
+
+再進階啲嘅形式，好似[LangChain 呢個例子](https://python.langchain.com/docs/concepts/prompt_templates/?WT.mc_id=academic-105485-koreyst)，就會有_佔位符_，可以用唔同來源（用戶輸入、系統背景、外部數據等）嘅資料去動態生成提示。咁就可以建立一個可重用嘅提示庫，程式化地大規模提供一致嘅用戶體驗。
+
+最後，模板真正嘅價值係可以建立同發佈_提示庫_，針對唔同垂直應用領域——提示模板會根據應用場景優化，加入相關例子，令回應更貼合目標用戶。呢個[Prompts For Edu](https://github.com/microsoft/prompts-for-edu?WT.mc_id=academic-105485-koreyst) 就係好好嘅例子，專為教育領域整理咗一個提示庫，重點放喺課程設計、教學計劃、學生輔導等目標。
+
+## 支援內容
+
+如果我哋將提示構建理解為有一個指令（任務）同一個目標（主要內容），咁_次要內容_就係額外嘅背景，幫助**影響輸出結果**。可以係調整參數、格式要求、主題分類等，令模型可以_度身訂造_回應，配合用戶目標或期望。
+
+例如：有一個課程目錄，入面有好多元數據（課程名、描述、級別、標籤、導師等）：
+
+- 我哋可以定一個指令：「總結 2023 年秋季課程目錄」
+- 用主要內容提供幾個期望輸出嘅例子
+- 用次要內容揀出最重要嘅五個「標籤」
+
+咁模型就可以根據例子嘅格式去總結，但如果結果有多個標籤，就可以優先顯示次要內容指定嘅五個標籤。
+
+---
+
+<!--
+課堂模板：
+呢個單元要講解核心概念 #1。
+用例子同參考資料加強理解。
+
+概念 #3：
+提示工程技巧。
+有咩基本提示工程技巧？
+用練習去說明。
+-->
+
+## 提示最佳做法
+
+而家我哋知道點樣_構建_提示，可以開始諗點樣_設計_提示，跟住最佳做法。可以分兩部分——有正確嘅_心態_同用啱嘅_技巧_。
+
+### 提示工程心態
+
+提示工程其實係一個不斷試驗嘅過程，要記住三個大原則：
+
+1. **領域知識好重要。** 回應準確度同相關性取決於_領域_。用你嘅直覺同專業知識去**度身訂造技巧**。例如，喺系統提示定義_領域專屬角色_，或者用戶提示用_領域專屬模板_。提供反映領域背景嘅次要內容，或者用_領域專屬提示同例子_，引導模型用熟悉嘅方式回應。
+
+2. **了解模型好重要。** 我哋知道模型本身有隨機性，但唔同模型實現會用唔同訓練數據（預訓練知識）、提供唔同功能（API 或 SDK），同埋針對唔同內容（例如程式碼、圖片、文字）優化。了解你用緊嘅模型強項同限制，用呢啲知識去_優先處理任務_或者建立_度身訂造模板_，發揮模型最大效能。
+
+3. **不斷迭代同驗證好重要。** 模型同提示工程技巧都進步得好快。作為領域專家，你可能有啲背景或標準只適合你嘅應用，未必適合其他人。用提示工程工具同技巧「起步」構建提示，然後不斷迭代同驗證結果，用你嘅直覺同專業知識。記錄你嘅心得，建立一個**知識庫**（例如提示庫），方便其他人用嚟做新基準，加快未來迭代。
+
+## 最佳做法
+
+而家睇下[OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api?WT.mc_id=academic-105485-koreyst)同[Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering#best-practices?WT.mc_id=academic-105485-koreyst)專家推薦嘅常見最佳做法。
+
+| 做法                              | 原因                                                                                                                                                                                                                                               |
+| :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 評估最新模型。       | 新一代模型通常有更好功能同質素——但可能成本更高。評估佢哋嘅影響，再決定要唔要轉用。                                                                                |
+| 分開指令同背景   | 睇下你用嘅模型／供應商有冇定義_分隔符_，可以清楚分開指令、主要同次要內容。咁模型可以更準確分配權重。                                                         |
+| 要具體同清晰             | 詳細講明你想要嘅背景、結果、長度、格式、風格等。咁可以提升回應質素同一致性。將做法記錄落可重用模板。                                                          |
+| 要描述性，用例子      | 模型通常對「示範」方式反應更好。可以先用 `zero-shot`（只給指令，冇例子），再用 `few-shot`（加幾個例子）去微調。用類比說明。 |
+| 用提示引導完成 | 用啲開頭字或短語引導模型，幫佢搵到回應起點。                                                                                                               |
+| 重複指令                       | 有時要同模型重複講一次。可以喺主要內容前後都加指令，或者用指令加提示等。要不斷迭代同驗證，睇下咩方法最有效。                                                         |
+| 順序有影響                     | 呈現資料俾模型嘅順序會影響結果，連學習例子都會有「新近偏好」。試下唔同排列，搵出最啱用嘅方法。                                                               |
+| 畀模型「後路」           | 畀模型一個_備用_回應，如果佢做唔到任務，可以用嚟回應。咁可以減少模型亂作或虛構答案嘅機會。                                                         |
+|                                   |                                                                                                                                                                                                                                                   |
+
+同所有最佳做法一樣，記住_實際效果會因模型、任務、領域而異_。用呢啲做起點，不斷試驗搵出最啱你嘅方法。隨住新模型同工具出現，要不斷重新評估你嘅提示工程流程，重點放喺流程可擴展性同回應質素。
+
+<!--
+課堂模板：
+如果適合，呢個單元要有程式挑戰
+
+挑戰：
+連結去一個 Jupyter Notebook，指令只寫喺程式註解（程式部分係空）。
+
+解答：
+連結去 Notebook 副本，已經填好提示同執行，展示一個例子。
+-->
+
+## 作業
+
+恭喜你！已經完成咗呢堂課！而家可以用真實例子試下啲概念同技巧！
+
+今次作業會用 Jupyter Notebook，入面有互動練習。你都可以加自己嘅 Markdown 或程式碼格，試下新想法同技巧。
+
+### 開始之前，fork 個 repo，然後
+
+- （建議）用 GitHub Codespaces 開啟
+- （或者）clone repo 去你本地，用 Docker Desktop
+- （或者）用你鍾意嘅 Notebook 執行環境開 Notebook
+
+### 跟住，設定環境變數
+
+- 喺 repo 根目錄將 `.env.copy` 複製做 `.env`，填好 `AZURE_OPENAI_API_KEY`、`AZURE_OPENAI_ENDPOINT` 同 `AZURE_OPENAI_DEPLOYMENT`。返去[學習沙盒部分](../../../04-prompt-engineering-fundamentals/04-prompt-engineering-fundamentals)睇詳細教學。
+
+### 然後，開 Jupyter Notebook
+
+- 揀執行核心。如果用方法 1 或 2，揀 dev container 提供嘅 Python 3.10.x 預設核心就得。
+
+一切準備好，可以開始做練習。留意呢度冇_絕對正確或錯誤_答案——只係用試驗方法探索，建立對模型同應用領域嘅直覺。
+
+_所以呢堂課冇程式解答部分。Notebook 會有 Markdown 格叫「My Solution:」，展示一個例子俾你參考。_
+
+ <!--
+課堂模板：
+最後要有總結同自學資源。
+-->
 
 ## 知識檢查
 
-以下哪一個是遵循合理最佳實踐的好提示？
+以下邊個提示最符合合理最佳做法？
 
-1. 給我看一輛紅色汽車的圖片
-2. 給我看一輛紅色沃爾沃XC90型號汽車停在懸崖邊，夕陽西下的圖片
-3. 給我看一輛紅色沃爾沃XC90型號汽車的圖片
+1. Show me an image of red car
+2. Show me an image of red car of make Volvo and model XC90 parked by a cliff with the sun setting
+3. Show me an image of red car of make Volvo and model XC90
 
-A: 2，它是最佳提示，因為它提供了「什麼」的細節並進入具體（不僅僅是任何汽車，而是特定的品牌和型號），而且還描述了整體環境。3是次佳，因為它也包含很多描述。
+A: 2，因為佢詳細講咗「咩嘢」，仲有具體（唔係隨便一架車，而係指定品牌同型號），仲描述埋場景。3 都唔錯，因為都有好多描述。
 
 ## 🚀 挑戰
 
-看看你能否利用「提示」技術來完成提示：「給我看一輛紅色沃爾沃汽車的圖片」。它會回應什麼，你會如何改進它？
+試下用「提示」技巧：Complete the sentence "Show me an image of red car of make Volvo and "。睇下模型點回應，你又會點改善？
 
-## 出色的工作！繼續你的學習
+## 做得好！繼續學習
 
-想了解更多關於不同提示工程概念的信息嗎？請訪問[持續學習頁面](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst)以找到關於此主題的其他優質資源。
+想學多啲提示工程概念？去[進階學習頁](https://aka.ms/genai-collection?WT.mc_id=academic-105485-koreyst)搵更多相關資源。
 
-前往第5課，我們將研究[高級提示技術](../05-advanced-prompts/README.md?WT.mc_id=academic-105485-koreyst)！
+去 Lesson 5 睇下[進階提示技巧](../05-advanced-prompts/README.md?WT.mc_id=academic-105485-koreyst)！
+
+---
 
 **免責聲明**：
-
-此文件是使用AI翻譯服務[Co-op Translator](https://github.com/Azure/co-op-translator)翻譯的。雖然我們努力保證準確性，但請注意，自動翻譯可能包含錯誤或不準確之處。應將原始語言的文件視為權威來源。對於關鍵信息，建議尋求專業人工翻譯。我們對因使用此翻譯而產生的任何誤解或誤讀不承擔責任。
+本文件經由 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 翻譯。雖然我們致力於確保準確性，但請注意自動翻譯可能會有錯誤或不準確之處。原始語言的文件應被視為具權威性的來源。對於重要資訊，建議使用專業人工翻譯。我們不會對因使用本翻譯而產生的任何誤解或錯誤負責。
