@@ -3,8 +3,8 @@ from openai import AzureOpenAI
 import os
 from dotenv import load_dotenv
 
-# load environment variables from .env file
-load_dotenv()
+# load environment variables from .env file (check parent directories)
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
 
 # configure Azure OpenAI service client 
 client = AzureOpenAI(
