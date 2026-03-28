@@ -1,15 +1,6 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "0135e6c271f3ece8699050d4debbce88",
-  "translation_date": "2025-12-19T18:44:20+00:00",
-  "source_file": "04-prompt-engineering-fundamentals/README.md",
-  "language_code": "ml"
-}
--->
 # പ്രോംപ്റ്റ് എഞ്ചിനീയറിംഗ് അടിസ്ഥാനങ്ങൾ
 
-[![Prompt Engineering Fundamentals](../../../translated_images/04-lesson-banner.a2c90deba7fedacda69f35b41636a8951ec91c2e33f5420b1254534ac85bc18e.ml.png)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)
+[![Prompt Engineering Fundamentals](../../../translated_images/ml/04-lesson-banner.a2c90deba7fedacd.webp)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)
 
 ## പരിചയം
 ജനറേറ്റീവ് AI മോഡലുകളിൽ ഫലപ്രദമായ പ്രോംപ്റ്റുകൾ സൃഷ്ടിക്കുന്നതിനുള്ള അടിസ്ഥാന ആശയങ്ങളും സാങ്കേതിക വിദ്യകളും ഈ മോഡ്യൂൾ ഉൾക്കൊള്ളുന്നു. ഒരു LLM-ന് നിങ്ങൾ എഴുതുന്ന പ്രോംപ്റ്റിന്റെ രീതി കൂടി പ്രാധാന്യമുള്ളതാണ്. സൂക്ഷ്മമായി രൂപകൽപ്പന ചെയ്ത പ്രോംപ്റ്റ് മികച്ച പ്രതികരണ ഗുണമേന്മ നേടാൻ സഹായിക്കും. എന്നാൽ _പ്രോംപ്റ്റ്_ എന്നും _പ്രോംപ്റ്റ് എഞ്ചിനീയറിംഗ്_ എന്നും പറയുന്നത് എന്താണെന്ന് നിങ്ങൾക്കറിയാമോ? LLM-ന് അയക്കുന്ന പ്രോംപ്റ്റ് _ഇൻപുട്ട്_ എങ്ങനെ മെച്ചപ്പെടുത്താം? ഈ ചോദ്യങ്ങൾക്ക് ഈ അധ്യായത്തിലും അടുത്ത അധ്യായത്തിലും നാം ഉത്തരം കണ്ടെത്താൻ ശ്രമിക്കും.
@@ -53,7 +44,7 @@ _ജനറേറ്റീവ് AI_ ഉപയോക്തൃ അഭ്യർത�
 
 ഈ പാഠം എന്തൊക്കെ ഉൾക്കൊള്ളുന്നുവെന്ന് വലിയ ദൃശ്യത്തിൽ അറിയാൻ ആഗ്രഹിക്കുന്നുവോ? ഈ ചിത്രീകരിച്ച ഗൈഡ് പരിശോധിക്കുക, ഇതിൽ പ്രധാന വിഷയങ്ങളും ഓരോന്നിലും നിങ്ങൾ ചിന്തിക്കേണ്ട പ്രധാന കാര്യങ്ങളും കാണാം. പാഠം റോഡ്‌മാപ്പ് അടിസ്ഥാന ആശയങ്ങളും വെല്ലുവിളികളും മനസ്സിലാക്കി, അനുയോജ്യമായ പ്രോംപ്റ്റ് എഞ്ചിനീയറിംഗ് സാങ്കേതിക വിദ്യകളും മികച്ച പ്രാക്ടീസുകളും ഉപയോഗിച്ച് അവ പരിഹരിക്കുന്നതിലേക്കാണ് നിങ്ങളെ നയിക്കുന്നത്. ഈ ഗൈഡിലെ "അഡ്വാൻസ്ഡ് ടെക്നിക്സ്" വിഭാഗം ഈ പാഠ്യപദ്ധതിയുടെ _അടുത്ത_ അധ്യായത്തിൽ ഉൾപ്പെടുത്തിയ ഉള്ളടക്കത്തെ സൂചിപ്പിക്കുന്നു.
 
-![Illustrated Guide to Prompt Engineering](../../../translated_images/04-prompt-engineering-sketchnote.d5f33336957a1e4f623b826195c2146ef4cc49974b72fa373de6929b474e8b70.ml.png)
+![Illustrated Guide to Prompt Engineering](../../../translated_images/ml/04-prompt-engineering-sketchnote.d5f33336957a1e4f.webp)
 
 ## നമ്മുടെ സ്റ്റാർട്ടപ്പ്
 
@@ -94,7 +85,7 @@ Define it and explain why it is needed.
 
 ടോക്കനൈസേഷൻ എങ്ങനെ പ്രവർത്തിക്കുന്നു എന്ന് മനസ്സിലാക്കാൻ, താഴെ കാണുന്ന [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) പോലുള്ള ഉപകരണങ്ങൾ പരീക്ഷിക്കുക. നിങ്ങളുടെ പ്രോംപ്റ്റ് പകർത്തി പേസ്റ്റ് ചെയ്ത്, അത് ടോക്കണുകളായി എങ്ങനെ മാറുന്നു എന്ന് കാണുക, സ്പേസ് ചിഹ്നങ്ങളും പദചിഹ്നങ്ങളും എങ്ങനെ കൈകാര്യം ചെയ്യപ്പെടുന്നു എന്ന് ശ്രദ്ധിക്കുക. ഈ ഉദാഹരണം പഴയ LLM (GPT-3) ആണ് കാണിക്കുന്നത് - അതിനാൽ പുതിയ മോഡലിൽ പരീക്ഷിക്കുമ്പോൾ വ്യത്യസ്ത ഫലം ഉണ്ടാകാം.
 
-![Tokenization](../../../translated_images/04-tokenizer-example.e71f0a0f70356c5c7d80b21e8753a28c18a7f6d4aaa1c4b08e65d17625e85642.ml.png)
+![Tokenization](../../../translated_images/ml/04-tokenizer-example.e71f0a0f70356c5c.webp)
 
 ### ആശയം: ഫൗണ്ടേഷൻ മോഡലുകൾ
 
@@ -104,7 +95,7 @@ Define it and explain why it is needed.
 
 പക്ഷേ ഉപയോക്താവ് ഏതെങ്കിലും പ്രത്യേക മാനദണ്ഡം അല്ലെങ്കിൽ ടാസ്ക് ലക്ഷ്യം പാലിക്കുന്ന ഒന്നാണ് കാണാൻ ആഗ്രഹിക്കുന്നത് എങ്കിൽ? അപ്പോൾ _ഇൻസ്ട്രക്ഷൻ-ട്യൂൺഡ്_ LLMകൾ പ്രാധാന്യമാകുന്നു.
 
-![Base LLM Chat Completion](../../../translated_images/04-playground-chat-base.65b76fcfde0caa6738e41d20f1a6123f9078219e6f91a88ee5ea8014f0469bdf.ml.png)
+![Base LLM Chat Completion](../../../translated_images/ml/04-playground-chat-base.65b76fcfde0caa67.webp)
 
 ### ആശയം: ഇൻസ്ട്രക്ഷൻ-ട്യൂൺഡ് LLMകൾ
 
@@ -118,7 +109,7 @@ Define it and explain why it is needed.
 
 ഫലം ഇപ്പോൾ ആഗ്രഹിക്കുന്ന ലക്ഷ്യത്തെയും ഫോർമാറ്റിനെയും അനുസരിച്ച് ട്യൂൺ ചെയ്തതായി കാണാമോ? ഒരു അധ്യാപകൻ ഈ മറുപടി നേരിട്ട് അവരുടെ ക്ലാസ് സ്ലൈഡുകളിൽ ഉപയോഗിക്കാം.
 
-![Instruction Tuned LLM Chat Completion](../../../translated_images/04-playground-chat-instructions.b30bbfbdf92f2d051639c9bc23f74a0e2482f8dc7f0dafc6cc6fda81b2b00534.ml.png)
+![Instruction Tuned LLM Chat Completion](../../../translated_images/ml/04-playground-chat-instructions.b30bbfbdf92f2d05.webp)
 
 ## പ്രോംപ്റ്റ് എഞ്ചിനീയറിംഗ് എന്തിനാണ് വേണ്ടത്?
 
@@ -148,15 +139,15 @@ OpenAI അല്ലെങ്കിൽ Azure OpenAI പ്ലേഗ്രൗണ�
 
 > **പ്രതികരണം 1**: OpenAI പ്ലേഗ്രൗണ്ട് (GPT-35)
 
-![Response 1](../../../translated_images/04-fabrication-oai.5818c4e0b2a2678c40e0793bf873ef4a425350dd0063a183fb8ae02cae63aa0c.ml.png)
+![Response 1](../../../translated_images/ml/04-fabrication-oai.5818c4e0b2a2678c.webp)
 
 > **പ്രതികരണം 2**: Azure OpenAI പ്ലേഗ്രൗണ്ട് (GPT-35)
 
-![Response 2](../../../translated_images/04-fabrication-aoai.b14268e9ecf25caf613b7d424c16e2a0dc5b578f8f960c0c04d4fb3a68e6cf61.ml.png)
+![Response 2](../../../translated_images/ml/04-fabrication-aoai.b14268e9ecf25caf.webp)
 
 > **പ്രതികരണം 3**: : Hugging Face ചാറ്റ് പ്ലേഗ്രൗണ്ട് (LLama-2)
 
-![Response 3](../../../translated_images/04-fabrication-huggingchat.faf82a0a512789565e410568bce1ac911075b943dec59b1ef4080b61723b5bf4.ml.png)
+![Response 3](../../../translated_images/ml/04-fabrication-huggingchat.faf82a0a51278956.webp)
 
 പ്രതീക്ഷിച്ചതുപോലെ, ഓരോ മോഡലും (അല്ലെങ്കിൽ മോഡൽ പതിപ്പ്) സാന്ദ്രതാപരമായ പെരുമാറ്റവും മോഡൽ ശേഷിയിലുള്ള വ്യത്യാസങ്ങളും കാരണം അല്പം വ്യത്യസ്ത പ്രതികരണങ്ങൾ ഉൽപ്പാദിപ്പിക്കുന്നു. ഉദാഹരണത്തിന്, ഒരു മോഡൽ 8-ാം ക്ലാസ് വിദ്യാർത്ഥികളെ ലക്ഷ്യമിടുമ്പോൾ മറ്റൊന്ന് ഹൈസ്കൂൾ വിദ്യാർത്ഥിയെ കരുതുന്നു. പക്ഷേ മൂന്ന് മോഡലുകളും uninformed ഉപയോക്താവിനെ ഈ സംഭവം യഥാർത്ഥമാണെന്ന് വിശ്വസിപ്പിക്കാൻ കഴിയുന്ന പ്രതികരണങ്ങൾ സൃഷ്ടിച്ചു.
 

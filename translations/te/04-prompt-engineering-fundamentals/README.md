@@ -1,15 +1,6 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "0135e6c271f3ece8699050d4debbce88",
-  "translation_date": "2025-12-19T18:41:50+00:00",
-  "source_file": "04-prompt-engineering-fundamentals/README.md",
-  "language_code": "te"
-}
--->
 # ప్రాంప్ట్ ఇంజనీరింగ్ మౌలికాలు
 
-[![Prompt Engineering Fundamentals](../../../translated_images/04-lesson-banner.a2c90deba7fedacda69f35b41636a8951ec91c2e33f5420b1254534ac85bc18e.te.png)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)
+[![Prompt Engineering Fundamentals](../../../translated_images/te/04-lesson-banner.a2c90deba7fedacd.webp)](https://youtu.be/GElCu2kUlRs?si=qrXsBvXnCW12epb8)
 
 ## పరిచయం
 ఈ మాడ్యూల్ జనరేటివ్ AI మోడల్స్‌లో సమర్థవంతమైన ప్రాంప్ట్‌లను సృష్టించడానికి అవసరమైన ముఖ్యమైన భావనలు మరియు సాంకేతికతలను కవర్ చేస్తుంది. మీరు LLM కు మీ ప్రాంప్ట్‌ను ఎలా రాస్తారో కూడా ముఖ్యం. జాగ్రత్తగా రూపొందించిన ప్రాంప్ట్ మంచి ప్రతిస్పందన నాణ్యతను సాధించగలదు. కానీ _ప్రాంప్ట్_ మరియు _ప్రాంప్ట్ ఇంజనీరింగ్_ వంటి పదాలు ఏమిటి? మరియు నేను LLM కు పంపే ప్రాంప్ట్ _ఇన్‌పుట్_ ను ఎలా మెరుగుపరచగలను? ఈ ప్రశ్నలకు ఈ అధ్యాయం మరియు తదుపరి అధ్యాయంలో సమాధానం ఇవ్వడానికి ప్రయత్నిస్తాము.
@@ -53,7 +44,7 @@ _జనరేటివ్ AI_ వినియోగదారుల అభ్య�
 
 ఈ పాఠం ఏమి కవర్ చేస్తుందో పెద్ద దృశ్యాన్ని పొందాలనుకుంటున్నారా? ఈ చిత్రీకరించిన గైడ్‌ను చూడండి, ఇది ప్రధాన అంశాలను మరియు ప్రతి అంశంలో మీరు ఆలోచించవలసిన ముఖ్యమైన విషయాలను మీకు తెలియజేస్తుంది. పాఠం రోడ్‌మ్యాప్ మౌలిక భావనలు మరియు సవాళ్లను అర్థం చేసుకోవడం నుండి వాటిని సంబంధిత ప్రాంప్ట్ ఇంజనీరింగ్ సాంకేతికతలు మరియు ఉత్తమ పద్ధతులతో పరిష్కరించడంకు తీసుకువెళుతుంది. గమనించండి, ఈ గైడ్‌లో "అడ్వాన్స్డ్ టెక్నిక్స్" విభాగం ఈ పాఠ్యక్రమంలోని _తదుపరి_ అధ్యాయంలో కవర్ చేయబడిన విషయాలకు సూచిస్తుంది.
 
-![Illustrated Guide to Prompt Engineering](../../../translated_images/04-prompt-engineering-sketchnote.d5f33336957a1e4f623b826195c2146ef4cc49974b72fa373de6929b474e8b70.te.png)
+![Illustrated Guide to Prompt Engineering](../../../translated_images/te/04-prompt-engineering-sketchnote.d5f33336957a1e4f.webp)
 
 ## మా స్టార్టప్
 
@@ -94,7 +85,7 @@ Define it and explain why it is needed.
 
 టోకనైజేషన్ ఎలా పనిచేస్తుందో అవగాహన పొందడానికి, క్రింద చూపిన [OpenAI Tokenizer](https://platform.openai.com/tokenizer?WT.mc_id=academic-105485-koreyst) వంటి టూల్స్‌ను ప్రయత్నించండి. మీ ప్రాంప్ట్‌ను కాపీ చేసి - అది టోకెన్లుగా ఎలా మారుతుందో చూడండి, స్పేస్ క్యారెక్టర్లు మరియు పంక్చువేషన్ మార్కులు ఎలా హ్యాండిల్ అవుతాయో గమనించండి. ఈ ఉదాహరణలో పాత LLM (GPT-3) చూపబడింది - కాబట్టి కొత్త మోడల్‌తో ప్రయత్నిస్తే వేరే ఫలితం రావచ్చు.
 
-![Tokenization](../../../translated_images/04-tokenizer-example.e71f0a0f70356c5c7d80b21e8753a28c18a7f6d4aaa1c4b08e65d17625e85642.te.png)
+![Tokenization](../../../translated_images/te/04-tokenizer-example.e71f0a0f70356c5c.webp)
 
 ### భావన: ఫౌండేషన్ మోడల్స్
 
@@ -104,7 +95,7 @@ Define it and explain why it is needed.
 
 కానీ వినియోగదారు ఏదైనా నిర్దిష్టమైనది చూడాలనుకుంటే, అది కొన్ని ప్రమాణాలు లేదా టాస్క్ లక్ష్యాన్ని తీరుస్తుందా? ఇక్కడ _ఇన్‌స్ట్రక్షన్-ట్యూన్డ్_ LLMలు వస్తాయి.
 
-![Base LLM Chat Completion](../../../translated_images/04-playground-chat-base.65b76fcfde0caa6738e41d20f1a6123f9078219e6f91a88ee5ea8014f0469bdf.te.png)
+![Base LLM Chat Completion](../../../translated_images/te/04-playground-chat-base.65b76fcfde0caa67.webp)
 
 ### భావన: ఇన్‌స్ట్రక్షన్-ట్యూన్డ్ LLMలు
 
@@ -118,7 +109,7 @@ Define it and explain why it is needed.
 
 ఫలితం ఇప్పుడు కోరుకున్న లక్ష్యం మరియు ఫార్మాట్‌ను ప్రతిబింబిస్తున్నదని చూడండి? ఉపాధ్యాయుడు ఈ ప్రతిస్పందనను వారి తరగతి స్లైడ్స్‌లో నేరుగా ఉపయోగించవచ్చు.
 
-![Instruction Tuned LLM Chat Completion](../../../translated_images/04-playground-chat-instructions.b30bbfbdf92f2d051639c9bc23f74a0e2482f8dc7f0dafc6cc6fda81b2b00534.te.png)
+![Instruction Tuned LLM Chat Completion](../../../translated_images/te/04-playground-chat-instructions.b30bbfbdf92f2d05.webp)
 
 ## ప్రాంప్ట్ ఇంజనీరింగ్ ఎందుకు అవసరం?
 
@@ -148,15 +139,15 @@ OpenAI లేదా Azure OpenAI ప్లేగ్రౌండ్‌లో ద�
 
 > **ప్రతిస్పందన 1**: OpenAI ప్లేగ్రౌండ్ (GPT-35)
 
-![Response 1](../../../translated_images/04-fabrication-oai.5818c4e0b2a2678c40e0793bf873ef4a425350dd0063a183fb8ae02cae63aa0c.te.png)
+![Response 1](../../../translated_images/te/04-fabrication-oai.5818c4e0b2a2678c.webp)
 
 > **ప్రతిస్పందన 2**: Azure OpenAI ప్లేగ్రౌండ్ (GPT-35)
 
-![Response 2](../../../translated_images/04-fabrication-aoai.b14268e9ecf25caf613b7d424c16e2a0dc5b578f8f960c0c04d4fb3a68e6cf61.te.png)
+![Response 2](../../../translated_images/te/04-fabrication-aoai.b14268e9ecf25caf.webp)
 
 > **ప్రతిస్పందన 3**: : Hugging Face చాట్ ప్లేగ్రౌండ్ (LLama-2)
 
-![Response 3](../../../translated_images/04-fabrication-huggingchat.faf82a0a512789565e410568bce1ac911075b943dec59b1ef4080b61723b5bf4.te.png)
+![Response 3](../../../translated_images/te/04-fabrication-huggingchat.faf82a0a51278956.webp)
 
 అనుకున్నట్లే, ప్రతి మోడల్ (లేదా మోడల్ వెర్షన్) కొంత భిన్నమైన ప్రతిస్పందనలు ఉత్పత్తి చేస్తుంది, ఇది స్టోకాస్టిక్ ప్రవర్తన మరియు మోడల్ సామర్థ్య భేదాల కారణంగా. ఉదాహరణకు, ఒక మోడల్ 8వ తరగతి విద్యార్థి కోసం లక్ష్యంగా పెట్టుకుంటే, మరొకటి హైస్కూల్ విద్యార్థిని అనుకుంటుంది. కానీ ఈ మూడు మోడల్స్ కూడా ఒక అవగాహన లేని వినియోగదారుని ఆ సంఘటన నిజమని నమ్మించేలా ప్రతిస్పందనలు సృష్టించాయి.
 
